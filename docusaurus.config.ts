@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import SearchLocal from '@cmfcmf/docusaurus-search-local';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -65,6 +66,11 @@ const config: Config = {
         },
       ],
     },
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     footer: {
       style: 'dark',
       links: [
@@ -93,14 +99,39 @@ const config: Config = {
             }
           ],
         },
+        {
+          title: 'Legal',
+          items: [
+            {
+              label: 'Terms of Service',
+              href: 'https://miwa.lol/legal/terms',
+            },
+            {
+              label: 'Privacy Policy',
+              href: 'https://miwa.lol/legal/privacy',
+            },
+          ],
+        }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Miwa.lol - Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Miwa.lol - Built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+  plugins: [
+    [
+      SearchLocal,
+      {
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: false,
+        docsRouteBasePath: '/',
+        blogRouteBasePath: '/',
+      },
+    ],
+  ],
 };
 
 export default config;
