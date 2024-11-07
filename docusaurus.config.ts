@@ -93,15 +93,6 @@ const config: Config = {
             }
           ],
         },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
-          ],
-        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Miwa.lol - Built with Docusaurus.`,
     },
