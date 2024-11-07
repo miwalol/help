@@ -69,29 +69,28 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Our Socials',
           items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
             {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              href: 'https://discord.gg/miwa',
             },
             {
               label: 'X',
-              href: 'https://x.com/docusaurus',
+              href: 'https://x.com/MiwaTeam',
             },
+            {
+              label: 'Instagram',
+              href: 'https://www.instagram.com/miwa_lol',
+            },
+            {
+              label: 'Threads',
+              href: 'https://www.threads.net/miwa_lol',
+            },
+            {
+              label: 'BlueSky',
+              href: 'https://bsky.app/profile/miwa.lol',
+            }
           ],
         },
         {
