@@ -1,7 +1,6 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-import SearchLocal from '@cmfcmf/docusaurus-search-local';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -121,14 +120,7 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   plugins: [
-    [
-      SearchLocal,
-      {
-        indexDocs: true,
-        indexBlog: false,
-        indexPages: false,
-      },
-    ],
+    require.resolve('docusaurus-lunr-search')
   ],
 };
 
