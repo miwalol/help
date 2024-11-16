@@ -1,8 +1,7 @@
 ---
-sidebar_position: 5
+sidebar_position: 3
+title: Colors
 ---
-
-# Colors
 
 This pages explains what colors you can edit, and what is their utility.
 
