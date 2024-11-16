@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 title: Privacy
+description: You can adjust some privacy settings for your page, such as hiding views, badges, likes, and join date, as well as enabling search engine indexing.
 ---
 
 :::note

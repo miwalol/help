@@ -3,7 +3,7 @@ sidebar_position: 3
 title: Colors
 ---
 
-This pages explains what colors you can edit, and what is their utility.
+This page explains what colors you can edit, and what is their utility.
 
 ## Accent color
 
