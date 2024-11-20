@@ -14,6 +14,7 @@ const config: Config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
+  trailingSlash: true,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -103,11 +104,11 @@ const config: Config = {
           items: [
             {
               label: 'Terms of Service',
-              href: 'https://miwa.lol/legal/terms',
+              href: 'https://miwa.lol/terms',
             },
             {
               label: 'Privacy Policy',
-              href: 'https://miwa.lol/legal/privacy',
+              href: 'https://miwa.lol/privacy',
             },
           ],
         }
