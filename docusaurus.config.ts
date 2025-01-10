@@ -91,7 +91,7 @@ const config: Config = {
             },
             {
               label: 'Threads',
-              href: 'https://www.threads.net/miwa_lol',
+              href: 'https://www.threads.net/@miwa_lol',
             },
             {
               label: 'BlueSky',
