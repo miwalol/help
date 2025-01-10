@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Miwa.lol Help',
   tagline: 'Help for Miwa.lol',
-  favicon: 'img/favicon.ico',
+  favicon: '/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://help.miwa.lol',
@@ -50,12 +50,12 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: '/img/og-card.png',
     navbar: {
       title: 'Miwa.lol Help',
       logo: {
         alt: 'Miwa.lol Logo',
-        src: 'img/logo.svg',
+        src: '/img/logo.png',
       },
       items: [
         {
@@ -103,11 +103,11 @@ const config: Config = {
           items: [
             {
               label: 'Terms of Service',
-              href: 'https://miwa.lol/legal/terms',
+              href: 'https://miwa.lol/terms',
             },
             {
               label: 'Privacy Policy',
-              href: 'https://miwa.lol/legal/privacy',
+              href: 'https://miwa.lol/privacy',
             },
           ],
         }
