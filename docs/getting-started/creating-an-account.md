@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1
 title: Creating an Account
+sidebar_position: 1
 ---
 
 To create an account, visit the [Miwa.lol website](https://miwa.lol) and click the "**Register for free**" button in the top right corner.
