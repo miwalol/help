@@ -1,6 +1,6 @@
 ---
-sidebar_position: 5
 title: Cards
+sidebar_position: 5
 ---
 
 Cards are a great way to showcase your content, such as your Discord server, a Spotify track, or your Discord presence. You can add up to 2 cards to your page, or up to 6 if you have a Premium account.
