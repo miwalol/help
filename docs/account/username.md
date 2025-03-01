@@ -1,5 +1,6 @@
 ---
 title: Username
+description: Explains the username, display name, and alias features, their utility, and how to set them up.
 sidebar_position: 1
 ---
 
