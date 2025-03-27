@@ -123,6 +123,11 @@ const config: Config = {
   plugins: [
     require.resolve('docusaurus-lunr-search')
   ],
+  scripts: [{
+    src: 'https://analytics.miwa.lol/js/script.js',
+    defer: true,
+    'data-domain': 'help.miwa.lol',
+  }]
 };
 
 export default config;
