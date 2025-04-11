@@ -61,15 +61,14 @@ const config: Config = {
       items: [
         {
           href: 'https://github.com/miwalol/help',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
         },
       ],
     },
     colorMode: {
       defaultMode: 'dark',
-      disableSwitch: false,
-      respectPrefersColorScheme: true,
+      disableSwitch: true,
     },
     footer: {
       style: 'dark',
@@ -113,10 +112,9 @@ const config: Config = {
           ],
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Miwa.lol - Built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Miwa.lol &bull; Built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>`,
     },
     prism: {
-      theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
@@ -124,7 +122,7 @@ const config: Config = {
     require.resolve('docusaurus-lunr-search')
   ],
   scripts: [{
-    src: 'https://analytics.miwa.lol/js/plausible.js',
+    src: 'https://analytics.yuuto.dev/js/plausible.js',
     defer: true,
     'data-domain': 'help.miwa.lol',
   }]

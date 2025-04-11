@@ -1,14 +1,18 @@
 ---
+title: Home
 sidebar_position: 1
 ---
 
-# Miwa.lol Help
+**Do you need help?** If so, you're in the right place!
 
-**Welcome to Miwa.lol!**
-If you're here, you're probably looking for some help using our website. No worries—we know it might not be the most intuitive at first glance!
+### Getting Started
 
-This help website is here to guide you through the process of using Miwa.lol. If you have any questions that aren't answered here, feel free to join our [Discord server](https://discord.gg/miwa) and ask for help there!
+**You are new on Miwa.lol?** You might want to start by reading our [Getting Started](/category/getting-started) guide. This guide will walk you through the process of creating an account, setting up your profile, and knowing how to use our platform and its features.
 
-## Getting Started
+### Developers
 
-If you're new to Miwa.lol, you might want to start by reading our [Getting Started](/category/getting-started) guide. This guide will walk you through the process of creating an account, setting up your profile, and getting started with Miwa.lol.
+**You are a developer?** You might want to start by reading our [API](https://developers.miwa.lol) documentation.
+
+### Issues?
+
+If you encounter any issues, please check our [Troubleshooting](/misc/troubleshooting) page. If you still need help, feel free to [contact our support team](/misc/contact).

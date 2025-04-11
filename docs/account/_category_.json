@@ -1,10 +1,10 @@
 {
-  "label": "Your Account",
+  "label": "Account",
   "collapsed": false,
   "position": 3,
   "link": {
     "type": "generated-index",
-    "title": "Your Account",
+    "title": "Account",
     "description": "Learn how to manage your account, from customizing your profile to managing your settings."
   }
 }
