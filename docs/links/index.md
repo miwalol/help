@@ -67,6 +67,7 @@ We support a wide range of platforms, here's the full list:
 * Spotify
 * SoundCloud
 * Deezer
+* Stats.fm
 * PayPal
 * Bitcoin
 * Ethereum
