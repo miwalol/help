@@ -33,6 +33,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/miwalol/help/edit/master/',
           routeBasePath: '/',
+          showLastUpdateTime: true,
         },
         blog: false,
         theme: {
@@ -45,6 +46,7 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: '/img/og-card.png',
+    metadata: [{ name: 'keywords', content: 'miwa, miwa.lol, help, support, documentation' }],
     navbar: {
       title: 'Miwa.lol Help',
       logo: {

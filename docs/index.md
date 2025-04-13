@@ -1,5 +1,6 @@
 ---
 title: Home
+description: Help and Support for Miwa.lol. You can find guides, troubleshooting tips, and more! We're here to help you get the most out of Miwa.lol.
 sidebar_position: 1
 ---
 
