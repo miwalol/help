@@ -116,11 +116,10 @@ const config: Config = {
   plugins: [
     require.resolve('docusaurus-lunr-search')
   ],
-  scripts: [{
-    src: 'https://analytics.yuuto.dev/js/plausible.js',
-    defer: true,
-    'data-domain': 'help.miwa.lol',
-  }]
+  scripts: [
+    { src: 'https://analytics.yuuto.dev/js/plausible.outbound-links.js', defer: true, 'data-domain': 'help.miwa.lol' },
+    '/js/index.js',
+  ]
 };
 
 export default config;
