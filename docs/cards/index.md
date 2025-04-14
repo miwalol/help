@@ -36,6 +36,12 @@ Here's some examples of cards you can create:
 
 ![Discord Presence Example](discord-presence-example.png)
 
+:::tip
+
+If you're listening a music on Spotify, your visitors will be able to click on the song title to listen it on Spotify.
+
+:::
+
 ### Discord Server
 
 ![Discord Server Example](discord-server-example.png)
