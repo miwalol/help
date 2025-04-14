@@ -32,7 +32,7 @@ First, go to your [account settings](https://miwa.lol/dashboard/settings) and cl
 
 Then, follow the instructions to set up your custom domain. Once completed, visit your domain. If everything is set up correctly, your Miwa.lol profile will display!
 
-:::info
+::::info
 
 Depending on your DNS provider, it may take a few minutes to a few hours for the changes to propagate. If you see an error message or a blank page, please wait a bit and try again.
 
@@ -42,4 +42,4 @@ From experience, if you use Cloudflare, it may take a few seconds to a few minut
 
 :::
 
-:::
+::::
