@@ -38,3 +38,7 @@
   height: 24px;
   color: #fff;
 }
+
+article img {
+  border-radius: 0.5rem;
+}
