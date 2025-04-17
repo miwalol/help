@@ -2,7 +2,8 @@
 title: Bans
 ---
 
-A ban is a permanent restriction on your account. This means that anyone trying to access your profile will see a message saying that the user does not exist. This is done to protect the Miwa.lol community from abusive or harmful behavior.
+A ban is a permanent restriction on your account. This means that anyone trying to access your profile will see a message saying that the user does not exist.
+This is done to protect the Miwa.lol community from abusive or harmful behavior.
 
 ## Why was I banned?
 

@@ -24,3 +24,12 @@ To purchase Miwa.lol Premium, go to https://miwa.lol/pricing and click on "Purch
 - **More cards**: Add more cards to your page, with free users limited to 2 cards
 - **Custom font**: Choose a custom font of your choice, instead of the default fonts available to free users
 - **More audios**: Add more audio tracks to your page, with free users limited to 2 audio tracks
+
+## Refund Policy
+
+As explained in our [Terms of Service](https://miwa.lol/terms), we **do not offer refunds for Miwa.lol Premium**. Once you purchase Premium, you will have access to all the features for life.
+We can only offer refunds in the case of a double charge or if your account was hacked and you didn't authorize the purchase.
+
+## Donate
+
+**Want to support Miwa.lol and its development?** Please see the "[Donating](/misc/donating)" page for more information on how to donate.
