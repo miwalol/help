@@ -19,7 +19,7 @@ This badge is given to users who are subscribed to the Image Host.
 
 ### Translator Badge
 
-This badge is given to users who have contributed to the translation of Miwa.lol.
+This badge is given to users who have translated Miwa.lol to their language, or have contributed to the translation. To get this badge, you need to have translated a good amount of text. Once you think you have done enough, you can ask for the badge in our [Discord server](https://discord.gg/miwa) by opening a ticket.
 
 :::tip
 
