@@ -12,6 +12,7 @@ To purchase Miwa.lol Premium, go to https://miwa.lol/pricing and click on "Purch
 - Apple Pay
 - Google Pay
 - Revolut Pay
+- iDEAL
 
 ## Features
 
@@ -24,6 +25,7 @@ To purchase Miwa.lol Premium, go to https://miwa.lol/pricing and click on "Purch
 - **More cards**: Add more cards to your page, with free users limited to 2 cards
 - **Custom font**: Choose a custom font of your choice, instead of the default fonts available to free users
 - **More audios**: Add more audio tracks to your page, with free users limited to 2 audio tracks
+- **Tilt effect**: Add a tilt effect to your profile card, making it more dynamic
 
 ## Refund Policy
 
