@@ -33,6 +33,10 @@ This badge is given to users who have donated at least €5 to Miwa.lol.
 
 ## Special Badges
 
+### Custom Badge
+
+When you purchase a [custom badge](https://miwa.lol/pricing#discover-more), a badge with the name and image you choose will be created for you, and will be shown on your profile page.
+
 ### Staff Badge
 
 This badge is given to users who are part of the Miwa.lol staff.
