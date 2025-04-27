@@ -1,7 +1,7 @@
 ---
 title: Frequently Asked Questions
 description: Common questions and answers about Miwa.lol.
-keywords: FAQ, questions, answers
+keywords: [FAQ, questions, answers]
 ---
 
 Have a question? We tried to answer the most common ones here.
