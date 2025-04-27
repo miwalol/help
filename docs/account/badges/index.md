@@ -45,6 +45,18 @@ This badge is given to users who are part of the Miwa.lol staff.
 
 This badge is given to users who are part of the Miwa.lol development team.
 
+### Verified Badge
+
+This badge is given to users who have either:
+- Applied for the badge and have been verified by the Miwa.lol team
+- Bought the badge
+
+:::info
+
+Anyone can apply or buy the Verified Badge. [Learn more about the Verified Badge](/how-to/verified-badge).
+
+:::
+
 ### Bug Hunter Badge
 
 This badge is given to users who have reported bugs to the Miwa.lol team.
