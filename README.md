@@ -1,5 +1,7 @@
 # Miwa Help
 
+![Netlify Status](https://api.netlify.com/api/v1/badges/0144a558-c5fe-4e95-a7b0-25f6cb44a02a/deploy-status)
+
 This repository contains the help website for Miwa.lol, made with [Docusaurus](https://docusaurus.io/).
 
 ## Contributing
