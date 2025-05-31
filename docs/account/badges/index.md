@@ -59,13 +59,7 @@ Anyone can apply or buy the Verified Badge. [Learn more about the Verified Badge
 
 ### Bug Hunter Badge
 
-This badge is given to users who have reported bugs to the Miwa.lol team.
-
-:::note
-
-You'll receive the badge only if it's a *real* bug, and it was not already reported by someone else.
-
-:::
+This badge is given to users who have reported bugs to the Miwa.lol team. [Learn more about the Bug Hunter Badge](/how-to/bug-hunter-badge).
 
 ## No longer available
 

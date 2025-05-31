@@ -1,6 +1,7 @@
 ---
 title: Verified Badge
 description: Learn about the Verified Badge on Miwa.lol, its purpose, and how to apply for it.
+sidebar_position: 4
 ---
 
 The Verified Badge is given to users who have applied for the badge and have been verified, or bought the badge.

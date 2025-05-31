@@ -1,6 +1,7 @@
 ---
 title: Link your Discord account
 description: Learn how to link your Discord account to your Miwa account.
+sidebar_position: 3
 ---
 
 Linking your Discord account to your Miwa account allows you to use the [Discord presence](/cards#discord-presence) card, which shows your current activity on Discord.
