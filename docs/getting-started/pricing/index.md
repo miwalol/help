@@ -9,10 +9,15 @@ To purchase Miwa.lol Premium, go to https://miwa.lol/pricing and click on "Purch
 **Accepted Payment Methods:**
 - Credit/Debit Cards
 - PayPal
-- Apple Pay
+- Apple Pay (requires using Safari on iOS or macOS)
 - Google Pay
-- Revolut Pay
-- iDEAL
+- Revolut Pay (Europe)
+- iDEAL (Netherlands)
+- Bancontact (Belgium)
+- MobilePay (Denmark & Finland)
+- Alipay (China)
+- Samsung Pay (South Korea)
+- Amazon Pay
 
 ## Features
 
