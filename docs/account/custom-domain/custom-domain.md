@@ -6,7 +6,7 @@ sidebar_position: 3
 
 :::info
 
-This is a Premium+ feature.
+This is a Premium feature.
 
 :::
 
@@ -35,11 +35,5 @@ Then, follow the instructions to set up your custom domain. Once completed, visi
 ::::info
 
 Depending on your DNS provider, it may take a few minutes to a few hours for the changes to propagate. If you see an error message or a blank page, please wait a bit and try again.
-
-:::tip
-
-From experience, if you use Cloudflare, it may take a few seconds to a few minutes.
-
-:::
 
 ::::
