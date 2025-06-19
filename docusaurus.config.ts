@@ -107,7 +107,7 @@ const config: Config = {
           ],
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Miwa.lol &bull; Built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>`,
+      copyright: `Copyright © ${new Date().getFullYear()} Miwa.lol &bull; Built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a> 🦖`,
     },
     prism: {
       darkTheme: prismThemes.dracula,
@@ -117,7 +117,7 @@ const config: Config = {
     require.resolve('docusaurus-lunr-search')
   ],
   scripts: [
-    { src: 'https://analytics.yuuto.dev/js/plausible.outbound-links.js', defer: true, 'data-domain': 'help.miwa.lol' },
+    { src: 'https://analytics.tenshii.moe/js/plausible.outbound-links.js', defer: true, 'data-domain': 'help.miwa.lol' },
     '/js/index.js',
   ]
 };
