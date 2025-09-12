@@ -13,14 +13,30 @@ export default defineConfig({
 			editLink: {
 				baseUrl: 'https://github.com/miwalol/help/edit/master/',
 			},
-			head: [{
-				tag: 'script',
-				attrs: {
-					src: 'https://analytics.tenshii.moe/js/script.outbound-links.js',
-					'data-domain': 'help.miwa.lol',
-					defer: true,
+			head: [
+				{
+					tag: 'script',
+					attrs: {
+						src: 'https://analytics.tenshii.moe/js/script.outbound-links.js',
+						'data-domain': 'help.miwa.lol',
+						defer: true,
+					},
 				},
-			}],
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'og:image',
+						content: 'https://help.miwa.lol/og.png',
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'twitter:image',
+						content: 'https://help.miwa.lol/og.png',
+					},
+				}
+			],
 			social: [
 				{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/miwa' },
 				{ icon: 'twitter', label: 'Twitter', href: 'https://x.com/MiwaTeam' },
