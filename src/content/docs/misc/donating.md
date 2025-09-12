@@ -13,6 +13,11 @@ You can donate to Miwa.lol via the following methods:
 - Ko-fi: https://ko-fi.com/miwalol
 - GitHub Sponsors: https://github.com/sponsors/miwalol
 
+We also accept cryptocurrency donations! You can send crypto to the following addresses:
+- Bitcoin (BTC): `bc1q7ucz45v35fxxtywetkl89tf4t9d00efdr87x4f`
+- Ethereum (ETH): `0xF81704104E37a97338F58f27188a8760A15C8766`
+- Litecoin (LTC): `LMznKjXUzaHHSdzw1mJuYQUjfBV3QAFBGu`
+
 **Thank you very much for your support 🩷!** Every little bit helps us keep the website running and improve it for everyone.
 
 ## Other ways to support us
