@@ -111,6 +111,7 @@ export default defineConfig({
 					label: 'Miscellaneous',
 					items: [
 						{ label: 'Contact Us', slug: 'misc/contact' },
+						{ label: 'Open Source', slug: 'misc/open-source' },
 						{ label: 'Troubleshooting', slug: 'misc/troubleshooting' },
 						{ label: 'Donating', slug: 'misc/donating' },
 						{ label: 'Bans', slug: 'misc/bans' },
