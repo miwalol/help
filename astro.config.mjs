@@ -71,6 +71,7 @@ export default defineConfig({
 				{
 					label: 'Customize',
 					items: [
+						{ label: 'Overview', slug: 'customize' },
 						{ label: 'Assets', slug: 'customize/assets' },
 						{ label: 'Colors', slug: 'customize/colors' },
 						{ label: 'Fonts', slug: 'customize/fonts' },
@@ -95,12 +96,18 @@ export default defineConfig({
 								{ label: 'Settings', slug: 'cards/settings', badge: { text: 'New' } },
 							],
 						},
+						{
+							label: 'Templates',
+							items: [
+								{ label: 'Overview', slug: 'templates' },
+							],
+						},
 					],
 				},
 				{
 					label: 'How To\'s',
 					items: [
-						{ label: 'Link your Discord', slug: 'how-to/link-your-discord' },
+						{ label: 'Link your Discord account', slug: 'how-to/link-your-discord' },
 						{ label: 'Profile Views', slug: 'how-to/profile-views' },
 						{ label: 'Likes', slug: 'how-to/likes' },
 						{ label: 'Verified Badge', slug: 'how-to/verified-badge' },
