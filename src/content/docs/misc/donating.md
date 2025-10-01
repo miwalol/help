@@ -1,5 +1,6 @@
 ---
 title: Donating
+description: Support Miwa.lol and its development by making a donation. Every contribution helps us maintain and improve the platform.
 ---
 
 **Want to support Miwa.lol and its development?**

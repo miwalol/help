@@ -1,5 +1,6 @@
 ---
 title: Contact Us
+description: Get in touch with the Miwa.lol team for support, feedback, or inquiries.
 ---
 
 **Do you have any questions or feedback?** We would love to hear from you!
