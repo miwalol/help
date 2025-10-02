@@ -1,0 +1,29 @@
+---
+title: CDN URLs
+description: Learn how our CDN URL structure works and how to use it effectively.
+---
+
+**To deliver images, videos, etc., Miwa.lol uses a Content Delivery Network (CDN).** This ensures that content is delivered quickly and efficiently to users around the world.
+To make the files structured and accessible, we use a specific URL format.
+
+In the most cases, you won't need to construct these URLs manually, as they are provided by our API when you request user data or other resources. However, this is not always the case, such as when we only provide the resource ID.
+
+## URL Structure
+
+The general format for accessing files via our CDN is as follows:
+
+```
+https://cdn.miwa.lol/{type}/{filename}.{extension}
+```
+
+### Parameters
+
+- `{type}`: This indicates the type of asset you are accessing. It can be one of the following:
+  - `avatars`: For user avatar images.
+  - `backgrounds`: For user background images.
+  - `cursors`: For custom cursor images.
+  - `audios`: For audio files. In the API, the URL is not directly provided; instead, you get the audio ID, which you can use to construct the URL.
+  - `audios-covers`: For audio cover images.
+  - `fonts`: For custom font files. This feature is only available for Premium users, so you won't see it often.
+- `{filename}`: This is the unique identifier for the file, typically a UUID (Universally Unique Identifier).
+- `{extension}`: This indicates the file format. Common extensions include `webp`, `gif`, `mp4`, `mp3`, etc.
