@@ -282,6 +282,13 @@ const mainSidebar = [
 				},
 			},
 			{
+				label: 'Changelog',
+				slug: 'misc/changelog',
+				translations: {
+					fr: 'Modifications',
+				},
+			},
+			{
 				label: 'Open Source',
 				slug: 'misc/open-source',
 				translations: {
