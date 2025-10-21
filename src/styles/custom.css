@@ -1,6 +1,40 @@
+:root {
+    --sl-color-bg-nav: #160f3900;
+    --sl-color-bg-sidebar: #160f3900;
+    --sl-color-bg: #190f3e;
+}
+
 .lucide {
     display: inline-block;
     width: 1.25em;
     height: 1.25em;
     vertical-align: -0.125em;
+}
+
+.main-frame::before {
+    content: '';
+    z-index: -1;
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(to bottom, transparent, #0e0d26), url(/src/assets/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .5;
+    filter: blur(20px);
+}
+
+.page .header, #starlight__mobile-toc, article.card, #starlight__sidebar {
+    backdrop-filter: blur(8px);
+}
+
+.card-grid article.card {
+    background-color: #00000050;
+    border-radius: .5rem;
+}
+
+#starlight__sidebar {
+    background-color: #00000075;
 }

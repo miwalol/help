@@ -394,6 +394,10 @@ export default defineConfig({
 			editLink: {
 				baseUrl: 'https://github.com/miwalol/help/edit/master/',
 			},
+			components: {
+				ThemeProvider: './src/components/ForceDarkTheme.astro',
+				ThemeSelect: './src/components/EmptyComponent.astro',
+			},
 			head: [
 				{
 					tag: 'script',
@@ -402,10 +406,6 @@ export default defineConfig({
 						'data-domain': 'help.miwa.lol',
 						defer: true,
 					},
-				},
-				{
-					tag: 'script',
-					attrs: { src: '/src/assets/script.js', },
 				},
 				{
 					tag: 'meta',

@@ -7,7 +7,7 @@ hero:
   image:
     file: ../../assets/miwa-512.png
   actions:
-    - text: New to Miwa.lol?
+    - text: Get Started
       link: /welcome/
       icon: right-arrow
     - text: Having issues?
@@ -15,3 +15,17 @@ hero:
       icon: right-arrow
       variant: secondary
 ---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="New to Miwa.lol?" icon="star">
+    You probably want to check our [Getting Started](/getting-started/creating-an-account/) guide!
+  </Card>
+  <Card title="API" icon="information">
+    Miwa.lol has a public API which allows developers to build apps around our API. [Read more...](/developers)
+  </Card>
+  <Card title="Translating" icon="translate">
+    Want to help translate Miwa.lol to your language? You can, [click here](/translating) to know how!
+  </Card>
+</CardGrid>
