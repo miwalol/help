@@ -4,20 +4,20 @@
 
 ## Getting Started
 
-1. Make a fork or this repository, then clone it.
+1. Make a fork of this repository, then clone it.
    ```shell
-    git clone https://github.com/yourusername/help.git
-    ```
+   git clone https://github.com/yourusername/help.git
+   ```
 2. **Install dependencies with a package manager.** We use [Bun](https://bun.sh/), but any package manager such as yarn or pnpm works.
    ```shell
-    bun install
-    ```
+   bun install
+   ```
 3. **Start the development server** with `bun dev`. The server should start on http://localhost:4321/.
 4. **Make your changes,** then commit and open a pull request to the `master` branch.
 
 ## Translations
 
-If a locale you want to contribute does not exist yet, you can create a new subdirectory in `src/content/docs` and a new JSON file in `src/content/i18n`. Also, don't forget to update the `locales` array in `astro.config.mjs`.
+If a locale you want to contribute does not exist yet, you can create a new subdirectory in `src/content/docs` and a new JSON file in `src/content/i18n`. Also, don't forget to update the `locales` array in [`astro.config.mjs`](astro.config.mjs).
 
 ### Translating pages
 
