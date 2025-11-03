@@ -218,6 +218,13 @@ const mainSidebar = [
 							fr: 'Aperçu',
 						},
 					},
+					{
+						label: 'Creating a Template',
+						slug: 'templates/creating-a-template',
+						translations: {
+							fr: 'Créer un modèle',
+						},
+					},
 				],
 				translations: {
 					fr: 'Modèles',
