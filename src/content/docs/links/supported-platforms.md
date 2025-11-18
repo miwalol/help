@@ -2,7 +2,7 @@
 title: Supported Platforms
 ---
 
-We support a wide range of platforms to add links to your profile. Here is a list of the currently supported platforms:
+**We support a wide range of platforms to add links to your profile.** Here is a non-exhaustive list (it may change over time) of the currently supported platforms:
 
 * X/Twitter
 * Instagram
