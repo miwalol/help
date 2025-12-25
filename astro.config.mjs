@@ -444,7 +444,7 @@ export default defineConfig({
 				root: { label: 'English', lang: 'en' },
 				fr: { label: 'Français', lang: 'fr' },
 			},
-			customCss: ['/src/styles/custom.css'],
+			customCss: ['/src/styles/custom.css', '@fontsource/outfit/400.css', '@fontsource/outfit/600.css'],
 			sidebar: [
 				{
 					label: 'Help',
