@@ -396,7 +396,6 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Miwa.lol Help',
-			credits: true,
 			lastUpdated: true,
 			editLink: {
 				baseUrl: 'https://github.com/miwalol/help/edit/master/',
