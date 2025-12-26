@@ -1,40 +1,28 @@
 ---
 title: Assets
+description: Learn how to add assets to your profile.
 ---
 
-import { Aside, LinkCard } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
 
 Miwa.lol allows you to add various assets to customize your page. You can set a custom background, add a profile picture, and more to make your page unique.
 
-## Background
+## Uploading assets
 
-**You can set a custom background for your page, which can be an image, video, or a solid color.**
+Go to your [Dashboard > Customize](https://miwa.lol/dashboard/customize), then go to the *Assets* tab.
 
-- **Image**: You can upload an image file to use as your background. Supported formats include popular image formats such as PNG, JPEG, GIF, and WebP.
-- **Video**: You can upload a video file to use as your background. Supported formats include MP4 (recommended) and WebM.
+## Supported file types
 
-  <Aside type="note">
-    If you have audios uploaded on your page, the video background will be muted to avoid overlapping sounds.
-  </Aside>
-- **Color**: You can choose a solid color as your background. You can either select a color from the color picker or enter a hex code. See the page below to learn more about customizing colors.
-  <LinkCard href="/customize/colors/" title="Colors" description="Learn how to customize the colors of your profile." />
-
-## Avatar
-
-You can upload an image file to use as your avatar. Supported formats include popular image formats such as PNG, JPEG, GIF, and WEBP.
-
-<Aside type="note">
-  To optimize our storage and ensure fast loading times, we automatically convert all uploaded avatars to the `webp` format.
-</Aside>
-
-## Custom cursor
-
-Due to browser restrictions, the cursor image must be no larger than 50x50 pixels, otherwise it doesn't show at all. We do not and cannot control this behavior.
-
-## Audio
-
-**You can add audio files to your page for an enhanced visitor experience.** By default, you can add up to 2 audio files. Premium users can add up to 8 audio files.
+| Type          | Supported file extensions                                        | Maximum size |
+|---------------|------------------------------------------------------------------|--------------|
+| Avatar        | `.jpg`, `.png`, `.gif`, `.webp`                                  | 10MB         |
+| Audio         | `.mp3`, `.wav`, `.ogg`, `.flac`, `.aac`, `.m4a`                  | 30MB         |
+| Audio cover   | `.jpg`, `.png`, `.gif`, `.webp`                                  | 10MB         |
+| Background    | `.jpg`, `.png`, `.gif`, `.webp`, `.mp4`, `.webm`, `.mov`, `.avi` | 100MB        |
+| Custom cursor | `.jpg`, `.png`, `.cur`, `.ico`                                   | 10MB         |
+| Custom font   | `.ttf`, `.otf`, `.woff`, `.woff2`                                | 5MB          |
+| Custom badge  | `.jpg`, `.png`, `.gif`, `.webp`, `.webp`                         | 10MB         |
 
 <Aside type="note">
-  To optimize our storage and ensure fast loading times, we automatically convert all uploaded audio files to the `mp3` format.
+    The `.jpg` file extension is the same as `.jpeg`.
 </Aside>
