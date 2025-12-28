@@ -433,6 +433,7 @@ export default defineConfig({
 				{ icon: 'twitter', label: 'Twitter', href: 'https://x.com/MiwaTeam' },
 				{ icon: 'blueSky', label: 'BlueSky', href: 'https://bsky.app/profile/miwa.lol' },
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/miwalol/help' },
+				{ icon: 'reddit', label: 'Reddit', href: 'https://www.reddit.com/r/Miwadotlol/' },
 			],
 			favicon: '/favicon.ico',
 			logo: {
