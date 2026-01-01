@@ -16,6 +16,7 @@
     "@lucide/astro": "^0.562.0",
     "astro": "^5.16.6",
     "sharp": "^0.34.5",
+    "simple-icons-astro": "^16.1.0",
     "starlight-links-validator": "^0.19.2"
   }
 }
