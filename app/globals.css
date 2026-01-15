@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        color: theme(colors.gray.50);
+        background-color: #030305;
+        scrollbar-color: theme(colors.indigo.900) transparent;
+        scroll-behavior: smooth;
+    }
+}
+
+.lucide {
+    display: inline-block;
+    width: 1.25em;
+    height: 1.25em;
+    vertical-align: -0.125em;
+}
