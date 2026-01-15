@@ -2,7 +2,7 @@ import createMDX from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['md', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ['mdx', 'ts', 'tsx'],
   images: {
     unoptimized: true,
   },
