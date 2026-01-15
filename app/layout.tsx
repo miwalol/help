@@ -23,7 +23,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" dir="ltr" className={`${outfit.className} antialiased`}>
       <body>
-        <PlausibleProvider customDomain="analytics.tenshii.moe" selfHosted domain="help.miwa.lol" trackOutboundLinks>
+        <PlausibleProvider domain="help.miwa.lol" scriptProps={{
+          src: 'https://analytics.tenshii.moe/js/script.outbound-links.js',
+          // @ts-ignore
+          'data-api': 'https://analytics.tenshii.moe/api/record',
+        }}>
           <Header />
           {children}
           <Footer />
