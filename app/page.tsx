@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 
@@ -18,3 +19,8 @@ export default function Page() {
     </main>
   );
 }
+
+export const metadata: Metadata = {
+  title: 'Miwa.lol Help',
+  description: 'Need help with Miwa.lol? This website should help you!',
+};
