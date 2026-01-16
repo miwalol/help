@@ -1,7 +1,8 @@
 import TypesenseInstantsearchAdapter from 'typesense-instantsearch-adapter';
 import { Hits, InstantSearch, SearchBox } from 'react-instantsearch';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { X } from 'lucide-react';
 
 const adapter = new TypesenseInstantsearchAdapter({
   server: {
@@ -25,8 +26,24 @@ const adapter = new TypesenseInstantsearchAdapter({
 const searchClient = adapter.searchClient;
 
 export default function Search({ setShowSearchBox }: { setShowSearchBox: React.Dispatch<React.SetStateAction<boolean>> }) {
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && !e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
+        e.preventDefault();
+        setShowSearchBox(false);
+      }
+    };
+    addEventListener('keydown', onKeyDown);
+
+    return () => removeEventListener('keydown', onKeyDown);
+  }, [setShowSearchBox]);
+
   return (
     <div className="absolute inset-0 z-50 backdrop-blur bg-gray-500/10 size-full">
+      <button onClick={() => setShowSearchBox(false)} className="absolute right-6 top-6 z-50">
+        <X />
+      </button>
+
       <InstantSearch indexName="miwa_help" searchClient={searchClient}>
         <div className="flex flex-col justify-center p-8 w-48 md:w-72 lg:w-96 mx-auto">
           <SearchBox classNames={{
