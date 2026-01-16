@@ -6,21 +6,26 @@ import { ISidebarItem } from '@/components/Sidebar';
 export default function SidebarItem({ item }: { item: ISidebarItem }) {
   const pathname = usePathname();
   const linkClasses = twMerge(
-    'p-2 transition-colors hover:bg-gray-500/30 rounded-lg w-full block text-nowrap truncate',
+    'px-3 py-1.5 transition-colors hover:bg-gray-500/30 rounded-lg w-full flex items-center gap-1.5 text-nowrap truncate mb-1',
     'aria-current:bg-gray-500',
   );
+  const isCurrent = pathname === item.slug || pathname === item.slug + '/';
 
   if (Array.isArray(item.items)) {
     return (
       <div>
         {item.slug ? (
-          <Link href={item.slug as string} className={linkClasses} aria-current={pathname === item.slug} title={item.label}>
-            {item.label}
+          <Link href={item.slug as string} className={linkClasses} aria-current={isCurrent} title={item.label}>
+            <div>{item.icon && <item.icon/>}</div>
+
+            <span className="truncate">{item.label}</span>
           </Link>
         ) : (
-          <span className={twMerge(
-            'p-2 transition-colors hover:bg-gray-500/30 rounded-lg w-full block text-nowrap truncate',
-          )}>{item.label}</span>
+          <div className={linkClasses}>
+            <div>{item.icon && <item.icon/>}</div>
+
+            <span className="truncate">{item.label}</span>
+          </div>
         )}
 
         <div className="pl-4">
@@ -33,8 +38,10 @@ export default function SidebarItem({ item }: { item: ISidebarItem }) {
   }
 
   return (
-    <Link href={item.slug as string} className={linkClasses} aria-current={pathname === item.slug} title={item.label}>
-      {item.label}
+    <Link href={item.slug as string} className={linkClasses} aria-current={isCurrent} title={item.label}>
+      <div>{item.icon && <item.icon/>}</div>
+
+      <span className="truncate">{item.label}</span>
     </Link>
   );
 }
