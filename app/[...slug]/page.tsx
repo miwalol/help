@@ -2,18 +2,19 @@ import { Metadata, ResolvingMetadata } from 'next';
 import Sidebar from '@/components/Sidebar';
 import * as fs from 'node:fs/promises';
 import path from 'node:path';
+import { Pencil } from 'lucide-react';
 
 async function find(slug: string[]) {
   try {
-    return await import(`@/content/${slug.join('/')}.mdx`);
+    return { ...await import(`@/content/${slug.join('/')}.mdx`), isIndex: false };
   } catch {
-    return import(`@/content/${slug.join('/')}/index.mdx`);
+    return { ...await import(`@/content/${slug.join('/')}/index.mdx`), isIndex: true };
   }
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string[] }> }) {
   const { slug } = await params;
-  const { default: Component, frontmatter } = await find(slug);
+  const { default: Component, frontmatter, isIndex } = await find(slug);
 
   return (
     <div className="flex">
@@ -27,6 +28,17 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
         <main>
           <Component />
         </main>
+
+        <div className="border border-border my-8 h-px w-full"></div>
+
+        <div>
+          <a
+            href={`https://github.com/miwalol/help/edit/master/content/${slug.join('/')}${isIndex ? '/index' : ''}.mdx`}
+            target="_blank" className="flex items-center gap-2" rel="nofollow"
+          >
+            <Pencil />Edit this page
+          </a>
+        </div>
       </div>
     </div>
   );
