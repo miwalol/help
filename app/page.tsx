@@ -23,4 +23,7 @@ export default function Page() {
 export const metadata: Metadata = {
   title: 'Miwa.lol Help',
   description: 'Need help with Miwa.lol? This website should help you!',
+  alternates: {
+    canonical: '/',
+  },
 };
