@@ -3,6 +3,7 @@ import Sidebar from '@/components/Sidebar';
 import * as fs from 'node:fs/promises';
 import path from 'node:path';
 import { Pencil } from 'lucide-react';
+import Breadcrumb from '@/components/Breadcrumb';
 
 async function find(slug: string[]) {
   try {
@@ -21,7 +22,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
       <Sidebar />
 
       <div className="container px-4 py-8 mx-auto">
-        <div className="mb-8">
+        <Breadcrumb />
+
+        <div className="mb-4">
           <h1 className="text-3xl font-bold">{frontmatter.title}</h1>
         </div>
 
@@ -75,6 +78,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const { frontmatter } = await find(slug);
   const { openGraph, twitter } = await parent;
+  const url = new URL(slug.join('/'), process.env.NEXT_PUBLIC_BASE_URL);
 
   return {
     title: frontmatter.title,
@@ -84,12 +88,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       ...openGraph,
       title: frontmatter.title,
       description: frontmatter.description,
+      url: url.toString(),
+      type: 'article',
     },
     // @ts-ignore
     twitter: {
       ...twitter,
       title: frontmatter.title,
       description: frontmatter.description,
+    },
+    alternates: {
+      canonical: url.toString(),
     },
   };
 }
