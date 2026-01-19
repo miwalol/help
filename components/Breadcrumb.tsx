@@ -17,7 +17,7 @@ export default function Breadcrumb() {
       '@type': 'ListItem',
       position: i + 1,
       name: item.label,
-      item: i === links.length - 1 ? undefined : new URL(item.slug!, process.env.NEXT_PUBLIC_BASE_URL),
+      item: (!item.slug || i === links.length - 1) ? undefined : new URL(item.slug, process.env.NEXT_PUBLIC_BASE_URL),
     })),
   });
   if (links.length <= 1) {
