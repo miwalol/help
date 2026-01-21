@@ -1,9 +1,9 @@
 'use client';
 
 import SidebarItem from '@/components/SidebarItem';
-import React, { ForwardRefExoticComponent, RefAttributes } from 'react';
+import React from 'react';
 import { mainSidebar } from '@/components/sidebars';
-import { LucideProps } from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 
 export default function Sidebar() {
   return (
@@ -17,7 +17,7 @@ export interface ISidebarItem {
   label: string;
   slug?: string;
   items?: ISidebarItem[];
-  icon?: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>;
+  icon?: LucideIcon;
 }
 
 export function findPathBySlug(items: ISidebarItem[], targetSlug: string): ISidebarItem[] | null {
