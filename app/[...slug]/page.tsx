@@ -2,8 +2,9 @@ import { Metadata, ResolvingMetadata } from 'next';
 import Sidebar from '@/components/Sidebar';
 import * as fs from 'node:fs/promises';
 import path from 'node:path';
-import { Pencil } from 'lucide-react';
+import { Pencil, TriangleAlert } from 'lucide-react';
 import Breadcrumb from '@/components/Breadcrumb';
+import UsefulFeedback from '@/components/ui/UsefulFeedback';
 
 async function find(slug: string[]) {
   try {
@@ -32,15 +33,22 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           <Component />
         </main>
 
-        <div className="border border-border my-8 h-px w-full"></div>
+        <div className="border border-border mt-8 mb-6 h-px w-full"></div>
 
-        <div>
+        <div className="flex items-center gap-4 flex-wrap">
+          <UsefulFeedback />
+
+          <div className="grow"></div>
+
           <a
             href={`https://github.com/miwalol/help/edit/master/content/${slug.join('/')}${isIndex ? '/index' : ''}.mdx`}
             target="_blank" className="flex items-center gap-2" rel="nofollow"
-          >
-            <Pencil />Edit this page
-          </a>
+          ><Pencil />Edit this page</a>
+
+          <a
+            href={`https://github.com/miwalol/help/issues/new?title=Issue in \`${slug.join('/')}\``}
+            target="_blank" className="flex items-center gap-2" rel="nofollow"
+          ><TriangleAlert />Raise an issue</a>
         </div>
       </div>
     </div>
