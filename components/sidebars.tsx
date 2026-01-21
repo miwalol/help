@@ -5,11 +5,12 @@ import {
   Bug, CaseSensitive, CircleUser,
   Code, EarthLock, Eye,
   Hammer,
-  HandCoins, Heart, IdCardLanyard, LinkIcon, Lock,
+  HandCoins, Heart, IdCardLanyard, LinkIcon,
   Mail, Map,
   MessageCircleQuestionMark, Palette, CirclePlus,
   ScrollText, Settings,
   UserRoundPlus, Waypoints, Book, LayoutTemplate, AppWindow, Image, ListPlus, Paintbrush, Award, DollarSign, Hand,
+  Shield,
 } from 'lucide-react';
 import { ISidebarItem } from '@/components/Sidebar';
 import { SiDiscord } from '@icons-pack/react-simple-icons';
@@ -54,7 +55,7 @@ export const mainSidebar: ISidebarItem[] = [
       {
         label: 'Security',
         slug: '/account/security',
-        icon: Lock,
+        icon: Shield,
       },
       {
         label: 'Badges',

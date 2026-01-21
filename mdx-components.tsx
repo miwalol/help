@@ -16,6 +16,9 @@ const components: MDXComponents = {
   h3: ({ children }) => (
     <h3 className="text-xl font-bold mb-3 mt-6">{children}</h3>
   ),
+  h4: ({ children }) => (
+    <h4 className="text-lg font-bold mb-3 mt-6">{children}</h4>
+  ),
   code: ({ children }) => (
     <code className="bg-gray-500 p-0.5">{children}</code>
   ),
