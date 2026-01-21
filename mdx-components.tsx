@@ -42,6 +42,9 @@ const components: MDXComponents = {
       className="text-blue-500 hover:text-blue-600 transition-colors"
     >{children}</a>;
   },
+  th: ({ children }) => <th className="p-2 text-left">{children}</th>,
+  td: ({ children }) => <td className="p-2 border-y border-border">{children}</td>,
+
   Aside,
   Badge,
   Steps,

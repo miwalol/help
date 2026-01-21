@@ -9,6 +9,10 @@
         scrollbar-color: theme(colors.indigo.900) transparent;
         scroll-behavior: smooth;
     }
+
+    html:has(#sidebar[aria-expanded="true"]) {
+        overflow: hidden;
+    }
 }
 
 main .lucide {

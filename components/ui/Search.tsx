@@ -18,15 +18,15 @@ export default function Search({ setShowSearchBox }: { setShowSearchBox: React.D
   const instantSearch = useInstantSearch();
 
   return (
-    <div className="absolute inset-0 z-50 backdrop-blur bg-gray-500/10 size-full overflow-auto h-screen">
+    <div className="absolute inset-0 backdrop-blur bg-gray-500/10 size-full overflow-auto h-screen z-50">
       <button onClick={() => setShowSearchBox(false)} className="absolute right-6 top-6 z-50">
         <X />
       </button>
 
-      <div className="flex flex-col justify-center m-8 p-4 rounded-xl w-48 md:w-72 lg:w-96 mx-auto bg-gray-800">
+      <div className="flex flex-col justify-start md:justify-center md:my-8 p-4 md:rounded-xl size-full md:h-auto z-50 md:w-72 lg:w-96 md:mx-auto bg-gray-800">
         <SearchBox classNames={{
           input: 'pl-3 pr-16 py-2 outline-none w-full border border-indigo-800 bg-indigo-950/80 rounded-xl transition duration-200 focus:ring-2 ring-indigo-500 ring-opacity-50',
-          form: 'flex items-center gap-2 relative w-full mb-4',
+          form: 'flex items-center gap-2 relative w-10/12 md:w-full mb-4',
           submit: 'absolute right-3',
           reset: 'absolute right-10',
           submitIcon: 'size-4 fill-white',
