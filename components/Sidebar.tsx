@@ -7,7 +7,10 @@ import { LucideIcon } from 'lucide-react';
 
 export default function Sidebar() {
   return (
-    <div className="p-4 w-full md:w-72 max-h-screen shadow overflow-auto border-r border-border absolute max-md:z-40 md:sticky inset-0 top-[65px] md:top-0 max-md:hidden max-md:aria-expanded:block backdrop-blur" id="sidebar" aria-expanded={false}>
+    <div
+      className="p-4 w-full md:w-72 max-h-screen shadow overflow-auto border-r border-border fixed max-md:z-40 md:sticky inset-0 top-[65px] md:top-0 max-md:hidden max-md:aria-expanded:block backdrop-blur"
+      id="sidebar" aria-expanded={false}
+    >
       {mainSidebar.map(item => <SidebarItem key={item.label} item={item} />)}
     </div>
   );
