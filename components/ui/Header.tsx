@@ -35,12 +35,28 @@ export default function Header() {
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
   const sidebarRef = useRef<HTMLDivElement|undefined>(typeof document === 'undefined' ? undefined : document.getElementById('sidebar') as HTMLDivElement);
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
+  const [isOnMac, setIsOnMac] = useState<boolean>(false);
   const pathname = usePathname();
 
   useEffect(() => {
     if (!sidebarRef.current) return;
     sidebarRef.current.ariaExpanded = String(showSidebar);
   }, [showSidebar]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (navigator.userAgent.includes('Mac')) setIsOnMac(true);
+  }, []);
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key?.toLowerCase() === 'k') {
+        e.preventDefault();
+        setShowSearchBox(true);
+      }
+    };
+
+    addEventListener('keydown', onKeyDown);
+    return () => removeEventListener('keydown', onKeyDown);
+  }, []);
 
   return (
     <>
@@ -57,10 +73,15 @@ export default function Header() {
           </Link>
         </div>
 
-        <input
-          readOnly onClick={() => setShowSearchBox(true)} placeholder="Search..."
-          className="pl-3 pr-4 w-48 max-md:hidden md:w-72 lg:w-96 py-2 outline-none border border-indigo-800 bg-indigo-950/80 rounded-xl transition duration-200 focus:ring-2 ring-indigo-500 ring-opacity-50"
-        />
+        <div className="max-md:hidden relative">
+          <input
+            readOnly onClick={() => setShowSearchBox(true)} placeholder="Search..."
+            className="pl-3 pr-4 w-48 md:w-72 lg:w-96 py-2 outline-none border border-indigo-800 bg-indigo-950/80 rounded-xl transition duration-200 focus:ring-2 ring-indigo-500 ring-opacity-50"
+          />
+          <div className="absolute right-3 top-0 h-full flex items-center select-none">
+            <kbd className="text-xs px-1 py-0.5 rounded bg-gray-600">{isOnMac ? '⌘' : 'CTRL'}+K</kbd>
+          </div>
+        </div>
         <button onClick={() => setShowSearchBox(true)} aria-label="Search..." className="md:hidden"><SearchIcon /></button>
 
         <div className="flex items-center gap-4 max-md:hidden">
