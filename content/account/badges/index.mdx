@@ -3,8 +3,9 @@ title: Badges
 description: "Understand Miwa.lol badges: their purpose, types, and how to earn them."
 ---
 
-import Aside from '@/components/mdx/Aside';
-import LinkCard from '@/components/mdx/LinkCard';
+import Aside from '../../../components/mdx/Aside';
+import LinkCard from '../../../components/mdx/LinkCard';
+import { HandCoins, Verified, Bug } from 'lucide-react';
 
 You have probably seen badges on a profile page, and maybe you asked yourself what they are.
 In this page, we will explain what badges are, their purpose, types, and how to earn them.
@@ -22,15 +23,16 @@ It is a way to show that you have access to Premium features.
 To get this badge, you need to have translated a good amount of text. Once you think you have done enough, you can ask for the badge in our [Discord server](https://discord.gg/miwa) by opening a ticket.
 
 <Aside type="tip">
-  To contribute to translations, you can join our Weblate project here: https://translate.miwa.lol/engage/miwa/.
+  To contribute to translations, you can join our Crowdin project here: https://crowdin.com/project/miwa.
+  It's totally free.
 </Aside>
 
 ### Donator Badge
 
-**This badge is given to users who have donated at least 5€ to Miwa.lol.**
+**This badge is given to users who have donated at least €10 to Miwa.lol.**
 
 <LinkCard
-  title="Donate to Miwa.lol" href="/misc/donating/"
+  title="Donate to Miwa.lol" href="/misc/donating/" icon={HandCoins}
   description="Support Miwa.lol's development and help us keep the platform running."
 />
 
@@ -44,10 +46,10 @@ To get this badge, you need to have translated a good amount of text. Once you t
 
 This badge is given to users who have either:
 - Applied for the badge and have been verified by the Miwa.lol team
-- Bought the badge (29.99€ one-time payment)
+- Bought the badge (€29.99 one-time payment)
 
 <LinkCard
-  title="Learn more about the Verified Badge" href="/how-to/verified-badge/"
+  title="Learn more about the Verified Badge" href="/how-to/verified-badge/" icon={Verified}
   description="Find out how to apply for or purchase the Verified Badge on Miwa.lol."
 />
 
@@ -64,7 +66,7 @@ This badge is given to users who have either:
 **This badge is given to users who have reported multiple bugs to the Miwa.lol team.**
 
 <LinkCard
-  title="Learn more about the Bug Hunter Badge" href="/how-to/bug-hunter-badge/"
+  title="Learn more about the Bug Hunter Badge" href="/how-to/bug-hunter-badge/" icon={Bug}
   description="Find out how to earn the Bug Hunter Badge on Miwa.lol."
 />
 
