@@ -8,16 +8,32 @@ import React from 'react';
 import LinkCard from '@/components/mdx/LinkCard';
 import CardGrid from '@/components/mdx/CardGrid';
 import LinkButton from '@/components/mdx/LinkButton';
+import { LinkIcon } from 'lucide-react';
+
+const slugify = (title: string|React.ReactNode[]) => {
+  const toReplace = /[\s()?!,]+/g;
+  if (typeof title === 'string') return title.toLowerCase().replaceAll(toReplace, '-');
+  return (title![0] as string)!.toLowerCase().replaceAll(toReplace, '-');
+};
 
 const components: MDXComponents = {
   h2: ({ children }) => (
-    <h2 className="text-2xl font-bold mb-3 mt-6">{children}</h2>
+    <div className="flex items-center mb-3 mt-6 gap-2 group" id={slugify(children)}>
+      <h2 className="text-2xl font-bold">{children}</h2>
+      <Link href={`#${slugify(children)}`} className="size-5 md:opacity-0 md:group-hover:opacity-100 duration-100"><LinkIcon /></Link>
+    </div>
   ),
   h3: ({ children }) => (
-    <h3 className="text-xl font-bold mb-3 mt-6">{children}</h3>
+    <div className="flex items-center mb-3 mt-6 gap-2 group" id={slugify(children)}>
+      <h3 className="text-xl font-bold">{children}</h3>
+      <Link href={`#${slugify(children)}`} className="size-5 md:opacity-0 md:group-hover:opacity-100 duration-100"><LinkIcon /></Link>
+    </div>
   ),
   h4: ({ children }) => (
-    <h4 className="text-lg font-bold mb-3 mt-6">{children}</h4>
+    <div className="flex items-center mb-3 mt-6 gap-2 group" id={slugify(children)}>
+      <h4 className="text-lg font-bold">{children}</h4>
+      <Link href={`#${slugify(children)}`} className="size-5 md:opacity-0 md:group-hover:opacity-100 duration-100"><LinkIcon /></Link>
+    </div>
   ),
   code: ({ children }) => (
     <code className="bg-gray-500 p-0.5">{children}</code>
