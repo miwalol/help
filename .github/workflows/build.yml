@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
@@ -34,6 +37,7 @@ jobs:
         run: bun run build
         env:
           NEXT_PUBLIC_BASE_URL: https://help.miwa.lol
+          NEXT_TELEMETRY_DISABLED: 1
           NEXT_PUBLIC_TYPESENSE_HOST: ${{ secrets.TYPESENSE_HOST }}
           NEXT_PUBLIC_TYPESENSE_API_KEY: ${{ secrets.TYPESENSE_API_KEY }}
 
