@@ -1,28 +1,48 @@
 import { MetadataRoute } from 'next';
 import { ISidebarItem } from '@/components/Sidebar';
 import { mainSidebar } from '@/components/sidebars';
+import { execSync } from 'node:child_process';
+import { stat } from 'fs/promises';
 
-function flattenItems(items: ISidebarItem[]): string[] {
+async function flattenItems(items: ISidebarItem[]): Promise<{
+  url: string;
+  lastModified: Date;
+}[]> {
   const final = [];
   for (const item of items) {
-    console.log(item);
-    if (item.slug)
-      final.push(new URL(item.slug + (item.slug.endsWith('/') ? '' : '/'), process.env.NEXT_PUBLIC_BASE_URL).toString());
+    if (item.slug) {
+      const url = new URL(item.slug + (item.slug.endsWith('/') ? '' : '/'), process.env.NEXT_PUBLIC_BASE_URL).toString();
+      const lastModified = await getLastModificationDate(item.slug);
+      final.push({ url, lastModified });
+    }
 
-    if (Array.isArray(item.items)) final.push(...flattenItems(item.items));
+    if (Array.isArray(item.items)) final.push(...await flattenItems(item.items));
   }
 
   return final;
 }
 
-export const dynamic = 'force-static';
+async function getLastModificationDate(slug: string) {
+  let filePath = `content${slug}.mdx`;
+  try {
+    await stat(filePath);
+  } catch {
+    filePath = `content${slug}/index.mdx`;
+  }
+  const dateStr = execSync(`git log -1 --pretty="format:%ci" -- ${filePath}`, {
+    cwd: process.cwd(),
+  }).toString();
+  return new Date(dateStr.trim());
+}
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const items = flattenItems(mainSidebar);
+export const dynamic = 'force-static';
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const items = await flattenItems(mainSidebar);
 
   return items.map(item => ({
-    url: item,
-    changeFrequency: 'monthly',
+    url: item.url,
+    changeFrequency: 'weekly',
     priority: 1,
+    lastModified: item.lastModified,
   }));
 }
