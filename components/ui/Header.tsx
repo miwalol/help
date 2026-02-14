@@ -35,7 +35,7 @@ export default function Header() {
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
   const sidebarRef = useRef<HTMLDivElement|undefined>(typeof document === 'undefined' ? undefined : document.getElementById('sidebar') as HTMLDivElement);
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
-  const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+  const isMac = /Mac|iPod|iPhone|iPad/.test(typeof navigator === 'undefined' ? '' : navigator.platform);
   const pathname = usePathname();
 
   useEffect(() => {
