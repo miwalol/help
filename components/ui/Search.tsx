@@ -18,7 +18,7 @@ export default function Search({ setShowSearchBox }: { setShowSearchBox: React.D
   const instantSearch = useInstantSearch();
 
   return (
-    <div className="absolute inset-0 backdrop-blur bg-gray-500/10 size-full overflow-auto h-screen z-50">
+    <div className="fixed inset-0 backdrop-blur bg-gray-500/10 size-full overflow-auto h-screen z-50">
       <button onClick={() => setShowSearchBox(false)} className="absolute right-6 top-6 z-50">
         <X />
       </button>

@@ -39,6 +39,11 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
+    const sidebar = document.getElementById('sidebar') as HTMLDivElement|undefined;
+    if (!sidebar) return;
+    sidebarRef.current = sidebar;
+  }, [pathname]);
+  useEffect(() => {
     if (!sidebarRef.current) return;
     sidebarRef.current.ariaExpanded = String(showSidebar);
   }, [showSidebar]);
