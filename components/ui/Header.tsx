@@ -33,14 +33,16 @@ const adapter = new TypesenseInstantsearchAdapter({
 
 export default function Header() {
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
-  const sidebarRef = useRef<HTMLDivElement|undefined>(typeof document === 'undefined' ? undefined : document.getElementById('sidebar') as HTMLDivElement);
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
   const isMac = /Mac|iPod|iPhone|iPad/.test(typeof navigator === 'undefined' ? '' : navigator.platform);
   const pathname = usePathname();
 
   useEffect(() => {
     const sidebar = document.getElementById('sidebar') as HTMLDivElement|undefined;
     if (!sidebar) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setShowSidebar(sidebar.ariaExpanded === 'true');
     sidebarRef.current = sidebar;
   }, [pathname]);
   useEffect(() => {
