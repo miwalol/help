@@ -13,7 +13,7 @@ export default function Steps({ children }: { children: React.ReactNode }) {
 
         return (
           <li key={i} className="flex items-start gap-2">
-            <span className="block select-none w-3">{i + 1}.</span>
+            <span className="block w-3 select-none">{i + 1}.</span>
 
             <div>
               {/*@ts-ignore*/}

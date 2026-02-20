@@ -19,7 +19,7 @@ export default function Aside({ children, type, title }: AsideProps) {
 
   return (
     <aside className={twMerge('rounded-xl border border-border p-4 my-3', classes[type])}>
-      <div className="flex items-center gap-2 mb-2">
+      <div className="mb-2 flex items-center gap-2">
         <Icon />
         <span className="font-semibold uppercase">{title || type}</span>
       </div>

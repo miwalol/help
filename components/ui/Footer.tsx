@@ -4,9 +4,9 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <div className="bg-black">
-      <div className="container mx-auto py-4 px-2 flex items-center">
+      <div className="container mx-auto flex items-center px-2 py-4">
         <div>
-          <div className="flex items-center gap-2 mb-4">
+          <div className="mb-4 flex items-center gap-2">
             <Image src={miwaWhite} alt="Miwa.lol Logo" width={32} height={32} />
 
             <span className="text-2xl font-bold">
