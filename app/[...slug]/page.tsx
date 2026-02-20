@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
     <div className="flex">
       <Sidebar />
 
-      <div className="container px-4 py-8 mx-auto">
+      <div className="container mx-auto px-4 py-8">
         <Breadcrumb />
 
         <div className="mb-4">
@@ -33,9 +33,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           <Component />
         </main>
 
-        <div className="border border-border mt-8 mb-6 h-px w-full"></div>
+        <div className="mb-6 mt-8 h-px w-full border border-border"></div>
 
-        <div className="flex items-center gap-4 flex-wrap">
+        <div className="flex flex-wrap items-center gap-4">
           <UsefulFeedback />
 
           <div className="grow"></div>

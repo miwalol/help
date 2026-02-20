@@ -64,9 +64,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="px-4 py-2 backdrop-blur flex items-center justify-between w-full sticky top-0 z-40 border-b border-border shadow">
+      <header className="sticky top-0 z-40 flex w-full items-center justify-between border-b border-border px-4 py-2 shadow backdrop-blur">
         {pathname === '/' ?
-          <div className="md:hidden size-6"></div> :
+          <div className="size-6 md:hidden"></div> :
           <button className="md:hidden" onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? <X/> : <Menu/>}</button>
         }
 
@@ -77,19 +77,19 @@ export default function Header() {
           </Link>
         </div>
 
-        <div className="max-md:hidden relative">
-          <SearchIcon className="absolute left-3 top-0 h-full flex items-center pointer-events-none" />
+        <div className="relative max-md:hidden">
+          <SearchIcon className="pointer-events-none absolute left-3 top-0 flex h-full items-center" />
           <input
-            readOnly onClick={() => setShowSearchBox(true)} placeholder="Search..."
-            className="pl-10 pr-4 w-48 md:w-72 lg:w-96 py-2 outline-none border border-indigo-800 bg-indigo-950/80 rounded-xl transition duration-200 focus:ring-2 ring-indigo-500 ring-opacity-50"
+            readOnly onClick={() => setShowSearchBox(true)} placeholder="Search..." type="search"
+            className="w-48 rounded-xl border border-indigo-800 bg-indigo-950/80 py-2 pl-10 pr-4 outline-none ring-indigo-500/50 transition duration-200 focus:ring-2 md:w-72 lg:w-96"
           />
           {typeof document !== 'undefined' && (
-            <div className="absolute right-3 top-0 h-full flex items-center select-none">
-              <kbd className="text-xs px-1 py-0.5 rounded bg-gray-600">{isMac ? '⌘' : 'Ctrl'}+K</kbd>
+            <div className="absolute right-3 top-0 flex h-full select-none items-center">
+              <kbd className="rounded bg-gray-600 px-1 py-0.5 text-xs">{isMac ? '⌘' : 'Ctrl'}+K</kbd>
             </div>
           )}
         </div>
-        <button onClick={() => setShowSearchBox(true)} aria-label="Search..." className="md:hidden"><SearchIcon /></button>
+        <button onClick={() => setShowSearchBox(true)} aria-label="Search" className="md:hidden"><SearchIcon /></button>
 
         <div className="flex items-center gap-4 max-md:hidden">
           <a href="https://github.com/miwalol" target="_blank"><SiGithub /></a>

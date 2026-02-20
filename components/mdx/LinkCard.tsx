@@ -5,10 +5,10 @@ import { LucideIcon } from 'lucide-react';
 
 export default function LinkCard({ href, title, description, icon: Icon = null }: LinkCardProps) {
   return (
-    <Link href={href} className="rounded-xl border border-border bg-secondary py-3 px-4 mt-4 block backdrop-blur relative">
+    <Link href={href} className="relative mt-4 block rounded-xl border border-border bg-secondary px-4 py-3 backdrop-blur">
       <div className="flex items-center gap-1.5">
         {Icon && <Icon />}
-        <span className="font-bold truncate" title={title}>{title}</span>
+        <span className="truncate font-bold" title={title}>{title}</span>
 
         <div className="grow"></div>
 
