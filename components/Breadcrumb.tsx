@@ -3,7 +3,7 @@
 import { findPathBySlug } from '@/components/Sidebar';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Home } from 'lucide-react';
 import { mainSidebar } from '@/components/sidebars';
 
 export default function Breadcrumb() {
@@ -17,7 +17,7 @@ export default function Breadcrumb() {
       '@type': 'ListItem',
       position: i + 1,
       name: item.label,
-      item: (!item.slug || i === links.length - 1) ? undefined : new URL(item.slug, process.env.NEXT_PUBLIC_BASE_URL),
+      item: !item.slug ? undefined : new URL(item.slug.endsWith('/') ? item.slug : `${item.slug}/`, process.env.NEXT_PUBLIC_BASE_URL),
     })),
   });
   if (links.length <= 1) {
@@ -26,7 +26,14 @@ export default function Breadcrumb() {
   
   return <>
     <nav aria-label="Breadcrumb" className="mb-2">
-      <ol className="flex gap-1 text-sm text-muted-foreground items-center">
+      <ol className="flex items-center gap-1 text-sm">
+        {!!links.length && (
+          <li className="flex items-center gap-1">
+            <Home size={20} />
+            <ChevronRight size={20} />
+          </li>
+        )}
+        
         {links.map((item, i) => {
           const isLast = i === links.length - 1;
 
@@ -38,17 +45,17 @@ export default function Breadcrumb() {
             );
           } else if (!item.slug) {
             return (
-              <li key={item.label} className="flex items-center">
+              <li key={item.label} className="flex items-center gap-1">
                 <span>{item.label}</span>
-                <ChevronRight className="ml-1" size={20} />
+                <ChevronRight size={20} />
               </li>
             );
           }
 
           return (
-            <li key={item.label} className="flex items-center">
+            <li key={item.label} className="flex items-center gap-1">
               <Link href={item.slug}>{item.label}</Link>
-              <ChevronRight className="ml-1" size={20} />
+              <ChevronRight size={20} />
             </li>
           );
         })}
