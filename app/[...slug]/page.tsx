@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
           <h1 className="text-3xl font-bold">{frontmatter.title}</h1>
         </div>
 
-        <main>
+        <main id="content" tabIndex={-1}>
           <Component />
         </main>
 

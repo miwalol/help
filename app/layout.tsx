@@ -5,6 +5,7 @@ import React from 'react';
 import { Outfit } from 'next/font/google';
 import Footer from '@/components/ui/Footer';
 import PlausibleProvider from 'next-plausible';
+import SkipToContent from '@/components/SkipToContent';
 
 const outfit = Outfit({ style: ['normal'] });
 
@@ -29,6 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           // @ts-ignore
           'data-api': 'https://analytics.tenshii.moe/api/record',
         }}>
+          <SkipToContent />
           <Header />
           {children}
           <Footer />

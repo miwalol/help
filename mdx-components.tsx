@@ -11,28 +11,43 @@ import LinkButton from '@/components/mdx/LinkButton';
 import { LinkIcon } from 'lucide-react';
 
 const slugify = (title: string|React.ReactNode[]) => {
-  const toReplace = /[\s()?!,]+/g;
-  if (typeof title === 'string') return title.toLowerCase().replaceAll(toReplace, '-');
-  return (title![0] as string)!.toLowerCase().replaceAll(toReplace, '-');
+  const toReplace = /[\s()?!,'&]+/g;
+  let res: string;
+
+  if (typeof title === 'string') {
+    res = title.toLowerCase().replaceAll(toReplace, '-');
+  } else {
+    // Only get the first part for React components
+    res = (title![0] as string)!.toLowerCase().replaceAll(toReplace, '-');
+  }
+
+  if (res.endsWith('-')) res = res.slice(0, -1);
+  return res;
 };
 
 const components: MDXComponents = {
   h2: ({ children }) => (
-    <div className="flex items-center mb-3 mt-6 gap-2 group" id={slugify(children)}>
+    <div className="group mb-3 mt-6 flex items-center gap-2" id={slugify(children)}>
       <h2 className="text-2xl font-bold">{children}</h2>
-      <Link href={`#${slugify(children)}`} className="size-5 md:opacity-0 md:group-hover:opacity-100 duration-100"><LinkIcon /></Link>
+      <Link
+        href={`#${slugify(children)}`} className="size-5 duration-100 md:opacity-0 md:group-hover:opacity-100" aria-hidden
+      ><LinkIcon /></Link>
     </div>
   ),
   h3: ({ children }) => (
-    <div className="flex items-center mb-3 mt-6 gap-2 group" id={slugify(children)}>
+    <div className="group mb-3 mt-6 flex items-center gap-2" id={slugify(children)}>
       <h3 className="text-xl font-bold">{children}</h3>
-      <Link href={`#${slugify(children)}`} className="size-5 md:opacity-0 md:group-hover:opacity-100 duration-100"><LinkIcon /></Link>
+      <Link
+        href={`#${slugify(children)}`} className="size-5 duration-100 md:opacity-0 md:group-hover:opacity-100" aria-hidden
+      ><LinkIcon /></Link>
     </div>
   ),
   h4: ({ children }) => (
-    <div className="flex items-center mb-3 mt-6 gap-2 group" id={slugify(children)}>
+    <div className="group mb-3 mt-6 flex items-center gap-2" id={slugify(children)}>
       <h4 className="text-lg font-bold">{children}</h4>
-      <Link href={`#${slugify(children)}`} className="size-5 md:opacity-0 md:group-hover:opacity-100 duration-100"><LinkIcon /></Link>
+      <Link
+        href={`#${slugify(children)}`} className="size-5 duration-100 md:opacity-0 md:group-hover:opacity-100" aria-hidden
+      ><LinkIcon /></Link>
     </div>
   ),
   code: ({ children }) => (
@@ -42,27 +57,31 @@ const components: MDXComponents = {
     <p className="mt-3">{children}</p>
   ),
   ul: ({ children }) => (
-    <ul className="list-inside list-disc mt-2">{children}</ul>
+    <ul className="mt-2 list-inside list-disc">{children}</ul>
   ),
   ol: ({ children }) => (
-    <ol className="list-inside list-decimal mt-2">{children}</ol>
+    <ol className="mt-2 list-inside list-decimal">{children}</ol>
   ),
   img: (props) => (
-    <Image {...(props as ImageProps)} className="size-full md:w-auto" />
+    <a href={props.src?.src || props.src} target="_blank" rel="nofollow">
+      {/* The remark plugin will automatically extract the alt text from the Markdown */}
+      {/* eslint-disable-next-line jsx-a11y/alt-text */}
+      <Image {...(props as ImageProps)} className="size-full rounded-xl border border-border md:w-auto" />
+    </a>
   ),
   a: ({ href, children }: { href: string, children: React.ReactNode }) => {
     const isExternal = href.startsWith('http');
     if (!isExternal) {
-      return <Link href={href} className="text-blue-500 hover:text-blue-600 transition-colors">{children}</Link>;
+      return <Link href={href} className="text-blue-500 transition-colors hover:text-blue-600">{children}</Link>;
     }
     
     return <a
       href={href} target="_blank" rel={href.startsWith('https://miwa.lol/') ? undefined : 'noreferrer'}
-      className="text-blue-500 hover:text-blue-600 transition-colors"
+      className="text-blue-500 transition-colors hover:text-blue-600"
     >{children}</a>;
   },
   th: ({ children }) => <th className="p-2 text-left">{children}</th>,
-  td: ({ children }) => <td className="p-2 border-y border-border">{children}</td>,
+  td: ({ children }) => <td className="border-y border-border p-2">{children}</td>,
 
   Aside,
   Badge,
