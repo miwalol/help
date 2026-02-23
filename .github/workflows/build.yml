@@ -38,8 +38,6 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_URL: https://help.miwa.lol
           NEXT_TELEMETRY_DISABLED: 1
-          NEXT_PUBLIC_TYPESENSE_HOST: ${{ secrets.TYPESENSE_HOST }}
-          NEXT_PUBLIC_TYPESENSE_API_KEY: ${{ secrets.TYPESENSE_API_KEY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
