@@ -3,9 +3,9 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "next build",
+    "build": "next build && bun run pagefind",
     "lint": "eslint .",
-    "index": "bun scripts/typesense-indexer.ts"
+    "pagefind": "pagefind --site out"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.11.2",
@@ -17,27 +17,25 @@
     "lucide-react": "^0.575.0",
     "next": "^16.1.6",
     "next-plausible": "^3.12.5",
-    "react-instantsearch": "^7.24.0",
     "rehype-mdx-import-media": "^1.2.0",
     "remark": "^15.0.1",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.2.0",
     "strip-markdown": "^6.0.0",
-    "tailwind-merge": "^3.5.0",
-    "typesense-instantsearch-adapter": "^2.9.0"
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@types/node": "25.3.0",
     "@types/react": "19.2.14",
-    "@types/react-instantsearch-dom": "^6.12.9",
     "autoprefixer": "^10.4.24",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.6",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-tailwindcss": "^3.18.2",
     "jiti": "^2.6.1",
+    "pagefind": "^1.4.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19"
   }
