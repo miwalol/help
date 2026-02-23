@@ -6,30 +6,8 @@ import Image from 'next/image';
 import { SiBluesky, SiDiscord, SiGithub, SiReddit, SiX } from '@icons-pack/react-simple-icons';
 import Search from '@/components/ui/Search';
 import { useEffect, useRef, useState } from 'react';
-import TypesenseInstantsearchAdapter from 'typesense-instantsearch-adapter';
-import { InstantSearch } from 'react-instantsearch';
 import { Menu, SearchIcon, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-
-const adapter = new TypesenseInstantsearchAdapter({
-  server: {
-    apiKey: process.env.NEXT_PUBLIC_TYPESENSE_API_KEY!,
-    nodes: [{
-      host: process.env.NEXT_PUBLIC_TYPESENSE_HOST!,
-      port: 443,
-      path: '',
-      protocol: 'https',
-    }],
-    cacheSearchResultsForSeconds: 5 * 60, // Cache for 5 minutes
-    sendApiKeyAsQueryParam: false,
-  },
-  additionalSearchParameters: {
-    query_by: 'title,content',
-    include_fields: 'title,content,path',
-    enable_analytics: true,
-    limit: 10,
-  },
-});
 
 export default function Header() {
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
@@ -100,13 +78,7 @@ export default function Header() {
         </div>
       </header>
 
-      <InstantSearch indexName="miwa_help" searchClient={adapter.searchClient} searchFunction={helper => {
-        // Don't make a search if no query is provided
-        if (!helper.state.query) return;
-        helper.search();
-      }}>
-        {showSearchBox && <Search setShowSearchBox={setShowSearchBox}/>}
-      </InstantSearch>
+      {showSearchBox && <Search setShowSearchBox={setShowSearchBox}/>}
     </>
   );
 }
