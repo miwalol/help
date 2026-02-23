@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Header from '../components/ui/Header';
 import './globals.css';
 import React from 'react';
@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@MiwaTeam',
   },
+};
+export const viewport: Viewport = {
+  themeColor: '#0e0d26',
+  colorScheme: 'dark',
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
