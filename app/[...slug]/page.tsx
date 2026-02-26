@@ -5,51 +5,63 @@ import path from 'node:path';
 import { Pencil, TriangleAlert } from 'lucide-react';
 import Breadcrumb from '@/components/Breadcrumb';
 import UsefulFeedback from '@/components/ui/UsefulFeedback';
+import { buildTableOfContents } from '../utils';
+import TableOfContents from '@/components/ui/TableOfContents';
 
 async function find(slug: string[]) {
+  const cwd = process.cwd();
   try {
-    return { ...await import(`@/content/${slug.join('/')}.mdx`), isIndex: false };
+    const m = `@/content/${slug.join('/')}.mdx`;
+    return { ...await import(m), path: m.replace('@', cwd), isIndex: false };
   } catch {
-    return { ...await import(`@/content/${slug.join('/')}/index.mdx`), isIndex: true };
+    const m = `@/content/${slug.join('/')}/index.mdx`;
+    return { ...await import(m), path: m.replace('@', cwd), isIndex: true };
   }
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string[] }> }) {
   const { slug } = await params;
-  const { default: Component, frontmatter, isIndex } = await find(slug);
+  const { default: Component, frontmatter, path, isIndex } = await find(slug);
+  const toc = await buildTableOfContents(path);
 
   return (
-    <div className="flex">
+    <div className="relative top-16 mb-16 flex gap-4">
       <Sidebar />
 
-      <div className="container mx-auto px-4 py-8">
-        <Breadcrumb />
+      <div className="container mx-auto flex justify-between p-8 px-4">
+        <div></div>
 
-        <div className="mb-4">
-          <h1 className="text-3xl font-bold">{frontmatter.title}</h1>
-        </div>
+        <main>
+          <Breadcrumb />
 
-        <main data-pagefind-body id="content" tabIndex={-1}>
-          <Component />
+          <div className="mb-4">
+            <h1 className="text-3xl font-bold">{frontmatter.title}</h1>
+          </div>
+
+          <article data-pagefind-body id="content" tabIndex={-1}>
+            <Component />
+          </article>
+
+          <div className="mb-6 mt-8 h-px w-full border border-border"></div>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <UsefulFeedback />
+
+            <div className="grow"></div>
+
+            <a
+              href={`https://github.com/miwalol/help/edit/master/content/${slug.join('/')}${isIndex ? '/index' : ''}.mdx`}
+              target="_blank" className="flex items-center gap-2" rel="nofollow"
+            ><Pencil />Edit this page</a>
+
+            <a
+              href={`https://github.com/miwalol/help/issues/new?title=Issue in \`${slug.join('/')}\``}
+              target="_blank" className="flex items-center gap-2" rel="nofollow"
+            ><TriangleAlert />Raise an issue</a>
+          </div>
         </main>
 
-        <div className="mb-6 mt-8 h-px w-full border border-border"></div>
-
-        <div className="flex flex-wrap items-center gap-4">
-          <UsefulFeedback />
-
-          <div className="grow"></div>
-
-          <a
-            href={`https://github.com/miwalol/help/edit/master/content/${slug.join('/')}${isIndex ? '/index' : ''}.mdx`}
-            target="_blank" className="flex items-center gap-2" rel="nofollow"
-          ><Pencil />Edit this page</a>
-
-          <a
-            href={`https://github.com/miwalol/help/issues/new?title=Issue in \`${slug.join('/')}\``}
-            target="_blank" className="flex items-center gap-2" rel="nofollow"
-          ><TriangleAlert />Raise an issue</a>
-        </div>
+        <TableOfContents contents={toc} />
       </div>
     </div>
   );
