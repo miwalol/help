@@ -20,9 +20,7 @@ export default function Breadcrumb() {
       item: !item.slug ? undefined : new URL(item.slug.endsWith('/') ? item.slug : `${item.slug}/`, process.env.NEXT_PUBLIC_BASE_URL),
     })),
   });
-  if (links.length <= 1) {
-    return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: ldJson }}/>;
-  }
+  if (!links.length) return null;
   
   return <>
     <nav aria-label="Breadcrumb" className="mb-2">

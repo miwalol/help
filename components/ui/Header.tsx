@@ -42,7 +42,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 flex w-full items-center justify-between border-b border-border px-4 py-2 shadow backdrop-blur">
+      <header className="fixed top-0 z-40 flex w-full items-center justify-between border-b border-border px-4 py-2 shadow backdrop-blur">
         {pathname === '/' ?
           <div className="size-6 md:hidden"></div> :
           <button className="md:hidden" onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? <X/> : <Menu/>}</button>

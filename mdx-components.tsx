@@ -9,21 +9,7 @@ import LinkCard from '@/components/mdx/LinkCard';
 import CardGrid from '@/components/mdx/CardGrid';
 import LinkButton from '@/components/mdx/LinkButton';
 import { LinkIcon } from 'lucide-react';
-
-const slugify = (title: string|React.ReactNode[]) => {
-  const toReplace = /[\s()?!,'&]+/g;
-  let res: string;
-
-  if (typeof title === 'string') {
-    res = title.toLowerCase().replaceAll(toReplace, '-');
-  } else {
-    // Only get the first part for React components
-    res = (title![0] as string)!.toLowerCase().replaceAll(toReplace, '-');
-  }
-
-  if (res.endsWith('-')) res = res.slice(0, -1);
-  return res;
-};
+import { slugify } from './app/utils';
 
 const components: MDXComponents = {
   h2: ({ children }) => (
@@ -51,7 +37,7 @@ const components: MDXComponents = {
     </div>
   ),
   code: ({ children }) => (
-    <code className="bg-gray-500 p-0.5">{children}</code>
+    <code className="rounded-md bg-gray-600 p-0.5">{children}</code>
   ),
   p: ({ children }) => (
     <p className="mt-3">{children}</p>
