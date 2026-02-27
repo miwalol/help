@@ -5,7 +5,7 @@ description: Resources and documentation for developers working with our platfor
 
 import CardGrid from '../../components/mdx/CardGrid';
 import LinkCard from '../../components/mdx/LinkCard';
-import { Webhook } from 'lucide-react';
+import { Webhook, Info } from 'lucide-react';
 
 **Miwa.lol has an API that allows developers to integrate with our platform easily.**
 
@@ -14,10 +14,10 @@ import { Webhook } from 'lucide-react';
 <CardGrid>
   <LinkCard
     title="Creating an API Key" description="Learn how to create an API key to access Miwa.lol API."
-    href="/developers/creating-an-api-key/"
+    href="/developers/usage/creating-api-key/" icon={Webhook}
   />
   <LinkCard
     title="Usage" description="Learn how to use Miwa.lol's API effectively with our usage guidelines and best practices."
-    href="/developers/usage/" icon={Webhook}
+    href="/developers/usage/" icon={Info}
   />
 </CardGrid>
