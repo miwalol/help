@@ -36,8 +36,11 @@ const components: MDXComponents = {
       ><LinkIcon /></Link>
     </div>
   ),
+  pre: ({ children }) => (
+    <pre className="mt-1 overflow-auto whitespace-pre-wrap rounded-md bg-gray-700 p-0.5">{children}</pre>
+  ),
   code: ({ children }) => (
-    <code className="rounded-md bg-gray-600 p-0.5">{children}</code>
+    <code className="rounded-md bg-gray-700 p-0.5">{children}</code>
   ),
   p: ({ children }) => (
     <p className="mt-3">{children}</p>

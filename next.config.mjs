@@ -20,7 +20,11 @@ const withMDX = createMDX({
     ],
     rehypePlugins: [
       'rehype-mdx-import-media',
-    ]
+      ['@shikijs/rehype', {
+        theme: 'vitesse-dark',
+        addLanguageClass: true,
+      }],
+    ],
   },
 });
 

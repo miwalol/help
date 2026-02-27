@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
-import { ISidebarItem } from '@/components/Sidebar';
-import { mainSidebar } from '@/components/sidebars';
+import { ISidebarItem } from '@/components/sidebar/Sidebar';
+import { mainSidebar, developersSidebar } from '@/components/sidebar/sidebars';
 import { execSync } from 'node:child_process';
 import { stat } from 'fs/promises';
 
@@ -37,9 +37,10 @@ async function getLastModificationDate(slug: string) {
 
 export const dynamic = 'force-static';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const items = await flattenItems(mainSidebar);
+  const mainItems = await flattenItems(mainSidebar);
+  const devItems = await flattenItems(developersSidebar);
 
-  return items.map(item => ({
+  return [...mainItems, ...devItems].map(item => ({
     url: item.url,
     changeFrequency: 'weekly',
     priority: 1,

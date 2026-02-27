@@ -1,11 +1,10 @@
 import { Metadata, ResolvingMetadata } from 'next';
-import Sidebar from '@/components/Sidebar';
-import * as fs from 'node:fs/promises';
+import Sidebar from '@/components/sidebar/Sidebar';
 import path from 'node:path';
 import { Pencil, TriangleAlert } from 'lucide-react';
 import Breadcrumb from '@/components/Breadcrumb';
 import UsefulFeedback from '@/components/ui/UsefulFeedback';
-import { buildTableOfContents } from '../utils';
+import { buildTableOfContents, getMdxPaths } from '../utils';
 import TableOfContents from '@/components/ui/TableOfContents';
 
 async function find(slug: string[]) {
@@ -23,16 +22,17 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
   const { slug } = await params;
   const { default: Component, frontmatter, path, isIndex } = await find(slug);
   const toc = await buildTableOfContents(path);
+  const isDevDocs = slug[0] === 'developers';
 
   return (
     <div className="flex gap-4">
-      <Sidebar />
+      <Sidebar sidebar={isDevDocs ? 'dev' : 'main'} />
 
-      <div className="container mx-auto flex justify-between p-8 px-4">
+      <div className="container mx-auto flex max-w-screen-sm justify-between px-4 py-8 xl:max-w-screen-xl">
         <div></div>
 
         <main>
-          <Breadcrumb />
+          <Breadcrumb sidebar={isDevDocs ? 'dev' : 'main'} />
 
           <div className="mb-4">
             <h1 className="text-3xl font-bold">{frontmatter.title}</h1>
@@ -69,28 +69,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
 
 export const dynamicParams = false;
 
-async function getMdxPaths(dir: string, currentPath: string): Promise<{ slug: string[] }[]> {
-  const entries = await fs.readdir(dir, { withFileTypes: true });
-  const paths: { slug: string[] }[] = [];
-
-  await Promise.all(entries.map(async (entry) => {
-    const fullPath = path.join(dir, entry.name);
-    const relativePath = path.join(currentPath, entry.name).replace(/\\/g, '/');
-
-    if (entry.isDirectory()) {
-      const subPaths = await getMdxPaths(fullPath, relativePath);
-      paths.push(...subPaths);
-    } else if (entry.name.endsWith('.mdx')) {
-      const slug = relativePath.slice(0, -4).split('/').filter(p => p !== 'index').filter(Boolean); // Remove .mdx, split into segments
-      paths.push({ slug });
-    }
-  }));
-
-  return paths;
-}
-
 export async function generateStaticParams() {
-  const contentDir = path.join(process.cwd(), 'content'); // Adjust if @/content resolves differently
+  const contentDir = path.join(process.cwd(), 'content');
   return await getMdxPaths(contentDir, '');
 }
 

@@ -1,0 +1,35 @@
+---
+title: CDN URLs
+description: Learn how our CDN URL structure works and how to use it effectively.
+---
+
+**To deliver images, videos, etc., Miwa.lol uses a Content Delivery Network (CDN).** This ensures that content is delivered quickly and efficiently to users around the world.
+To make the files structured and accessible, we use a specific URL format.
+
+In the most cases, you won't need to construct these URLs manually, as they are provided by our API when you request user data or other resources.
+However, this is not always the case, such as when we only provide the resource ID.
+
+## URL Structure
+
+The general format for accessing files via our CDN is as follows:
+
+```
+https://cdn.miwa.lol/{type}/{filename}.{extension}
+```
+
+### Parameters
+
+- `{type}`: Indicates the type of asset you are accessing. See below for more details.
+- `{filename}`: Unique identifier for the file, typically a UUID.
+- `{extension}`: Indicates the file format.
+
+## Assets type
+
+| Type            | Details                                                                                                                               |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| `avatars`       | User avatar images                                                                                                                    |
+| `backgrounds`   | User background images                                                                                                                |
+| `cursors`       | Custom cursor images                                                                                                                  |
+| `audios`        | Audio files.<br/>In the API, the URL is not directly provided; instead, you get the audio ID, which you can use to construct the URL. |
+| `audios-covers` | Audio cover images                                                                                                                    |
+| `fonts`         | Custom font files. *Feature only available for Premium users.*                                                                        |

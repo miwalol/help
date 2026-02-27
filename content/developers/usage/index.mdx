@@ -1,0 +1,24 @@
+---
+title: Usage
+description: Learn how to use Miwa.lol's API effectively with our usage guidelines and best practices.
+---
+
+Our API is designed to be easy to use and integrate into your applications. Here are some guidelines and best practices to help you get started:
+
+## Making Requests
+
+All API requests should be made to the base URL: `https://miwa.lol/api`.
+
+You can use any HTTP client to make requests, such as cURL, Insomnia, or libraries like `python-requests` or `fetch`.
+
+## Authentication
+
+All API requests must include your API key in the request headers. You can find your API key in your account settings.
+
+```http
+Authorization: Bearer YOUR_API_KEY
+```
+
+## Rate Limiting
+
+To ensure fair usage of our API, we enforce rate limits on the number of requests you can make. If you exceed this limit, you will receive a `429 Too Many Requests` response.

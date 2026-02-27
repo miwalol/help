@@ -1,0 +1,86 @@
+---
+title: Get User
+description: Retrieve information about a specific user by their username.
+---
+
+import Aside from '../../../components/mdx/Aside';
+
+This endpoint allows you to retrieve information about a specific user by their username.
+
+## Endpoint
+
+```http
+GET /api/user/{username}
+```
+
+### Path Parameters
+
+| Parameter | Type   | Description                |
+|-----------|--------|----------------------------|
+| username  | string | The username of the user.  |
+
+### Example Response
+
+```json
+{
+	"uid": 12345,
+	"username": "username",
+	"alias": "abc",
+	"assets": {
+		"audios": [
+			{
+				"id": "b8cbd86a-39f5-41d3-a21a-a1ba71b687df",
+				"name": "My cool audio",
+				"duration": 253,
+				"cover_id": null
+			}
+		],
+		"avatar_url": "https://cdn.miwa.lol/avatars/cff00577-9645-40b7-b415-c8f13901e27a.webp",
+		"background_url": "https://cdn.miwa.lol/backgrounds/65e0cd6e-051e-4d7f-8cc2-58a3b863ac6f.webp",
+		"cursor_url": null
+	},
+	"colors": {
+		"accent": "#000000",
+		"background": "#000000",
+		"badges": "#FFFFFF",
+		"links": "#000000",
+		"text": "#ffffff"
+	},
+	"config": {
+		"avatar_shape": "circle",
+		"bio": null,
+		"font": "Roboto",
+		"join_date": "2025-07-11",
+		"layout": "default",
+		"likes": 2,
+		"location": "Earth",
+		"page_enter_text": null,
+		"page_views": 56,
+		"profile_blur": 25,
+		"profile_opacity": 30,
+		"shuffle_audios": true,
+		"use_discord_avatar": false,
+		"volume_control": false
+	},
+	"effects": {
+		"background": "snowflakes",
+		"badges_glow": true,
+		"cursor": null,
+		"links_glow": true,
+		"username": "rainbow",
+		"username_glow": false
+	},
+	"tab": {
+		"animated_title": "typewriter",
+		"use_avatar": false
+	},
+	"typewriter": {
+		"enabled": false,
+		"texts": []
+	}
+}
+```
+
+<Aside type="info">
+  All URLs for assets are served via our CDN. You can find more information about our CDN URL structure in the [CDN URLs](/developers/cdn-urls/) documentation.
+</Aside>
