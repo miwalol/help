@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     default: 'Miwa.lol Help',
     template: '%s | Miwa.lol Help',
   },
+  openGraph: {
+    siteName: 'Miwa.lol Help',
+  },
   twitter: {
     card: 'summary_large_image',
     site: '@MiwaTeam',
