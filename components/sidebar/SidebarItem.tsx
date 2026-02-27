@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { ISidebarItem } from '@/components/Sidebar';
+import { ISidebarItem } from '@/components/sidebar/Sidebar';
 
 export default function SidebarItem({ item }: { item: ISidebarItem }) {
   const pathname = usePathname();

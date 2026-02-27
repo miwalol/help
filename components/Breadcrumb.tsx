@@ -1,15 +1,22 @@
 'use client';
 
-import { findPathBySlug } from '@/components/Sidebar';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronRight, Home } from 'lucide-react';
-import { mainSidebar } from '@/components/sidebars';
+import { ChevronRight, Code, Home } from 'lucide-react';
+import { findPathBySlug } from '@/app/client-utils';
+import { developersSidebar, mainSidebar } from '@/components/sidebar/sidebars';
 
-export default function Breadcrumb() {
+export default function Breadcrumb({ sidebar }: { sidebar: 'main' | 'dev' }) {
   const pathname = usePathname();
-  const path = findPathBySlug(mainSidebar, pathname.slice(0, -1));
+  const path = findPathBySlug(sidebar === 'main' ? mainSidebar : developersSidebar, pathname.slice(0, -1));
   const links = path ?? [];
+  if (sidebar === 'dev') {
+    links.unshift({
+      label: 'Developers',
+      icon: Code,
+      slug: '/developers/',
+    });
+  }
   const ldJson = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',

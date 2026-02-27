@@ -1,0 +1,40 @@
+---
+title: Creating an API Key
+description: Learn how to create an API key to access Miwa.lol's developer resources.
+---
+
+import Steps from '../../../components/mdx/Steps';
+import Aside from '../../../components/mdx/Aside';
+import CardGrid from '../../../components/mdx/CardGrid';
+import LinkCard from '../../../components/mdx/LinkCard';
+import { FileBraces, Info } from 'lucide-react';
+
+**To start building with Miwa.lol's API, you'll need to create an API key. Follow these steps to generate your key:**
+
+<Steps>
+  1. Log in to your Miwa.lol account: you obviously need an account to create an API key.
+
+  2. Go to your [**Dashboard > Settings > Security**](https://miwa.lol/dashboard/settings/security). You'll find an option to create your API key there.
+     If you already have an API key, it will be displayed on this page.
+
+  3. Click on **Generate API Key**. A new API key will be generated for you.
+
+  4. Copy your API key and store it securely. You will need this key to authenticate your requests to the Miwa.lol API.
+</Steps>
+
+<Aside type="danger" title="Important">
+  Keep your API key private and do not share it with anyone. If you believe your API key has been compromised, you can regenerate it from the same settings page.
+</Aside>
+
+## Next Steps
+
+<CardGrid>
+  <LinkCard
+    title="Usage" description="Learn how to use Miwa.lol's API effectively with our usage guidelines and best practices."
+    href="/developers/usage/" icon={Info}
+  />
+  <LinkCard
+    title="API Endpoints" description="Explore the full API documentation to understand available endpoints and how to use them."
+    href="/developers/endpoints/" icon={FileBraces}
+  />
+</CardGrid>

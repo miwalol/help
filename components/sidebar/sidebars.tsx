@@ -10,9 +10,9 @@ import {
   MessageCircleQuestionMark, Palette, CirclePlus,
   ScrollText, Settings,
   UserRoundPlus, Waypoints, Book, LayoutTemplate, AppWindow, Image, ListPlus, Paintbrush, Award, DollarSign, Hand,
-  Shield,
+  Shield, FileBraces, User, Webhook, Info,
 } from 'lucide-react';
-import { ISidebarItem } from '@/components/Sidebar';
+import { ISidebarItem } from '@/components/sidebar/Sidebar';
 import { SiDiscord } from '@icons-pack/react-simple-icons';
 
 export const mainSidebar: ISidebarItem[] = [
@@ -23,7 +23,7 @@ export const mainSidebar: ISidebarItem[] = [
   },
   {
     label: 'Getting Started',
-    slug: '/getting-started/',
+    slug: '/getting-started',
     icon: UserRoundPlus,
     items: [
       {
@@ -229,4 +229,41 @@ export const mainSidebar: ISidebarItem[] = [
       },
     ],
   },
+];
+
+export const developersSidebar: ISidebarItem[] = [
+  {
+    label: 'Overview',
+    slug: '/developers',
+    icon: Code,
+  },
+  {
+    label: 'Usage',
+    slug: '/developers/usage',
+    icon: Info,
+    items: [
+      {
+        label: 'Creating an API Key',
+        slug: '/developers/usage/creating-api-key',
+        icon: Webhook,
+      },
+      {
+        label: 'CDN URLs',
+        slug: '/developers/usage/cdn-urls',
+        icon: LinkIcon,
+      },
+    ],
+  },
+  {
+    label: 'Endpoints',
+    slug: '/developers/endpoints',
+    icon: FileBraces,
+    items: [
+      {
+        label: 'Get User',
+        slug: '/developers/endpoints/get-user',
+        icon: User,
+      },
+    ],
+  }
 ];
