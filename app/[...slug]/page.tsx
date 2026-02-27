@@ -25,7 +25,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
   const toc = await buildTableOfContents(path);
 
   return (
-    <div className="mb-16 flex gap-4">
+    <div className="flex gap-4">
       <Sidebar />
 
       <div className="container mx-auto flex justify-between p-8 px-4">
