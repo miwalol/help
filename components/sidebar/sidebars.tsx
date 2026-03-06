@@ -11,6 +11,7 @@ import {
   ScrollText, Settings,
   UserRoundPlus, Waypoints, Book, LayoutTemplate, AppWindow, Image, ListPlus, Paintbrush, Award, DollarSign, Hand,
   Shield, FileBraces, User, Webhook, Info,
+  HandHelping,
 } from 'lucide-react';
 import { ISidebarItem } from '@/components/sidebar/Sidebar';
 import { SiDiscord } from '@icons-pack/react-simple-icons';
@@ -215,7 +216,7 @@ export const mainSidebar: ISidebarItem[] = [
       {
         label: 'Troubleshooting',
         slug: '/misc/troubleshooting',
-        icon: Bug,
+        icon: HandHelping,
       },
       {
         label: 'Donating',
