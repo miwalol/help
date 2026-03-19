@@ -12,10 +12,14 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
+  const [isMac, setIsMac] = useState<boolean | null>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const isMac = /Mac|iPod|iPhone|iPad/.test(typeof navigator === 'undefined' ? '' : navigator.platform);
   const pathname = usePathname();
 
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMac(/Mac|iPod|iPhone|iPad/.test(navigator.platform));
+  }, []);
   useEffect(() => {
     const sidebar = document.getElementById('sidebar') as HTMLDivElement|undefined;
     if (!sidebar) return;
@@ -63,7 +67,7 @@ export default function Header() {
               readOnly onClick={() => setShowSearchBox(true)} placeholder="Search..." type="search"
               className="w-48 rounded-xl border border-indigo-800 bg-indigo-950/80 py-2 pl-10 pr-4 outline-none ring-indigo-500/50 transition duration-200 focus:ring-2 md:w-72"
             />
-            {typeof document !== 'undefined' && (
+            {isMac !== null && (
               <div className="absolute right-3 top-0 flex h-full select-none items-center">
                 <kbd className="rounded bg-gray-600 px-1 py-0.5 text-xs">{isMac ? '⌘' : 'Ctrl'}+K</kbd>
               </div>
