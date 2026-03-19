@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { ISidebarItem } from '@/components/sidebar/Sidebar';
 import { mainSidebar, developersSidebar } from '@/components/sidebar/sidebars';
 import { execSync } from 'node:child_process';
-import { stat } from 'fs/promises';
+import { stat } from 'node:fs/promises';
 
 async function flattenItems(items: ISidebarItem[]): Promise<{
   url: string;
@@ -43,7 +43,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [...mainItems, ...devItems].map(item => ({
     url: item.url,
     changeFrequency: 'weekly',
-    priority: 1,
     lastModified: item.lastModified,
   }));
 }
