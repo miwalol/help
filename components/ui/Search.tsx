@@ -54,7 +54,7 @@ export default function Search({ setShowSearchBox }: { setShowSearchBox: React.D
 
   return (
     <div className="fixed inset-0 z-50 size-full h-screen overflow-auto bg-gray-500/10 backdrop-blur">
-      <button onClick={() => setShowSearchBox(false)} className="absolute right-6 top-6 z-50">
+      <button onClick={() => setShowSearchBox(false)} className="absolute right-6 top-6 z-50" aria-label="Close search">
         <X />
       </button>
 
@@ -63,6 +63,7 @@ export default function Search({ setShowSearchBox }: { setShowSearchBox: React.D
           <SearchIcon className="pointer-events-none absolute left-3 top-0 flex h-full items-center" />
           <input
             placeholder="Search..." type="search" value={query} onChange={(e) => handleSearch(e.target.value)} autoFocus
+            aria-label="Search documentation"
             className="w-full rounded-xl border border-indigo-800 bg-indigo-950/80 py-2 pl-10 pr-4 outline-none ring-indigo-500/50 transition duration-200 focus:ring-2"
           />
         </div>
