@@ -8,34 +8,12 @@ import React from 'react';
 import LinkCard from '@/components/mdx/LinkCard';
 import CardGrid from '@/components/mdx/CardGrid';
 import LinkButton from '@/components/mdx/LinkButton';
-import { LinkIcon } from 'lucide-react';
-import { slugify } from './app/utils';
+import { Heading } from '@/components/mdx/Heading';
 
 const components: MDXComponents = {
-  h2: ({ children }) => (
-    <div className="group mb-3 mt-6 flex items-center gap-2" id={slugify(children)}>
-      <h2 className="text-2xl font-bold">{children}</h2>
-      <Link
-        href={`#${slugify(children)}`} className="size-5 duration-100 md:opacity-0 md:group-hover:opacity-100" aria-hidden
-      ><LinkIcon /></Link>
-    </div>
-  ),
-  h3: ({ children }) => (
-    <div className="group mb-3 mt-6 flex items-center gap-2" id={slugify(children)}>
-      <h3 className="text-xl font-bold">{children}</h3>
-      <Link
-        href={`#${slugify(children)}`} className="size-5 duration-100 md:opacity-0 md:group-hover:opacity-100" aria-hidden
-      ><LinkIcon /></Link>
-    </div>
-  ),
-  h4: ({ children }) => (
-    <div className="group mb-3 mt-6 flex items-center gap-2" id={slugify(children)}>
-      <h4 className="text-lg font-bold">{children}</h4>
-      <Link
-        href={`#${slugify(children)}`} className="size-5 duration-100 md:opacity-0 md:group-hover:opacity-100" aria-hidden
-      ><LinkIcon /></Link>
-    </div>
-  ),
+  h2: ({ children }) => <Heading level={2}>{children}</Heading>,
+  h3: ({ children }) => <Heading level={3}>{children}</Heading>,
+  h4: ({ children }) => <Heading level={4}>{children}</Heading>,
   pre: ({ children }) => (
     <pre className="mt-1 overflow-auto whitespace-pre-wrap rounded-md bg-gray-700 p-0.5">{children}</pre>
   ),
