@@ -8,16 +8,16 @@
     "pagefind": "pagefind --site out"
   },
   "dependencies": {
-    "@icons-pack/react-simple-icons": "^13.11.2",
+    "@icons-pack/react-simple-icons": "^13.13.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.1.6",
+    "@next/mdx": "^16.2.0",
     "@types/mdx": "^2.0.13",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.575.0",
-    "next": "^16.1.6",
+    "next": "^16.2.0",
     "next-plausible": "^3.12.5",
-    "rehype-mdx-import-media": "^1.2.0",
+    "rehype-mdx-import-media": "^1.4.0",
     "remark": "^15.0.1",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
@@ -26,18 +26,18 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@shikijs/rehype": "^4.0.0",
+    "@eslint/js": "^9.39.4",
+    "@shikijs/rehype": "^4.0.2",
     "@types/node": "25.3.0",
     "@types/react": "19.2.14",
-    "autoprefixer": "^10.4.24",
-    "eslint": "^9.39.2",
-    "eslint-config-next": "^16.1.6",
+    "autoprefixer": "^10.4.27",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-tailwindcss": "^3.18.2",
     "jiti": "^2.6.1",
     "pagefind": "^1.4.0",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.8",
     "tailwindcss": "^3.4.19"
   }
 }
