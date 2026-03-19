@@ -72,11 +72,11 @@ export default function Header() {
           <button onClick={() => setShowSearchBox(true)} aria-label="Search" className="md:hidden"><SearchIcon /></button>
 
           <div className="flex items-center gap-4 max-md:hidden">
-            <a href="https://github.com/miwalol" target="_blank"><SiGithub /></a>
-            <a href="https://discord.gg/miwa" target="_blank"><SiDiscord /></a>
-            <a href="https://x.com/MiwaTeam" target="_blank"><SiX /></a>
-            <a href="https://bsky.app/profile/miwa.lol" target="_blank"><SiBluesky /></a>
-            <a href="https://www.reddit.com/r/Miwadotlol/" target="_blank"><SiReddit /></a>
+            <a href="https://github.com/miwalol" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><SiGithub aria-hidden="true" /></a>
+            <a href="https://discord.gg/miwa" target="_blank" rel="noopener noreferrer" aria-label="Discord"><SiDiscord aria-hidden="true" /></a>
+            <a href="https://x.com/MiwaTeam" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><SiX aria-hidden="true" /></a>
+            <a href="https://bsky.app/profile/miwa.lol" target="_blank" rel="noopener noreferrer" aria-label="Bluesky"><SiBluesky aria-hidden="true" /></a>
+            <a href="https://www.reddit.com/r/Miwadotlol/" target="_blank" rel="noopener noreferrer" aria-label="Reddit"><SiReddit aria-hidden="true" /></a>
           </div>
         </div>
       </header>
