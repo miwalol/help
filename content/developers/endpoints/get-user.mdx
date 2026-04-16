@@ -5,82 +5,188 @@ description: Retrieve information about a specific user by their username.
 
 import Aside from '../../../components/mdx/Aside';
 
-This endpoint allows you to retrieve information about a specific user by their username.
+Retrieve public profile information about a specific user by their username.
 
 ## Endpoint
 
 ```http
-GET /api/user/{username}
+GET /api/users/{username}
 ```
 
 ### Path Parameters
 
-| Parameter | Type   | Description                |
-|-----------|--------|----------------------------|
-| username  | string | The username of the user.  |
+| Parameter | Type   | Required | Description                |
+|-----------|--------|----------|----------------------------|
+| username  | string | Yes      | The username of the user.  |
+
+### Request Headers
+
+| Header          | Value                    | Description                                  |
+|-----------------|--------------------------|----------------------------------------------|
+| Authorization   | `Bearer YOUR_API_KEY`    | Your API key. Required for all requests.     |
+
+<Aside type="info">
+  Don't have an API key yet? See [Creating an API Key](/developers/usage/creating-api-key/) to get started.
+</Aside>
+
+### Example Request
+
+```bash
+curl https://miwa.lol/api/users/username \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+## Response
+
+Returns a JSON object with the user's profile data.
 
 ### Example Response
 
 ```json
 {
-	"uid": 12345,
-	"username": "username",
-	"alias": "abc",
-	"assets": {
-		"audios": [
-			{
-				"id": "b8cbd86a-39f5-41d3-a21a-a1ba71b687df",
-				"name": "My cool audio",
-				"duration": 253,
-				"cover_id": null
-			}
-		],
-		"avatar_url": "https://cdn.miwa.lol/avatars/cff00577-9645-40b7-b415-c8f13901e27a.webp",
-		"background_url": "https://cdn.miwa.lol/backgrounds/65e0cd6e-051e-4d7f-8cc2-58a3b863ac6f.webp",
-		"cursor_url": null
-	},
-	"colors": {
-		"accent": "#000000",
-		"background": "#000000",
-		"badges": "#FFFFFF",
-		"links": "#000000",
-		"text": "#ffffff"
-	},
-	"config": {
-		"avatar_shape": "circle",
-		"bio": null,
-		"font": "Roboto",
-		"join_date": "2025-07-11",
-		"layout": "default",
-		"likes": 2,
-		"location": "Earth",
-		"page_enter_text": null,
-		"page_views": 56,
-		"profile_blur": 25,
-		"profile_opacity": 30,
-		"shuffle_audios": true,
-		"use_discord_avatar": false,
-		"volume_control": false
-	},
-	"effects": {
-		"background": "snowflakes",
-		"badges_glow": true,
-		"cursor": null,
-		"links_glow": true,
-		"username": "rainbow",
-		"username_glow": false
-	},
-	"tab": {
-		"animated_title": "typewriter",
-		"use_avatar": false
-	},
-	"typewriter": {
-		"enabled": false,
-		"texts": []
-	}
+  "uid": 12345,
+  "username": "username",
+  "alias": "abc",
+  "assets": {
+    "audios": [
+      {
+        "id": "0f18b939-1d63-402e-8b7c-f022abf3a18a",
+        "name": "My cool audio",
+        "duration": 253,
+        "cover_id": null
+      }
+    ],
+    "avatar_url": "https://cdn.miwa.lol/avatars/ea199cc3-77c3-4f41-9215-d3689da55d63.webp",
+    "background_url": "https://cdn.miwa.lol/backgrounds/f9457e67-e89a-4645-85d7-cb1beba04f5e.webp",
+    "cursor_url": null
+  },
+  "colors": {
+    "accent": "#000000",
+    "background": "#000000",
+    "badges": "#FFFFFF",
+    "links": "#000000",
+    "text": "#ffffff"
+  },
+  "config": {
+    "avatar_shape": "circle",
+    "bio": null,
+    "font": "Roboto",
+    "join_date": "2025-07-11",
+    "layout": "default",
+    "likes": 2,
+    "location": "Earth",
+    "page_enter_text": null,
+    "page_views": 56,
+    "profile_blur": 25,
+    "profile_opacity": 30,
+    "shuffle_audios": true,
+    "use_discord_avatar": false,
+    "volume_control": false
+  },
+  "effects": {
+    "background": "snowflakes",
+    "badges_glow": true,
+    "cursor": null,
+    "links_glow": true,
+    "username": "rainbow",
+    "username_glow": false
+  },
+  "tab": {
+    "animated_title": "typewriter",
+    "use_avatar": false
+  },
+  "typewriter": {
+    "enabled": false,
+    "texts": []
+  }
 }
 ```
 
+### Response Fields
+
+#### Top-level
+
+| Field      | Type   | Description                                      |
+|------------|--------|--------------------------------------------------|
+| `uid`      | number | Unique numeric identifier for the user.          |
+| `username` | string | The user's username.                             |
+| `alias`    | string | A short display alias for the user.              |
+
+#### `assets`
+
+| Field               | Type         | Description                                      |
+|---------------------|--------------|--------------------------------------------------|
+| `audios`            | array        | List of audio tracks on the profile.             |
+| `audios[].id`       | string       | UUID of the audio track.                         |
+| `audios[].name`     | string       | Display name of the audio track.                 |
+| `audios[].duration` | number       | Duration of the audio track in seconds.          |
+| `audios[].cover_id` | string\|null | UUID of the cover image, or `null` if none.      |
+| `avatar_url`        | string\|null | CDN URL of the user's avatar image.              |
+| `background_url`    | string\|null | CDN URL of the profile background image.         |
+| `cursor_url`        | string\|null | CDN URL of the custom cursor, or `null` if none. |
+
+#### `colors`
+
+| Field        | Type   | Description                                |
+|--------------|--------|--------------------------------------------|
+| `accent`     | string | Accent color as a hex value.               |
+| `background` | string | Background color as a hex value.           |
+| `badges`     | string | Badge color as a hex value.                |
+| `links`      | string | Link button color as a hex value.          |
+| `text`       | string | Primary text color as a hex value.         |
+
+#### `config`
+
+| Field                | Type         | Description                                                      |
+|----------------------|--------------|------------------------------------------------------------------|
+| `avatar_shape`       | string       | Shape of the avatar (`circle`, `square`, etc.).                  |
+| `bio`                | string\|null | Profile bio text, or `null` if not set.                          |
+| `font`               | string       | Font family used on the profile.                                 |
+| `join_date`          | string       | Date the user joined, in `YYYY-MM-DD` format.                    |
+| `layout`             | string       | Profile layout style (e.g. `default`).                           |
+| `likes`              | number\|null | Total number of likes received, or `null` if hidden by the user. |
+| `location`           | string\|null | User's location, or `null` if not set.                           |
+| `page_enter_text`    | string\|null | Custom text shown on the page enter screen, or `null` if none.   |
+| `page_views`         | number\|null | Total profile page view count, or `null` if hidden by the user.  |
+| `profile_blur`       | number       | Background blur level (0–100).                                   |
+| `profile_opacity`    | number       | Background opacity level (0–100).                                |
+| `shuffle_audios`     | boolean      | Whether audio tracks are shuffled.                               |
+| `use_discord_avatar` | boolean      | Whether the Discord avatar is used instead of the custom one.    |
+| `volume_control`     | boolean      | Whether the volume control is visible on the profile.            |
+
+#### `effects`
+
+| Field           | Type         | Description                                                |
+|-----------------|--------------|------------------------------------------------------------|
+| `background`    | string\|null | Background particle effect (e.g. `snowflakes`), or `null`. |
+| `badges_glow`   | boolean      | Whether badges have a glow effect.                         |
+| `cursor`        | string\|null | Custom cursor effect name, or `null` if none.              |
+| `links_glow`    | boolean      | Whether link buttons have a glow effect.                   |
+| `username`      | string\|null | Username text effect (e.g. `rainbow`), or `null`.          |
+| `username_glow` | boolean      | Whether the username has a glow effect.                    |
+
+#### `tab`
+
+| Field            | Type         | Description                                          |
+|------------------|--------------|------------------------------------------------------|
+| `animated_title` | string\|null | Browser tab title animation style, or `null`.        |
+| `use_avatar`     | boolean      | Whether the avatar is shown as the browser tab icon. |
+
+#### `typewriter`
+
+| Field     | Type    | Description                                    |
+|-----------|---------|------------------------------------------------|
+| `enabled` | boolean | Whether the typewriter effect is enabled.      |
+| `texts`   | array   | List of strings cycled through by the effect.  |
+
 <Aside type="info">
-  All URLs for assets are served via our CDN. You can find more information about our CDN URL structure in the [CDN URLs](/developers/usage/cdn-urls/) documentation.
+  All asset URLs are served via the Miwa CDN. See [CDN URLs](/developers/usage/cdn-urls/) for details on the URL structure.
 </Aside>
+
+## Error Responses
+
+| Status | Description                                                         |
+|--------|---------------------------------------------------------------------|
+| `401`  | Missing or invalid API key.                                         |
+| `404`  | No user found with the given username.                              |
+| `429`  | Rate limit exceeded. Wait before retrying.                          |
