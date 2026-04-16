@@ -2,11 +2,11 @@ import { TocElement } from '@/app/utils';
 
 export default function TableOfContents({ contents }: {contents: TocElement[]}) {
   if (!contents.length) {
-    return <aside className="sticky top-20 hidden max-h-96 min-w-64 max-w-64 overflow-x-hidden md:block"></aside>;
+    return <aside aria-label="On this page" className="sticky top-20 hidden max-h-96 min-w-64 max-w-64 overflow-x-hidden md:block"></aside>;
   }
 
   return (
-    <aside className="sticky top-20 ml-8 hidden max-h-96 min-w-64 max-w-64 overflow-x-hidden md:block">
+    <aside aria-label="On this page" className="sticky top-20 ml-8 hidden max-h-96 min-w-64 max-w-64 overflow-x-hidden md:block">
       <span className="mb-1 block font-bold">On this page</span>
 
       <ul className="space-y-1">

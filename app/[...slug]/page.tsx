@@ -51,13 +51,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
 
             <a
               href={`https://github.com/miwalol/help/edit/master/content/${slug.join('/')}${isIndex ? '/index' : ''}.mdx`}
-              target="_blank" className="flex items-center gap-2" rel="nofollow"
-            ><Pencil />Edit this page</a>
+              target="_blank" className="flex items-center gap-2" rel="nofollow noopener noreferrer"
+            ><Pencil />Edit this page<span className="sr-only"> (opens in new tab)</span></a>
 
             <a
               href={`https://github.com/miwalol/help/issues/new?title=Issue in \`${slug.join('/')}\``}
-              target="_blank" className="flex items-center gap-2" rel="nofollow"
-            ><TriangleAlert />Raise an issue</a>
+              target="_blank" className="flex items-center gap-2" rel="nofollow noopener noreferrer"
+            ><TriangleAlert />Raise an issue<span className="sr-only"> (opens in new tab)</span></a>
           </div>
         </main>
 
