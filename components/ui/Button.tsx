@@ -19,7 +19,7 @@ export default function Button({ children, className, variant = 'primary', asChi
   }
 
   return (
-    <button className={twMerge(defaultClass, classes[variant], className)}>
+    <button {...props} className={twMerge(defaultClass, classes[variant], className)}>
       {children}
     </button>
   );
