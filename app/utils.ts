@@ -3,17 +3,17 @@ import React from 'react';
 import path from 'node:path';
 import { readdir } from 'node:fs/promises';
 
+function extractText(node: React.ReactNode): string {
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(extractText).join('');
+  if (node && typeof node === 'object' && 'props' in node)
+    return extractText((node as React.ReactElement<{ children?: React.ReactNode }>).props.children);
+  return '';
+}
+
 export function slugify(title: string | React.ReactNode[]) {
   const toReplace = /[\s()?!,'&.]+/g;
-  let res: string;
-
-  if (typeof title === 'string') {
-    res = title.toLowerCase().replaceAll(toReplace, '-');
-  } else {
-    // Only get the first part for React components
-    res = (title![0] as string)!.toLowerCase().replaceAll(toReplace, '-');
-  }
-
+  let res = extractText(title).toLowerCase().replaceAll(toReplace, '-');
   if (res.endsWith('-')) res = res.slice(0, -1);
   return res;
 }
