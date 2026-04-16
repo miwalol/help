@@ -13,7 +13,7 @@ export default function Header() {
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   const [isMac, setIsMac] = useState<boolean | null>(null);
-  const sidebarRef = useRef<HTMLDivElement>(null);
+  const sidebarRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -21,15 +21,15 @@ export default function Header() {
     setIsMac(/Mac|iPod|iPhone|iPad/.test(navigator.platform));
   }, []);
   useEffect(() => {
-    const sidebar = document.getElementById('sidebar') as HTMLDivElement|undefined;
+    const sidebar = document.getElementById('sidebar') as HTMLElement|undefined;
     if (!sidebar) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setShowSidebar(sidebar.ariaExpanded === 'true');
+    setShowSidebar(sidebar.dataset.open === 'true');
     sidebarRef.current = sidebar;
   }, [pathname]);
   useEffect(() => {
     if (!sidebarRef.current) return;
-    sidebarRef.current.ariaExpanded = String(showSidebar);
+    sidebarRef.current.dataset.open = String(showSidebar);
   }, [showSidebar]);
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -49,7 +49,14 @@ export default function Header() {
       <header className="sticky top-0 z-40 flex h-16 w-full items-center justify-between border-b border-border px-4 py-2 shadow backdrop-blur">
         {pathname === '/' ?
           <div className="size-6 md:hidden"></div> :
-          <button className="md:hidden" onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? <X/> : <Menu/>}</button>
+          <button
+            className="md:hidden" onClick={() => setShowSidebar(!showSidebar)}
+            aria-label={showSidebar ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={showSidebar}
+            aria-controls="sidebar"
+          >
+            {showSidebar ? <X /> : <Menu />}
+          </button>
         }
 
         <Link href="/" className="flex items-center gap-2 py-1">
@@ -65,15 +72,16 @@ export default function Header() {
             <SearchIcon className="pointer-events-none absolute left-3 top-0 flex h-full items-center" />
             <input
               readOnly onClick={() => setShowSearchBox(true)} placeholder="Search..." type="search"
+              aria-label="Search documentation" aria-haspopup="dialog" aria-expanded={showSearchBox}
               className="w-48 rounded-xl border border-indigo-800 bg-indigo-950/80 py-2 pl-10 pr-4 outline-none ring-indigo-500/50 transition duration-200 focus:ring-2 md:w-72"
             />
             {isMac !== null && (
-              <div className="absolute right-3 top-0 flex h-full select-none items-center">
+              <div className="absolute right-3 top-0 flex h-full select-none items-center" aria-hidden="true">
                 <kbd className="rounded bg-gray-600 px-1 py-0.5 text-xs">{isMac ? '⌘' : 'Ctrl'}+K</kbd>
               </div>
             )}
           </div>
-          <button onClick={() => setShowSearchBox(true)} aria-label="Search" className="md:hidden"><SearchIcon /></button>
+          <button onClick={() => setShowSearchBox(true)} aria-label="Search documentation" aria-haspopup="dialog" aria-expanded={showSearchBox} className="md:hidden"><SearchIcon /></button>
 
           <div className="flex items-center gap-4 max-md:hidden">
             <a href="https://github.com/miwalol" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><SiGithub aria-hidden="true" /></a>
