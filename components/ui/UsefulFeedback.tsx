@@ -19,9 +19,15 @@ export default function UsefulFeedback() {
   return (
     <div className="flex items-center gap-4">
       <span>Was this page useful?</span>
-      <button onClick={() => handleFeedback(true)} disabled={voted} className="flex items-center gap-2"><ThumbsUp/>Yes</button>
-      <button onClick={() => handleFeedback(false)} disabled={voted} className="flex items-center gap-2"><ThumbsDown/>No</button>
-      {voted && <span>Thanks for feedback!</span>}
+      <button
+        onClick={() => handleFeedback(true)} disabled={voted}
+        className="flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-50"
+      ><ThumbsUp/>Yes</button>
+      <button
+        onClick={() => handleFeedback(false)} disabled={voted}
+        className="flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-50"
+      ><ThumbsDown/>No</button>
+      <span aria-live="polite" aria-atomic="true">{voted ? 'Thanks for feedback!' : ''}</span>
     </div>
   );
 }
