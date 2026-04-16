@@ -1,0 +1,80 @@
+---
+title: Get Cards
+description: Retrieve the list of cards displayed on your profile.
+---
+
+import Aside from '../../../components/mdx/Aside';
+
+Retrieve the list of cards displayed on your profile.
+
+## Endpoint
+
+```http
+GET /api/cards
+```
+
+### Request Headers
+
+| Header        | Value                 | Description                              |
+|---------------|-----------------------|------------------------------------------|
+| Authorization | `Bearer YOUR_API_KEY` | Your API key. Required for all requests. |
+
+<Aside type="info">
+  Don't have an API key yet? See [Creating an API Key](/developers/usage/creating-api-key/) to get started.
+</Aside>
+
+### Example Request
+
+```bash
+curl https://miwa.lol/api/cards \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+## Response
+
+Returns an array of card objects representing the cards on your profile.
+
+### Example Response
+
+```json
+[
+  {
+    "id": "f129c98e-5c3f-449b-a3c4-d4690d7708d3",
+    "type": "discord",
+    "value": null,
+    "extra": {
+      "show_badges": false
+    }
+  },
+  {
+    "id": "dcf146f0-3b81-4f62-88e5-5f20ac569818",
+    "type": "server",
+    "value": "discord.gg/miwa",
+    "extra": null
+  },
+  {
+    "id": "af711e24-13b4-4dc1-bfbe-d2c75dae90ec",
+    "type": "weather",
+    "value": "Paris",
+    "extra": null
+  }
+]
+```
+
+### Response Fields
+
+Each item in the array represents a card with the following fields:
+
+| Field   | Type         | Description                                                           |
+|---------|--------------|-----------------------------------------------------------------------|
+| `id`    | string       | UUID uniquely identifying the card.                                   |
+| `type`  | string       | The card type (e.g. `discord`, `server`, `weather`).                 |
+| `value` | string\|null | The card's main value (e.g. an invite URL or city name), or `null`.  |
+| `extra` | object\|null | Additional card-specific configuration, or `null` if not applicable. |
+
+## Error Responses
+
+| Status | Description                                |
+|--------|--------------------------------------------|
+| `401`  | Missing or invalid API key.                |
+| `429`  | Rate limit exceeded. Wait before retrying. |

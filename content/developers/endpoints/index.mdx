@@ -5,11 +5,15 @@ description: Explore the full API documentation to understand available endpoint
 
 import LinkCard from '../../../components/mdx/LinkCard';
 import CardGrid from '../../../components/mdx/CardGrid';
-import { UserCircle } from 'lucide-react';
+import { UserCircle, LayoutGrid } from 'lucide-react';
 
 <CardGrid>
   <LinkCard
     title="Get User" description="Retrieve information about a specific user by their username."
     href="/developers/endpoints/get-user/" icon={UserCircle}
+  />
+  <LinkCard
+    title="Get Cards" description="Retrieve the list of cards displayed on your profile."
+    href="/developers/endpoints/get-cards/" icon={LayoutGrid}
   />
 </CardGrid>

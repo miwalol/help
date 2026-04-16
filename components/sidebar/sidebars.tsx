@@ -10,7 +10,7 @@ import {
   MessageCircleQuestionMark, Palette, CirclePlus,
   ScrollText, Settings,
   UserRoundPlus, Waypoints, Book, LayoutTemplate, AppWindow, Image, ListPlus, Paintbrush, Award, DollarSign, Hand,
-  Shield, FileBraces, User, Webhook, Info,
+  Shield, FileBraces, User, Webhook, Info, LayoutGrid,
   HandHelping,
 } from 'lucide-react';
 import { ISidebarItem } from '@/components/sidebar/Sidebar';
@@ -264,6 +264,11 @@ export const developersSidebar: ISidebarItem[] = [
         label: 'Get User',
         slug: '/developers/endpoints/get-user',
         icon: User,
+      },
+      {
+        label: 'Get Cards',
+        slug: '/developers/endpoints/get-cards',
+        icon: LayoutGrid,
       },
     ],
   }
