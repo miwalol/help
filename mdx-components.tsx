@@ -9,6 +9,7 @@ import LinkCard from '@/components/mdx/LinkCard';
 import CardGrid from '@/components/mdx/CardGrid';
 import LinkButton from '@/components/mdx/LinkButton';
 import { Heading } from '@/components/mdx/Heading';
+import Tabs, { Tab } from '@/components/mdx/Tabs';
 
 const components: MDXComponents = {
   h2: ({ children }) => <Heading level={2}>{children}</Heading>,
@@ -56,6 +57,8 @@ const components: MDXComponents = {
   LinkCard,
   CardGrid,
   LinkButton,
+  Tabs,
+  Tab,
 };
 
 export function useMDXComponents(): MDXComponents {
