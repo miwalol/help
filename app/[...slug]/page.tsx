@@ -1,11 +1,21 @@
 import { Metadata, ResolvingMetadata } from 'next';
-import Sidebar from '@/components/sidebar/Sidebar';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 import { Pencil, TriangleAlert } from 'lucide-react';
 import Breadcrumb from '@/components/Breadcrumb';
 import UsefulFeedback from '@/components/ui/UsefulFeedback';
 import { buildTableOfContents, getMdxPaths } from '../utils';
 import TableOfContents from '@/components/ui/TableOfContents';
+
+function getLastUpdated(filePath: string): string | null {
+  try {
+    const iso = execSync(`git log --follow -1 --format="%aI" -- "${filePath}"`, { encoding: 'utf8' }).trim();
+    if (!iso) return null;
+    return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(iso));
+  } catch {
+    return null;
+  }
+}
 
 async function find(slug: string[]) {
   const cwd = process.cwd();
@@ -18,51 +28,57 @@ async function find(slug: string[]) {
   }
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string[] }> }) {
+export default async function Page({ params }: Readonly<{ params: Promise<{ slug: string[] }> }>) {
   const { slug } = await params;
   const { default: Component, frontmatter, path, isIndex } = await find(slug);
   const toc = await buildTableOfContents(path);
-  const isDevDocs = slug[0] === 'developers';
+  const lastUpdated = getLastUpdated(path);
 
   return (
-    <div className="flex gap-4">
-      <Sidebar sidebar={isDevDocs ? 'dev' : 'main'} />
+    <div className="container mx-auto flex max-w-screen-sm justify-between px-4 py-8 xl:max-w-screen-xl">
+      <div></div>
 
-      <div className="container mx-auto flex max-w-screen-sm justify-between px-4 py-8 xl:max-w-screen-xl">
-        <div></div>
+      <main>
+        <Breadcrumb sidebar={slug[0] === 'developers' ? 'dev' : 'main'} />
 
-        <main>
-          <Breadcrumb sidebar={isDevDocs ? 'dev' : 'main'} />
+        <div className="mb-4">
+          <h1 className="text-3xl font-bold">{frontmatter.title}</h1>
+        </div>
 
-          <div className="mb-4">
-            <h1 className="text-3xl font-bold">{frontmatter.title}</h1>
-          </div>
+        <article data-pagefind-body id="content" tabIndex={-1}>
+          <Component />
+        </article>
 
-          <article data-pagefind-body id="content" tabIndex={-1}>
-            <Component />
-          </article>
+        <div className="mb-6 mt-8 h-px w-full border border-border"></div>
 
-          <div className="mb-6 mt-8 h-px w-full border border-border"></div>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          {lastUpdated && (
+            <span className="text-sm text-gray-400">Last updated: {lastUpdated}</span>
+          )}
 
-          <div className="flex flex-wrap items-center gap-4">
-            <UsefulFeedback />
-
-            <div className="grow"></div>
-
+          <div className="flex flex-wrap items-center justify-end gap-4">
             <a
               href={`https://github.com/miwalol/help/edit/master/content/${slug.join('/')}${isIndex ? '/index' : ''}.mdx`}
               target="_blank" className="flex items-center gap-2" rel="nofollow noopener noreferrer"
-            ><Pencil />Edit this page<span className="sr-only"> (opens in new tab)</span></a>
+            >
+              <Pencil />Edit this page<span className="sr-only"> (opens in new tab)</span>
+            </a>
 
             <a
               href={`https://github.com/miwalol/help/issues/new?title=Issue in \`${slug.join('/')}\``}
               target="_blank" className="flex items-center gap-2" rel="nofollow noopener noreferrer"
-            ><TriangleAlert />Raise an issue<span className="sr-only"> (opens in new tab)</span></a>
+            >
+              <TriangleAlert />Raise an issue<span className="sr-only"> (opens in new tab)</span>
+            </a>
           </div>
-        </main>
+        </div>
 
-        <TableOfContents contents={toc} />
-      </div>
+        <div className="mt-6 flex justify-center">
+          <UsefulFeedback />
+        </div>
+      </main>
+
+      <TableOfContents contents={toc} />
     </div>
   );
 }
