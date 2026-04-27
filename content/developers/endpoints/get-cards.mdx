@@ -4,6 +4,7 @@ description: Retrieve the list of cards displayed on your profile.
 ---
 
 import Aside from '../../../components/mdx/Aside';
+import Tabs, { Tab } from '../../../components/mdx/Tabs';
 
 Retrieve the list of cards displayed on your profile.
 
@@ -25,10 +26,33 @@ GET /api/cards
 
 ### Example Request
 
-```bash
-curl https://miwa.lol/api/cards \
-  -H "Authorization: Bearer YOUR_API_KEY"
-```
+<Tabs>
+  <Tab label="curl">
+    ```bash
+    curl https://miwa.lol/api/cards \
+      -H "Authorization: Bearer YOUR_API_KEY"
+    ```
+  </Tab>
+  <Tab label="JavaScript">
+    ```js
+    const res = await fetch('https://miwa.lol/api/cards', {
+      headers: { Authorization: 'Bearer YOUR_API_KEY' },
+    });
+    const cards = await res.json();
+    ```
+  </Tab>
+  <Tab label="Python">
+    ```python
+    import requests
+
+    r = requests.get(
+        'https://miwa.lol/api/cards',
+        headers={'Authorization': 'Bearer YOUR_API_KEY'},
+    )
+    cards = r.json()
+    ```
+  </Tab>
+</Tabs>
 
 ## Response
 
