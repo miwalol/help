@@ -5,6 +5,7 @@ description: Retrieve the list of cards displayed on your profile.
 
 import Aside from '../../../components/mdx/Aside';
 import Tabs, { Tab } from '../../../components/mdx/Tabs';
+import ParamTable, { Param } from '../../../components/mdx/ParamTable';
 
 Retrieve the list of cards displayed on your profile.
 
@@ -89,12 +90,12 @@ Returns an array of card objects representing the cards on your profile.
 
 Each item in the array represents a card with the following fields:
 
-| Field   | Type         | Description                                                           |
-|---------|--------------|-----------------------------------------------------------------------|
-| `id`    | string       | UUID uniquely identifying the card.                                   |
-| `type`  | string       | The card type (e.g. `discord`, `server`, `weather`).                 |
-| `value` | string\|null | The card's main value (e.g. an invite URL or city name), or `null`.  |
-| `extra` | object\|null | Additional card-specific configuration, or `null` if not applicable. |
+<ParamTable>
+  <Param name="id" type="string" description="UUID uniquely identifying the card." />
+  <Param name="type" type="string" description="The card type (e.g. discord, server, weather)." />
+  <Param name="value" type="string|null" description="The card's main value (e.g. an invite URL or city name), or null." />
+  <Param name="extra" type="object|null" description="Additional card-specific configuration, or null if not applicable." />
+</ParamTable>
 
 ## Error Responses
 
