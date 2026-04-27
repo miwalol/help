@@ -5,6 +5,7 @@ description: Retrieve information about a specific user by their username.
 
 import Aside from '../../../components/mdx/Aside';
 import Tabs, { Tab } from '../../../components/mdx/Tabs';
+import ParamTable, { Param } from '../../../components/mdx/ParamTable';
 
 Retrieve public profile information about a specific user by their username.
 
@@ -16,9 +17,9 @@ GET /api/users/{username}
 
 ### Path Parameters
 
-| Parameter | Type   | Required | Description                |
-|-----------|--------|----------|----------------------------|
-| username  | string | Yes      | The username of the user.  |
+<ParamTable>
+  <Param name="username" type="string" required description="The username of the user." />
+</ParamTable>
 
 ### Request Headers
 
@@ -130,78 +131,78 @@ Returns a JSON object with the user's profile data.
 
 #### Top-level
 
-| Field      | Type   | Description                                      |
-|------------|--------|--------------------------------------------------|
-| `uid`      | number | Unique numeric identifier for the user.          |
-| `username` | string | The user's username.                             |
-| `alias`    | string | A short display alias for the user.              |
+<ParamTable>
+  <Param name="uid" type="number" description="Unique numeric identifier for the user." />
+  <Param name="username" type="string" description="The user's username." />
+  <Param name="alias" type="string" description="A short display alias for the user." />
+</ParamTable>
 
 #### `assets`
 
-| Field               | Type         | Description                                      |
-|---------------------|--------------|--------------------------------------------------|
-| `audios`            | array        | List of audio tracks on the profile.             |
-| `audios[].id`       | string       | UUID of the audio track.                         |
-| `audios[].name`     | string       | Display name of the audio track.                 |
-| `audios[].duration` | number       | Duration of the audio track in seconds.          |
-| `audios[].cover_id` | string\|null | UUID of the cover image, or `null` if none.      |
-| `avatar_url`        | string\|null | CDN URL of the user's avatar image.              |
-| `background_url`    | string\|null | CDN URL of the profile background image.         |
-| `cursor_url`        | string\|null | CDN URL of the custom cursor, or `null` if none. |
+<ParamTable>
+  <Param name="audios" type="array" description="List of audio tracks on the profile." />
+  <Param name="audios[].id" type="string" description="UUID of the audio track." />
+  <Param name="audios[].name" type="string" description="Display name of the audio track." />
+  <Param name="audios[].duration" type="number" description="Duration of the audio track in seconds." />
+  <Param name="audios[].cover_id" type="string|null" description="UUID of the cover image, or null if none." />
+  <Param name="avatar_url" type="string|null" description="CDN URL of the user's avatar image." />
+  <Param name="background_url" type="string|null" description="CDN URL of the profile background image." />
+  <Param name="cursor_url" type="string|null" description="CDN URL of the custom cursor, or null if none." />
+</ParamTable>
 
 #### `colors`
 
-| Field        | Type   | Description                                |
-|--------------|--------|--------------------------------------------|
-| `accent`     | string | Accent color as a hex value.               |
-| `background` | string | Background color as a hex value.           |
-| `badges`     | string | Badge color as a hex value.                |
-| `links`      | string | Link button color as a hex value.          |
-| `text`       | string | Primary text color as a hex value.         |
+<ParamTable>
+  <Param name="accent" type="string" description="Accent color as a hex value." />
+  <Param name="background" type="string" description="Background color as a hex value." />
+  <Param name="badges" type="string" description="Badge color as a hex value." />
+  <Param name="links" type="string" description="Link button color as a hex value." />
+  <Param name="text" type="string" description="Primary text color as a hex value." />
+</ParamTable>
 
 #### `config`
 
-| Field                | Type         | Description                                                      |
-|----------------------|--------------|------------------------------------------------------------------|
-| `avatar_shape`       | string       | Shape of the avatar (`circle`, `square`, etc.).                  |
-| `bio`                | string\|null | Profile bio text, or `null` if not set.                          |
-| `font`               | string       | Font family used on the profile.                                 |
-| `join_date`          | string       | Date the user joined, in `YYYY-MM-DD` format.                    |
-| `layout`             | string       | Profile layout style (e.g. `default`).                           |
-| `likes`              | number\|null | Total number of likes received, or `null` if hidden by the user. |
-| `location`           | string\|null | User's location, or `null` if not set.                           |
-| `page_enter_text`    | string\|null | Custom text shown on the page enter screen, or `null` if none.   |
-| `page_views`         | number\|null | Total profile page view count, or `null` if hidden by the user.  |
-| `profile_blur`       | number       | Background blur level (0–100).                                   |
-| `profile_opacity`    | number       | Background opacity level (0–100).                                |
-| `shuffle_audios`     | boolean      | Whether audio tracks are shuffled.                               |
-| `use_discord_avatar` | boolean      | Whether the Discord avatar is used instead of the custom one.    |
-| `volume_control`     | boolean      | Whether the volume control is visible on the profile.            |
+<ParamTable>
+  <Param name="avatar_shape" type="string" description="Shape of the avatar (circle, square, etc.)." />
+  <Param name="bio" type="string|null" description="Profile bio text, or null if not set." />
+  <Param name="font" type="string" description="Font family used on the profile." />
+  <Param name="join_date" type="string" description="Date the user joined, in YYYY-MM-DD format." />
+  <Param name="layout" type="string" description="Profile layout style (e.g. default)." />
+  <Param name="likes" type="number|null" description="Total number of likes received, or null if hidden by the user." />
+  <Param name="location" type="string|null" description="User's location, or null if not set." />
+  <Param name="page_enter_text" type="string|null" description="Custom text shown on the page enter screen, or null if none." />
+  <Param name="page_views" type="number|null" description="Total profile page view count, or null if hidden by the user." />
+  <Param name="profile_blur" type="number" description="Background blur level (0–100)." />
+  <Param name="profile_opacity" type="number" description="Background opacity level (0–100)." />
+  <Param name="shuffle_audios" type="boolean" description="Whether audio tracks are shuffled." />
+  <Param name="use_discord_avatar" type="boolean" description="Whether the Discord avatar is used instead of the custom one." />
+  <Param name="volume_control" type="boolean" description="Whether the volume control is visible on the profile." />
+</ParamTable>
 
 #### `effects`
 
-| Field           | Type         | Description                                                |
-|-----------------|--------------|------------------------------------------------------------|
-| `background`    | string\|null | Background particle effect (e.g. `snowflakes`), or `null`. |
-| `badges_glow`   | boolean      | Whether badges have a glow effect.                         |
-| `cursor`        | string\|null | Custom cursor effect name, or `null` if none.              |
-| `links_glow`    | boolean      | Whether link buttons have a glow effect.                   |
-| `username`      | string\|null | Username text effect (e.g. `rainbow`), or `null`.          |
-| `username_glow` | boolean      | Whether the username has a glow effect.                    |
+<ParamTable>
+  <Param name="background" type="string|null" description="Background particle effect (e.g. snowflakes), or null." />
+  <Param name="badges_glow" type="boolean" description="Whether badges have a glow effect." />
+  <Param name="cursor" type="string|null" description="Custom cursor effect name, or null if none." />
+  <Param name="links_glow" type="boolean" description="Whether link buttons have a glow effect." />
+  <Param name="username" type="string|null" description="Username text effect (e.g. rainbow), or null." />
+  <Param name="username_glow" type="boolean" description="Whether the username has a glow effect." />
+</ParamTable>
 
 #### `tab`
 
-| Field            | Type         | Description                                          |
-|------------------|--------------|------------------------------------------------------|
-| `animated_title` | string\|null | Browser tab title animation style, or `null`.        |
-| `use_avatar`     | boolean      | Whether the avatar is shown as the browser tab icon. |
+<ParamTable>
+  <Param name="animated_title" type="string|null" description="Browser tab title animation style, or null." />
+  <Param name="use_avatar" type="boolean" description="Whether the avatar is shown as the browser tab icon." />
+</ParamTable>
 
 #### `typewriter`
 
-| Field     | Type    | Description                                    |
-|-----------|---------|------------------------------------------------|
-| `enabled` | boolean | Whether the typewriter effect is enabled.      |
-| `texts`   | array   | List of strings cycled through by the effect.  |
+<ParamTable>
+  <Param name="enabled" type="boolean" description="Whether the typewriter effect is enabled." />
+  <Param name="texts" type="array" description="List of strings cycled through by the effect." />
+</ParamTable>
 
 <Aside type="info">
   All asset URLs are served via the Miwa CDN. See [CDN URLs](/developers/usage/cdn-urls/) for details on the URL structure.
