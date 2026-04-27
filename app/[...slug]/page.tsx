@@ -7,11 +7,12 @@ import UsefulFeedback from '@/components/ui/UsefulFeedback';
 import { buildTableOfContents, getMdxPaths } from '../utils';
 import TableOfContents from '@/components/ui/TableOfContents';
 
-function getLastUpdated(filePath: string): string | null {
+function getLastUpdated(filePath: string): { display: string; iso: string } | null {
   try {
     const iso = execSync(`git log --follow -1 --format="%aI" -- "${filePath}"`, { encoding: 'utf8' }).trim();
     if (!iso) return null;
-    return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(iso));
+    const display = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(iso));
+    return { display, iso };
   } catch {
     return null;
   }
@@ -53,7 +54,7 @@ export default async function Page({ params }: Readonly<{ params: Promise<{ slug
 
         <div className="flex flex-wrap items-center justify-between gap-4">
           {lastUpdated && (
-            <span className="text-sm text-gray-400">Last updated: {lastUpdated}</span>
+            <span>Last updated: <time dateTime={lastUpdated.iso}>{lastUpdated.display}</time></span>
           )}
 
           <div className="flex flex-wrap items-center justify-end gap-4">
