@@ -9,7 +9,7 @@ import Aside from '../../../components/mdx/Aside';
 
 <Aside type="info">This is a Premium feature.</Aside>
 
-Suppose you own "example.com" and want your Miwa.lol profile to show up there. When you visit "example.com", it will display your Miwa.lol profile. This page explains how to set up a custom domain for your account. No worries, it's relatively simple.
+A custom domain lets your Miwa.lol profile appear on a domain you own. For example, if you own `example.com`, visiting it would display your profile. This page explains how to set one up. Don't worry, it's relatively simple.
 
 <Aside type="warning">
   Even though you can set up a custom domain, your Miwa.lol profile will still be accessible at *`https://miwa.lol/username`* (where *username* is replaced by your actual username).
@@ -43,4 +43,4 @@ A dialog will appear, prompting you to enter your custom domain.
 
 ## Troubleshooting
 
-To avoid DNS problems (example: the CNAME record at the domain root), we recommend using [Cloudflare](https://www.cloudflare.com/)'s nameservers.
+Some DNS providers don't allow a CNAME record at the domain root (the apex). To avoid this and similar DNS issues, we recommend using [Cloudflare](https://www.cloudflare.com/)'s nameservers.
