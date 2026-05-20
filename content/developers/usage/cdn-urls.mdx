@@ -30,6 +30,24 @@ https://cdn.miwa.lol/{type}/{filename}.{extension}
 | `avatars`       | User avatar images                                                                                                                    |
 | `backgrounds`   | User background images                                                                                                                |
 | `cursors`       | Custom cursor images                                                                                                                  |
-| `audios`        | Audio files.<br/>In the API, the URL is not directly provided; instead, you get the audio ID, which you can use to construct the URL. |
+| `audios`        | Audio files. The extension is always `mp3`.<br/>In the API, the URL is not directly provided; instead, you get the audio ID, which you can use to construct the URL. |
 | `audios-covers` | Audio cover images                                                                                                                    |
 | `fonts`         | Custom font files. *Feature only available for Premium users.*                                                                        |
+
+### Example: building an audio URL
+
+The [Get User](/developers/endpoints/get-user/) endpoint returns audio entries with only an ID — for example:
+
+```json
+{
+  "audios": [
+    { "id": "a1b2c3d4-5678-90ab-cdef-1234567890ab" }
+  ]
+}
+```
+
+To play it, build the URL by plugging the ID into the CDN format with the `mp3` extension:
+
+```
+https://cdn.miwa.lol/audios/a1b2c3d4-5678-90ab-cdef-1234567890ab.mp3
+```

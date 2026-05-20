@@ -5,7 +5,7 @@ description: Make your profile more interactive and allow visitors to easily acc
 
 import CardGrid from '@/components/mdx/CardGrid';
 import LinkCard from '@/components/mdx/LinkCard';
-import { Trash2 } from 'lucide-react';
+import { Trash2, ListChecks } from 'lucide-react';
 
 **By adding links to your profile, you can make your profile more interactive and allow visitors to easily access your other social media accounts, websites, or any other links you want to share.**
 
@@ -19,6 +19,10 @@ import { Trash2 } from 'lucide-react';
   <LinkCard
     title="Adding a Custom Link" href="/links/adding-a-custom-link/"
     description="You can add any link you want, such as a website or a specific page."
+  />
+  <LinkCard
+    title="Supported Platforms" href="/links/supported-platforms/" icon={ListChecks}
+    description="See the full list of platforms you can link to from your profile."
   />
 </CardGrid>
 
