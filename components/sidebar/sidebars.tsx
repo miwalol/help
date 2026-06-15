@@ -138,6 +138,11 @@ export const mainSidebar: ISidebarItem[] = [
         icon: ListPlus,
         items: [
           {
+            label: 'Creating a Card',
+            slug: '/cards/creating-a-card/',
+            icon: ListPlus,
+          },
+          {
             label: 'Examples',
             slug: '/cards/examples',
             icon: Book,
