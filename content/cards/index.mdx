@@ -5,6 +5,7 @@ description: Cards are a great way to showcase your content, such as your Discor
 
 import Aside from '@/components/mdx/Aside';
 import LinkCard from '@/components/mdx/LinkCard';
+import { Plus, Images } from 'lucide-react';
 
 **Cards are a great way to showcase your content, such as your Discord server, a Spotify track, a GitHub repository, and more.** You can add cards to your profile page to display information about yourself or your interests.
 
@@ -16,24 +17,20 @@ You can add up to 2 cards to your page, or up to 6 if you have a Premium account
 
 ## Creating a Card
 
-To add a card to your page, click the ***Create a card*** button on the right side of the page.
-Then choose the type of card you want to add:
+To add a card to your page, click the ***Create a card*** button on the right side of the page, then choose the type of
+card you want to add. Our guide covers every supported platform and what details each card needs:
 
-- **Discord presence**: Show your Discord status and activity. *You'll need to [link your Discord account](/how-to/link-your-discord/) to use this card.*
-- **Discord server**: Display server info, join button, and member stats
-- **Spotify embed**: Embed a track, artist, album, or playlist
-- **Apple Music embed**: Embed an album, artist, or playlist
-- **osu! profile**: Show rank, play count, and accuracy
-- **Minecraft profile**: Display username, skin, cape, and Hypixel stats
-- **Steam profile**: Show username, avatar, and level
-- **GitHub repository**: Display owner, repo name, stars, and description
-- **GitHub profile**: Show avatar, repository count, and followers
-- **Twitter/X profile**: Display avatar, username, followers, and bio
-- **Telegram channel/group**: Show name, avatar, and description
+<LinkCard
+  href="/cards/creating-a-card/"
+  title="Creating a card"
+  description="Browse every card platform we support and learn what to enter for each one."
+  icon={Plus}
+/>
 
 ## Card Examples
 
 <LinkCard
   href="/cards/examples/" title="Card Examples"
   description="See examples of different card types you can add to your profile."
+  icon={Images}
 />
