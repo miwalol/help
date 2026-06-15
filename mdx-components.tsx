@@ -32,11 +32,11 @@ const components: MDXComponents = {
     <ol className="mt-2 list-inside list-decimal">{children}</ol>
   ),
   img: (props) => (
-    <a href={props.src?.src || props.src} target="_blank" rel="nofollow">
+    <>
       {/* The remark plugin will automatically extract the alt text from the Markdown */}
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <Image {...(props as ImageProps)} className="size-full rounded-xl border border-border md:w-auto" />
-    </a>
+      <Image {...(props as ImageProps)} className="size-full md:w-auto" />
+    </>
   ),
   a: ({ href, children }: { href: string, children: React.ReactNode }) => {
     const isExternal = href.startsWith('http');

@@ -44,6 +44,9 @@ export default async function Page({ params }: Readonly<{ params: Promise<{ slug
 
         <div className="mb-4">
           <h1 className="text-3xl font-bold">{frontmatter.title}</h1>
+          {!!frontmatter.description && <p className="mt-1 text-gray-400">{frontmatter.description}</p>}
+
+          <div className="mt-4 h-px w-full border border-border"></div>
         </div>
 
         <article data-pagefind-body id="content" tabIndex={-1}>
