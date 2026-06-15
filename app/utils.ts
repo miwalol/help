@@ -12,10 +12,20 @@ function extractText(node: React.ReactNode): string {
 }
 
 export function slugify(title: string | React.ReactNode[]) {
-  const toReplace = /[\s()?!,'&.]+/g;
-  let res = extractText(title).toLowerCase().replaceAll(toReplace, '-');
-  if (res.endsWith('-')) res = res.slice(0, -1);
+  let res = extractText(title).toLowerCase();
+  res = res.replace(/[<>[\]/:="]/g, '');
+  res = res.replace(/[\s()?!,'&.]+/g, '-');
+  res = res.replace(/^-+|-+$/g, '');
   return res;
+}
+
+function cleanHeadingText(raw: string): string {
+  return raw
+    .replace(/<[^>]*>/g, '')
+    .replace(/\[([^\]]+)]\([^)]*\)/g, '$1')
+    .replace(/[*_`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 export interface TocElement {
@@ -27,12 +37,13 @@ export interface TocElement {
 export async function buildTableOfContents(path: string): Promise<TocElement[]> {
   const source = await readFile(path, 'utf8');
   const headings: TocElement[] = [];
-  const regex = /^(#{1,6})\s+(.+?)\s*(?:<{([^}]+)})?$/gm;
+  const regex = /^(#{1,6})\s+(.+?)\s*$/gm;
   let match;
 
   while ((match = regex.exec(source)) !== null) {
     const level = match[1].length;
-    const title = match[2].trim();
+    const title = cleanHeadingText(match[2]);
+    if (!title) continue;
 
     headings.push({ title, id: slugify(title), level });
   }
