@@ -30,7 +30,7 @@ export default function Breadcrumb({ sidebar }: { sidebar: 'main' | 'dev' }) {
   if (!links.length) return null;
   
   return <>
-    <nav aria-label="Breadcrumb" className="mb-2">
+    <nav aria-label="Breadcrumb" className="mb-4">
       <ol className="flex items-center gap-1 text-sm">
         {!!links.length && (
           <li className="flex items-center gap-1">
