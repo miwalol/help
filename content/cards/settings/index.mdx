@@ -4,20 +4,50 @@ description: Customize the look and feel of your Miwa.lol cards by toggling indi
 ---
 
 import Aside from '@/components/mdx/Aside';
-import { Settings } from 'lucide-react';
+import { Pencil } from 'lucide-react';
 
 <Aside type="info">
   This feature requires you to have a [Premium account](https://miwa.lol/pricing).
 </Aside>
 
-**This feature allows you to tweak the look and feel of your cards to better match your personal style or branding, by enabling or disabling certain elements on your cards.**
+**Card settings let you tweak the look and feel of your cards to better match your personal style or branding, by enabling or disabling individual elements.**
 
-Each card type has its own settings that you can customize.
-To access the settings for a specific card type, go to the **[Cards](https://miwa.lol/dashboard/cards)** page in the sidebar, and then click on the <Settings /> icon next to the card type you want to customize.
-If you don't see the settings icon, it means that the card type doesn't have any customizable settings.
+Each card type has its own set of settings, and some card types have none at all.
 
-## Available Settings
+## Accessing card settings
 
-The available settings may vary depending on the card type. For example, the **Discord Presence** card type has the following settings:
+Card settings live inside the card editor, right where you build the card:
 
-![Discord Presence Settings](./discord-presence-settings.png)
+- **When creating a card:** on the **[Cards](https://miwa.lol/dashboard/cards)** page, click **Create**, choose a platform, then scroll down to the **Settings** section.
+- **When editing a card:** on the **[Cards](https://miwa.lol/dashboard/cards)** page, click the <Pencil /> icon on the card you want to change, then scroll down to the **Settings** section.
+
+If a card doesn't show a **Settings** section, that card type simply has no options to customize.
+
+## Settings by card type
+
+The available settings vary depending on the card. These are the card types that can be customized:
+
+| Card                 | Available settings                                                         |
+|----------------------|----------------------------------------------------------------------------|
+| **Discord Presence** | Avatar decoration, badges, server tag                                      |
+| **Twitter/X**        | Followers count, tweets count, location, join date *(off by default)*, bio |
+| **YouTube**          | Subscribers count, videos count                                            |
+| **Minecraft**        | Show capes, and which cape providers to pull from<sup>1</sup>              |
+| **AniList**          | Show profile<sup>2</sup>                                                   |
+| **MyAnimeList**      | Show profile<sup>2</sup>                                                   |
+| **Last.fm**          | Show profile<sup>2</sup>, recent tracks<sup>3</sup>                        |
+| **Xbox**             | Show profile<sup>2</sup>, recent games<sup>3</sup>                         |
+| **Audio player**     | Show queue<sup>3</sup> *(off by default)*                                  |
+| **Location**         | Satellite view *(off by default)*                                          |
+
+<sup>1</sup> Once *Show capes* is on you can pick which providers to source capes from: Minecraft, OptiFine, MinecraftCapes, LabyMod, 5zig, TLauncher, and SkinMC. All are enabled by default.
+
+<sup>2</sup> *Profile* here means the header block: your avatar, username, and stats. Turning it off hands the card's space to its other content instead (recent activity, tracks, or games).
+
+<sup>3</sup> Requires a taller card, see [below](#settings-that-need-a-taller-card).
+
+## Settings that need a taller card
+
+Some settings stay greyed out until the card is tall enough to fit the extra content. The Last.fm **recent tracks**, Xbox **recent games**, and Audio player **queue** toggles only become available once the card is at least **2 rows** tall - or, for Last.fm and Xbox, once you hide the profile so the list has room.
+
+You can change the number of rows in the [Card rows](/cards/creating-a-card/#card-rows) section of the editor, which is also a Premium feature.
