@@ -1,10 +1,11 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "bun run generate:llms && next dev",
     "start": "next start",
-    "build": "next build && bun run pagefind",
+    "build": "bun run generate:llms && next build && bun run pagefind",
     "lint": "eslint .",
+    "generate:llms": "bun scripts/generate-llms.ts",
     "pagefind": "pagefind --site out"
   },
   "dependencies": {
