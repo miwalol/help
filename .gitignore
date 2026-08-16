@@ -11,3 +11,8 @@ yarn.lock
 
 next-env.d.ts
 *.tsbuildinfo
+
+# Written by scripts/generate-llms.ts
+/public/llms.txt
+/public/llms-full.txt
+/public/**/*.md
