@@ -4,15 +4,59 @@ description: Templates are user-created pre-designed "profiles" that you can app
 ---
 
 import Aside from '@/components/mdx/Aside';
+import LinkCard from '@/components/mdx/LinkCard';
+import { PlusCircle, Heart, Eye, Pencil, Trash2, LinkIcon } from 'lucide-react';
 
 **Templates are user-created pre-designed "profiles" that you can apply to yours to quickly change its appearance.**
+
+To browse them, navigate to the *Templates* section in the dashboard sidebar.
+
+## Browsing templates
+
+The Templates section has three tabs:
+
+- **Templates** - the public gallery, where you can find everyone's templates.
+- **My templates** - the ones you created, whatever their visibility.
+- **Liked** - the ones you liked, so you can find them again later.
+
+### Searching and sorting
+
+Use the search field to look for a template by its **name** or by its **creator's username**. Clicking a tag on a template runs a search for that word too.
+
+The dropdown next to it sorts the gallery by:
+
+- **Newest** (the default)
+- **Oldest**
+- **Trending**
+- **Most liked**
+
+## Previewing and applying
+
+Click <Eye /> **Preview** on a template to see it applied to your own profile, without saving anything. Once you're happy with it, click **Apply**.
 
 <Aside type="warning">
   Applying a template will override your current customization settings, including the layout, colors, fonts, and other visual aspects of your profile.
 </Aside>
 
-To apply a template, simply navigate to the "Templates" section in the dashboard sidebar, browse through the available templates, and select the one you like. Once you apply a template, you can further customize it to suit your preferences.
+Each template also shows how many times it has been used, and who made it.
+
+## Liking a template
+
+Click the <Heart /> icon on a template to like it. Liked templates are collected in the **Liked** tab, and likes feed the *Most liked* sorting so good templates surface for everyone.
 
 ## Free vs Premium Templates
 
 **Some templates are available for free, while others are exclusive to Premium users.** What makes a template Premium is the options used in it. If a template uses any Premium-only options, it will be marked as Premium.
+
+## Managing your own templates
+
+On your own templates you'll also find:
+
+- <Pencil /> **Edit** - change the name, tags, and visibility. The preview image can't be changed after creation.
+- <LinkIcon /> **Copy link** - handy for sharing an *Unlisted* template.
+- <Trash2 /> **Delete** - removes the template for good.
+
+<LinkCard
+  href="/templates/creating-a-template/" title="Creating a Template" icon={PlusCircle}
+  description="Share your own profile design as a template."
+/>

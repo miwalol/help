@@ -1,6 +1,6 @@
 ---
 title: Privacy
-description: You can adjust some privacy settings for your page, such as hiding views, badges, likes, and join date, as well as enabling search engine indexing.
+description: You can adjust some privacy settings for your page, such as hiding views, likes, and join date, as well as controlling search engine indexing.
 ---
 
 import Aside from '@/components/mdx/Aside';
@@ -9,7 +9,9 @@ import Aside from '@/components/mdx/Aside';
   Those features are only available for Premium users.
 </Aside>
 
-You can adjust some privacy settings for your page, such as hiding views, badges, likes, and join date, as well as enabling search engine indexing.
+You can adjust some privacy settings for your page, such as hiding views, likes, and join date, as well as controlling search engine indexing.
+
+To find them, go to your [Dashboard > Customize](https://miwa.lol/dashboard/customize), then go to the *Privacy* tab.
 
 <Aside type="tip">
   Enabling or disabling these options affects both your profile page and the API.
@@ -21,17 +23,13 @@ You can adjust some privacy settings for your page, such as hiding views, badges
 
 When enabled, the view counter will be hidden on your page, as well as on the leaderboard.
 
-### Hide badges
-
-When enabled, your badges will not be visible on your page or on the leaderboard.
-
-#### Hiding specific badges
-
-You can choose to hide specific badges by going to the [Badges](https://miwa.lol/dashboard/badges) page and toggling the visibility of each badge individually.
-
 ### Hide likes
 
 When enabled, the like button and like count will be hidden on your page, as well as on the leaderboard.
+
+<Aside type="warning">
+  Hiding your views **or** your likes removes you from the [leaderboard](/getting-started/leaderboard/) entirely, since it ranks profiles on both.
+</Aside>
 
 ### Hide join date
 
@@ -44,3 +42,9 @@ When enabled, your page will be indexed by search engines such as Google, Bing, 
 <Aside type="info">
   It may take some time for search engines to update their indexes after you enable this option, and unfortunately, we cannot speed up this process. Updates can take anywhere from a few days to a few weeks.
 </Aside>
+
+## Hiding your badges
+
+Badge visibility isn't part of this tab. To hide your badges, go to the [Badges](https://miwa.lol/dashboard/badges) page, where you can either hide all of them at once or toggle each badge individually.
+
+Read more about it on the [Badges](/account/badges/#hiding-and-reordering-your-badges) page.

@@ -1,6 +1,6 @@
 ---
 title: Assets
-description: Learn how to add assets to your profile.
+description: Learn how to add assets to your profile - avatar, background, audios and a custom cursor - and which file types and sizes are accepted.
 ---
 
 import Aside from '@/components/mdx/Aside';
@@ -11,18 +11,56 @@ Miwa.lol allows you to add various assets to customize your page. You can set a 
 
 Go to your [Dashboard > Customize](https://miwa.lol/dashboard/customize), then go to the *Assets* tab.
 
+## Options
+
+### Avatar
+
+Your profile picture. After choosing a file you can crop it before it's uploaded.
+
+### Avatar shape
+
+Changes the shape your avatar is cut to. Five shapes are available: **Circle** (the default), **Rounded**, **Square**, **Hexagon**, and **Star**.
+
+### Background
+
+The image or video displayed behind your profile card. While it loads, your [background color](/customize/colors/#background-color) is shown instead.
+
+### Custom cursor
+
+Replaces the mouse cursor on your page. Animated `.ani` cursors are supported, and `.ico` files are converted automatically.
+
+### Audios
+
+The tracks played on your page. Each one can have a title, an artist, an album, and a cover image.
+
+**Free accounts can upload 2 audios, Premium accounts up to 8.** When you have more than one, a *Shuffle* option lets you start on a random track instead of the first one, and visitors get controls to switch between them.
+
+<Aside type="tip">
+  Want to show what's playing, with a queue of what's coming next? Add an [audio player card](/cards/creating-a-card/#audio-player).
+</Aside>
+
+### Use Discord avatar
+
+When enabled, your Discord avatar will replace your page avatar. Only available if you have [connected your Discord account](/how-to/link-your-discord/).
+
 ## Supported file types
 
-| Type          | Supported file extensions                                        | Maximum size |
-|---------------|------------------------------------------------------------------|--------------|
-| Avatar        | `.jpg`, `.png`, `.gif`, `.webp`                                  | 10MB         |
-| Audio         | `.mp3`, `.wav`, `.ogg`, `.flac`, `.aac`, `.m4a`                  | 30MB         |
-| Audio cover   | `.jpg`, `.png`, `.gif`, `.webp`                                  | 10MB         |
-| Background    | `.jpg`, `.png`, `.gif`, `.webp`, `.mp4`, `.webm`, `.mov`, `.avi` | 100MB        |
-| Custom cursor | `.jpg`, `.png`, `.cur`, `.ico`                                   | 10MB         |
-| Custom font   | `.ttf`, `.otf`, `.woff`, `.woff2`                                | 5MB          |
-| Custom badge  | `.jpg`, `.png`, `.gif`, `.webp`                                  | 10MB         |
+| Type             | Supported file extensions                       | Maximum size |
+|------------------|-------------------------------------------------|--------------|
+| Avatar           | `.jpg`, `.png`, `.gif`, `.webp`                 | 10MB         |
+| Audio            | `.mp3`, `.wav`, `.ogg`, `.flac`, `.aac`, `.m4a` | 30MB         |
+| Audio cover      | `.jpg`, `.png`, `.gif`, `.webp`                 | 10MB         |
+| Background image | `.jpg`, `.png`, `.gif`, `.webp`                 | 10MB         |
+| Background video | `.mp4`, `.webm`, `.mov`, `.avi`                 | 100MB        |
+| Custom cursor    | `.jpg`, `.png`, `.gif`, `.webp`, `.ico`, `.ani` | 5MB          |
+| Custom font      | `.ttf`, `.otf`, `.woff`, `.woff2`               | 5MB          |
+| Custom badge     | `.jpg`, `.png`, `.gif`, `.webp`                 | 5MB          |
+| Custom favicon   | `.png`, `.jpg`, `.ico`, `.svg`, `.webp`         | 256KB        |
 
 <Aside type="info">
     The `.jpg` file extension is the same as `.jpeg`.
+</Aside>
+
+<Aside type="info">
+  Some assets are resized after upload: custom cursors to 50×50, and custom badges to 64×64.
 </Aside>

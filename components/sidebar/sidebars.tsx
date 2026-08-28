@@ -1,9 +1,9 @@
 import {
   Archive,
   ArrowBigUpDash,
-  BadgeCheck, BookDashed,
+  BadgeCheck,
   Bug, CaseSensitive, CircleUser,
-  Code, EarthLock, Eye,
+  Code, Eye,
   Hammer,
   HandCoins, Heart, IdCardLanyard, LinkIcon,
   Mail, Map,
@@ -11,7 +11,8 @@ import {
   ScrollText, Settings,
   UserRoundPlus, Waypoints, Book, LayoutTemplate, AppWindow, Image, ListPlus, Paintbrush, Award, DollarSign, Hand,
   Shield, FileBraces, User, Webhook, Info, LayoutGrid,
-  HandHelping,
+  HandHelping, MonitorSmartphone, Component, ChartLine, Flame, SquareDashed, Sparkle, SquareDashedBottomCode,
+  KeyRound, Library,
 } from 'lucide-react';
 import { ISidebarItem } from '@/components/sidebar/Sidebar';
 import { SiDiscord } from '@icons-pack/react-simple-icons';
@@ -59,6 +60,21 @@ export const mainSidebar: ISidebarItem[] = [
         icon: Shield,
       },
       {
+        label: 'Sessions',
+        slug: '/account/sessions',
+        icon: MonitorSmartphone,
+      },
+      {
+        label: 'Connections',
+        slug: '/account/connections',
+        icon: Component,
+      },
+      {
+        label: 'Analytics',
+        slug: '/account/analytics',
+        icon: ChartLine,
+      },
+      {
         label: 'Badges',
         slug: '/account/badges',
         icon: Award,
@@ -68,6 +84,11 @@ export const mainSidebar: ISidebarItem[] = [
         slug: '/account/custom-domain',
         icon: LinkIcon,
       },
+      {
+        label: 'Beta Features',
+        slug: '/account/beta-features',
+        icon: Flame,
+      },
     ],
   },
   {
@@ -75,6 +96,11 @@ export const mainSidebar: ISidebarItem[] = [
     slug: '/customize',
     icon: Paintbrush,
     items: [
+      {
+        label: 'Profile Card',
+        slug: '/customize/profile-card',
+        icon: SquareDashed,
+      },
       {
         label: 'Assets',
         slug: '/customize/assets',
@@ -84,6 +110,11 @@ export const mainSidebar: ISidebarItem[] = [
         label: 'Colors',
         slug: '/customize/colors',
         icon: Palette,
+      },
+      {
+        label: 'Effects',
+        slug: '/customize/effects',
+        icon: Sparkle,
       },
       {
         label: 'Fonts',
@@ -98,7 +129,7 @@ export const mainSidebar: ISidebarItem[] = [
       {
         label: 'Privacy',
         slug: '/customize/privacy',
-        icon: EarthLock,
+        icon: KeyRound,
       },
       {
         label: 'Tab',
@@ -106,9 +137,9 @@ export const mainSidebar: ISidebarItem[] = [
         icon: AppWindow,
       },
       {
-        label: 'Miscellaneous',
-        slug: '/customize/misc',
-        icon: Archive,
+        label: 'Embed',
+        slug: '/customize/embed',
+        icon: SquareDashedBottomCode,
       },
       {
         label: 'Links',
@@ -157,7 +188,7 @@ export const mainSidebar: ISidebarItem[] = [
       {
         label: 'Templates',
         slug: '/templates',
-        icon: BookDashed,
+        icon: Library,
         items: [
           {
             label: 'Creating a Template',

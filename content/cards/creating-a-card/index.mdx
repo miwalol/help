@@ -3,8 +3,9 @@ title: Creating a card
 description: Add live content to your Miwa.lol profile with cards, such as your Discord presence, Spotify track, Steam profile, GitHub repository, and many more.
 ---
 
+import Aside from '@/components/mdx/Aside';
 import LinkCard from '@/components/mdx/LinkCard';
-import { Settings, Pickaxe, Gamepad2, AudioLines, CloudSun, Clock, MapPin, AlignLeft } from 'lucide-react';
+import { Settings, Pickaxe, Gamepad2, Music, Cloud, Clock, MapPin, AlignLeft, Pencil } from 'lucide-react';
 import {
   SiDiscord, SiX, SiTelegram, SiYoutube, SiTiktok, SiInstagram, SiAnilist, SiMyanimelist, SiSpotify, SiApplemusic,
   SiLastdotfm, SiOsu, SiSteam, SiRoblox, SiModrinth, SiGithub, SiJellyfin
@@ -13,7 +14,7 @@ import {
 Adding a card to your profile allows you to add live content to your profile, such as showing your Discord presence
 (username, what you're currently doing...), your Steam profile (username, game you're playing), and more.
 
-To add a card on your profile, go to the *Cards* page on your dashboard, then click on the *Create* button.
+To add a card on your profile, go to the *Cards* page on your dashboard, then click on the *Create a card* button.
 
 You can add up to **2 cards** to your profile, or up to **6** with a [Premium account](https://miwa.lol/pricing).
 
@@ -56,7 +57,7 @@ Paste your profile URL (e.g. `https://anilist.co/user/yourusername`).
 
 Paste your profile URL (e.g. `https://myanimelist.net/profile/yourusername`).
 
-### <AudioLines /> Audio player
+### <Music /> Audio player
 
 The audio player enhances the listening experience of your audios for your visitors. It displays the song name and
 includes intuitive controls to play, pause, and switch between tracks when multiple audios are available.
@@ -127,7 +128,7 @@ Jellyfin is self-hosted, so it needs a bit more setup than the other cards:
   icon={SiJellyfin}
 />
 
-### <CloudSun /> Weather
+### <Cloud /> Weather
 
 Set the location you want to show the weather for.
 
@@ -146,9 +147,25 @@ links, and lists.
 
 ## Card rows <Badge text="Premium feature" />
 
-Changing the number of rows on your card allows it to show more content than default.
+Changing the number of rows on your card allows it to show more content than default. You can choose **1, 2, or 3 rows**; free accounts are fixed at 1.
 
 For example, the AniList card shows your recent activity if you choose to show more than 2 rows.
+
+## Show below profile
+
+By default, a card is displayed inside your profile card. Turn on **Show below profile** to move it underneath instead, which suits wider cards like the audio player or a map.
+
+## Arranging your cards
+
+Back on the [Cards](https://miwa.lol/dashboard/cards) page, drag a card by its handle to reorder it. The order you set is the order visitors see.
+
+<Aside type="info">
+  With a [Premium account](https://miwa.lol/pricing) the page shows **two columns**, and you can drag cards between them to build a side-by-side layout. Free accounts have a single column.
+</Aside>
+
+## Editing a card
+
+Click the <Pencil /> icon on a card to reopen it. You can change its value, rows, placement, and settings, but not its type - to switch a card to another platform, delete it and create a new one.
 
 ## Customizing your card
 

@@ -4,6 +4,8 @@ description: Learn which colors you can customize on your Miwa.lol profile, acce
 ---
 
 import Aside from '@/components/mdx/Aside';
+import LinkCard from '@/components/mdx/LinkCard';
+import { Sparkle } from 'lucide-react';
 
 This page explains what colors you can edit, and what is their utility.
 
@@ -37,3 +39,16 @@ This option changes the color of your links.
 <Aside type="info" title="Requires Monochrome Links">
   This color only takes effect when the *Monochrome Links* option is enabled. If it's disabled, adjusting this color will have no effect.
 </Aside>
+
+## Monochrome links
+
+When enabled, all your link icons are drawn in a single color - your *Links color* - instead of each platform's own brand color.
+
+## Effects
+
+The same tab also holds the glow, cursor, background, opening and username effects:
+
+<LinkCard
+  href="/customize/effects/" title="Effects" icon={Sparkle}
+  description="Add a glow, a cursor effect, a background effect, an opening animation, or a username effect."
+/>

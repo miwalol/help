@@ -5,26 +5,43 @@ description: Make your profile more interactive and allow visitors to easily acc
 
 import CardGrid from '@/components/mdx/CardGrid';
 import LinkCard from '@/components/mdx/LinkCard';
-import { Trash2, ListChecks, Link, Link2 } from 'lucide-react';
+import Aside from '@/components/mdx/Aside';
+import { Trash2, Waypoints, PlusCircle, Globe, Pencil, Eye, EyeOff } from 'lucide-react';
 
 **By adding links to your profile, you can make your profile more interactive and allow visitors to easily access your other social media accounts, websites, or any other links you want to share.**
+
+<Aside type="info">
+  **Free accounts can have up to 5 links.** [Premium accounts](https://miwa.lol/pricing) have no limit.
+</Aside>
 
 ## Adding Links
 
 <CardGrid>
   <LinkCard
-    title="Adding a Link" href="/links/adding-a-link/" icon={Link}
+    title="Adding a Link" href="/links/adding-a-link/" icon={PlusCircle}
     description="To add links to your profile, go to the 'Links' page in your dashboard."
   />
   <LinkCard
-    title="Adding a Custom Link" href="/links/adding-a-custom-link/" icon={Link2}
+    title="Adding a Custom Link" href="/links/adding-a-custom-link/" icon={Globe}
     description="You can add any link you want, such as a website or a specific page."
   />
   <LinkCard
-    title="Supported Platforms" href="/links/supported-platforms/" icon={ListChecks}
+    title="Supported Platforms" href="/links/supported-platforms/" icon={Waypoints}
     description="See the full list of platforms you can link to from your profile."
   />
 </CardGrid>
+
+## Editing Links
+
+To change a link, click the <Pencil /> icon next to it. This reopens the same editor you used to add it, so you can correct the value, switch between *Link* and *Copyable Text*, or replace the icon of a custom link.
+
+## Hiding Links
+
+**You don't have to delete a link to take it off your profile.** Click the <Eye /> icon next to a link to hide it: it stays in your dashboard, shown greyed out with an <EyeOff /> icon, but visitors won't see it. Click the icon again to bring it back.
+
+<Aside type="tip">
+  This is handy for links you only want up some of the time, or for a platform you're taking a break from.
+</Aside>
 
 ## Reordering Links
 

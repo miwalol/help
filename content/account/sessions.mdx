@@ -1,0 +1,40 @@
+---
+title: Sessions
+description: See where you're logged in to Miwa.lol, and revoke any session you don't recognize.
+---
+
+import Aside from '@/components/mdx/Aside';
+
+**A session is created every time you log in to Miwa.lol**, whether from a browser or from our mobile app. The sessions page lets you see them all and log out the ones you don't recognize.
+
+To find it, go to your [Dashboard > Settings > Sessions](https://miwa.lol/dashboard/settings/sessions).
+
+## What you'll see
+
+Sessions are split into two groups:
+
+- **Current session** - the device you're reading this from.
+- **Other sessions** - everywhere else you're still logged in.
+
+Each entry shows:
+
+- The **browser**, or *iOS app* / *Android app* if you signed in from our mobile app.
+- The **operating system**, or the device model for mobile app sessions.
+- The **approximate location** it was last used from (city, region, and country).
+- **When it was last active.**
+
+<Aside type="info">
+  **Sessions expire 7 days after you log in.** Once one expires you'll be asked to log in again on that device, and it disappears from this list - so everything you see here is a session that's still valid.
+</Aside>
+
+## Revoking a session
+
+To log out one device, click the delete icon on that session. To log out everywhere except the device you're using, click **Log out all other devices**.
+
+<Aside type="warning" title="See something you don't recognize?">
+  If a session appears that isn't yours, log it out, then [change your password](/account/security/#changing-your-password) right away and consider enabling [two-factor authentication](/account/security/#two-factor-authentication-2fa).
+</Aside>
+
+<Aside type="info">
+  Locations are approximate. They're derived from the IP address the session was last used from, so a VPN, a mobile network, or your ISP's routing can place you in a different city or region than you actually are. Sessions using the Tor network are shown as *Tor*.
+</Aside>

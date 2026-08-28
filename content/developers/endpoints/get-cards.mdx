@@ -66,25 +66,36 @@ Returns an array of card objects representing the cards on your profile.
   {
     "id": "f129c98e-5c3f-449b-a3c4-d4690d7708d3",
     "type": "discord",
-    "value": null,
-    "extra": {
+    "value": "123456789012345678",
+    "rows": 2,
+    "column": 1,
+    "settings": {
       "show_badges": false
-    }
+    },
+    "show_below_profile": false
   },
   {
     "id": "dcf146f0-3b81-4f62-88e5-5f20ac569818",
     "type": "server",
     "value": "discord.gg/miwa",
-    "extra": null
+    "rows": 1,
+    "column": 1,
+    "settings": null,
+    "show_below_profile": true
   },
   {
     "id": "af711e24-13b4-4dc1-bfbe-d2c75dae90ec",
     "type": "weather",
     "value": "Paris",
-    "extra": null
+    "rows": 1,
+    "column": 2,
+    "settings": null,
+    "show_below_profile": false
   }
 ]
 ```
+
+Cards are returned in the order they appear on the profile.
 
 ### Response Fields
 
@@ -94,8 +105,18 @@ Each item in the array represents a card with the following fields:
   <Param name="id" type="string" description="UUID uniquely identifying the card." />
   <Param name="type" type="string" description="The card type (e.g. discord, server, weather)." />
   <Param name="value" type="string|null" description="The card's main value (e.g. an invite URL or city name), or null." />
-  <Param name="extra" type="object|null" description="Additional card-specific configuration, or null if not applicable." />
+  <Param name="rows" type="number" description="How many rows tall the card is, from 1 to 3." />
+  <Param name="column" type="number" description="Which column the card sits in, 1 or 2." />
+  <Param name="settings" type="object|null" description="Card-specific settings, or null if the card has none. See Cards Settings for what each type supports." />
+  <Param name="show_below_profile" type="boolean" description="Whether the card is displayed below the profile card instead of beside it." />
 </ParamTable>
+
+<Aside type="info">
+  Two card types return a special `value`:
+
+  * **`discord`** — the ID of the linked Discord account, since the card renders that account rather than a stored value.
+  * **`jellyfin`** — a SHA-256 digest instead of the stored configuration, which holds your server URL and API key and never leaves our servers.
+</Aside>
 
 ## Error Responses
 

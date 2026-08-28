@@ -3,6 +3,7 @@ title: Navigating the Dashboard
 description: Learn how to navigate in the dashboard, using it, and knowing what every option does.
 ---
 
+import Aside from '@/components/mdx/Aside';
 import {
   Award,
   ChartLine,
@@ -10,6 +11,7 @@ import {
   HelpCircle, Library,
   Lightbulb, Link, ListPlus,
   Paintbrush,
+  PanelLeftClose,
   QrCode,
   Settings,
   User2
@@ -25,7 +27,7 @@ The sidebar in the dashboard allows you to easily navigate through different sec
     Here's an overview of the sections available in the dashboard:
 
     * <User2 /> **Account** - View an overview of your account.
-    * <ChartLine /> **Analytics** - View analytics about your profile, such as the number of views and clicks, and other statistics.
+    * <ChartLine /> **Analytics** - View analytics about your profile, such as the number of views and clicks, and other statistics. [Learn more](/account/analytics/)
     * <Settings /> **Settings** - Update your account settings, such as your username, password, and two-factor authentication.
     * <Award /> **Badges** - View and manage the badges you have earned. [Learn more](/account/badges/)<br/><br/>
     * <Paintbrush /> **Customize** - The main section to customize your profile. You can change the theme, layout, colors, fonts, and other visual aspects of your profile. [Learn more](/customize/)
@@ -39,3 +41,23 @@ The sidebar in the dashboard allows you to easily navigate through different sec
     * Your profile, which you can access by clicking <ExternalLink /> or *miwa.lol/&lt;username&gt;*.
   </div>
 </div>
+
+## Collapsing the sidebar
+
+On larger screens, the <PanelLeftClose /> button next to the Miwa.lol logo collapses the sidebar down to just its icons, giving the page more room. Click it again to expand it back.
+
+<Aside type="info">
+  While collapsed, hovering an icon shows the name of the section it leads to.
+</Aside>
+
+On small screens the sidebar is a drawer instead: open it with the menu button, and close it with the ✕ or by tapping outside it.
+
+## Settings tabs
+
+The <Settings /> **Settings** section is itself split into tabs:
+
+* **General** - your username, display name, alias, custom domain, email address, and the language of the dashboard.
+* **Beta Features** - features still in testing you can opt into. [Learn more](/account/beta-features/)
+* **Security** - password, two-factor authentication, passkeys, and your API key. [Learn more](/account/security/)
+* **Sessions** - everywhere you're logged in. [Learn more](/account/sessions/)
+* **Connections** - your linked Discord, Google, and Apple accounts. [Learn more](/account/connections/)

@@ -25,14 +25,16 @@ https://cdn.miwa.lol/{type}/{filename}.{extension}
 
 ## Assets type
 
-| Type            | Details                                                                                                                               |
-|-----------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| `avatars`       | User avatar images                                                                                                                    |
-| `backgrounds`   | User background images                                                                                                                |
-| `cursors`       | Custom cursor images                                                                                                                  |
-| `audios`        | Audio files. The extension is always `mp3`.<br/>In the API, the URL is not directly provided; instead, you get the audio ID, which you can use to construct the URL. |
-| `audios-covers` | Audio cover images                                                                                                                    |
-| `fonts`         | Custom font files. *Feature only available for Premium users.*                                                                        |
+| Type               | Details                                                                                                                                                              |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `avatars`          | User avatar images                                                                                                                                                   |
+| `backgrounds`      | User background images                                                                                                                                               |
+| `cursors`          | Custom cursor images                                                                                                                                                 |
+| `audios`           | Audio files. The extension is always `mp3`.<br/>In the API, the URL is not directly provided; instead, you get the audio ID, which you can use to construct the URL. |
+| `audios-covers`    | Audio cover images                                                                                                                                                   |
+| `fonts`            | Custom font files. *Feature only available for Premium users.*                                                                                                       |
+| `badges`           | Custom badge images. The API returns the badge's image ID, which you use as the filename.                                                                            |
+| `profile-favicons` | Custom favicons uploaded for the browser tab                                                                                                                         |
 
 ### Example: building an audio URL
 

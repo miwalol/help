@@ -1,10 +1,11 @@
 ---
 title: Pricing
-description: Information about Miwa.lol Premium, its features, pricing, and refund policy.
+description: Information about Miwa.lol Premium, the verified and custom badges, gifting, payment methods, and our refund policy.
 ---
 
 import LinkCard from '../../../components/mdx/LinkCard';
-import { HandCoins } from 'lucide-react';
+import CardGrid from '../../../components/mdx/CardGrid';
+import { HandCoins, BadgeCheck, Award, Gift } from 'lucide-react';
 
 **Miwa.lol Premium is available as a lifetime payment of €5.99.** This means that you pay once and get access to all the Premium features forever.
 
@@ -14,27 +15,50 @@ To purchase Miwa.lol Premium, go to https://miwa.lol/pricing and click on *Purch
 
 ### Accepted Payment Methods
 
+When you check out, you choose between paying **by card** or **by crypto**. The card option opens a secure payment page that also accepts:
+
 - Credit/Debit Cards
 - PayPal
 - Apple Pay (requires using Safari)
 - Google Pay (requires using Google Chrome)
 - Revolut Pay
-- Crypto
 
 We also accept the majority of third-party providers such as iDEAL, Bancontact, etc.
 
-## Features
+### Gifting
 
-- **Layouts**: Change the layout of your Miwa.lol page to suit your style
-- **Privacy settings**: Hide your views count, likes, join date and more
-- **Page enter text**: Customize the text that appears when someone enters your page
-- **Cursor effects**: Add fun cursor effects to your Miwa.lol page
-- **Typewriter Description**: Add a typewriter effect to your description, making it more engaging
-- **Unlimited links**: Add as many links as you want to your page, whereas free users are limited to 5 links
-- **More cards**: Add more cards to your page, with free users limited to 2 cards
-- **Custom font**: Choose a custom font of your choice, instead of the default fonts available to free users
-- **More audios**: Add more audio tracks to your page, with free users limited to 2 audio tracks
-- **Tilt effect**: Add a tilt effect to your profile card, making it more dynamic
+**You can buy Premium for someone else.** On the [pricing page](https://miwa.lol/pricing), click the <Gift /> button next to *Purchase Premium*, search for the person by their username, optionally write them a message, and pay as usual. They'll be notified once the payment goes through.
+
+The verified badge can be gifted the same way, from its own card.
+
+## Free vs Premium
+
+**The full feature comparison lives on the pricing page: https://miwa.lol/pricing#compare.** It's the source of truth and is always up to date, so we won't repeat all of it here.
+
+These are the limits people ask about most often:
+
+| Feature           | Free   | Premium   |
+|-------------------|--------|-----------|
+| Social links      | 5      | Unlimited |
+| Cards             | 2      | 6         |
+| Card rows         | 1      | Up to 3   |
+| Audio tracks      | 2      | 8         |
+| Analytics history | 7 days | 1 year    |
+
+## Other products
+
+Premium isn't the only thing we offer:
+
+<CardGrid>
+  <LinkCard
+    title="Verified Badge" href="/how-to/verified-badge/" icon={BadgeCheck}
+    description="Apply for free, or buy it for €29.99 as a one-time payment."
+  />
+  <LinkCard
+    title="Custom Badge" href="/account/badges/#custom-badge" icon={Award}
+    description="A badge with the name and image of your choice, €6.99 each."
+  />
+</CardGrid>
 
 ## Refund Policy
 
