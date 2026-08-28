@@ -25,11 +25,12 @@ const components: MDXComponents = {
   p: ({ children }) => (
     <p className="mt-3">{children}</p>
   ),
+  // `list-outside` over `list-inside`, so nested lists indent past their parent's markers.
   ul: ({ children }) => (
-    <ul className="mt-2 list-inside list-disc">{children}</ul>
+    <ul className="mt-2 list-outside list-disc ps-6 [&_ol]:mt-1 [&_ul]:mt-1">{children}</ul>
   ),
   ol: ({ children }) => (
-    <ol className="mt-2 list-inside list-decimal">{children}</ol>
+    <ol className="mt-2 list-outside list-decimal ps-6 [&_ol]:mt-1 [&_ul]:mt-1">{children}</ol>
   ),
   img: (props) => (
     <>
