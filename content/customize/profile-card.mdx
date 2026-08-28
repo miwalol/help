@@ -1,0 +1,131 @@
+---
+title: Profile Card
+description: Adjust your Miwa.lol profile card - description, opacity, blur, border, tilt and beat shake - from the General tab.
+---
+
+import Aside from '@/components/mdx/Aside';
+import LinkCard from '@/components/mdx/LinkCard';
+import { CaseSensitive, LayoutTemplate } from 'lucide-react';
+
+**Your profile card is the panel that holds your avatar, username, description, badges and links.** Everything on this page is in the *General* tab of your [Dashboard > Customize](https://miwa.lol/dashboard/customize).
+
+## Description
+
+The text shown under your username. It supports **Markdown**, so you can add bold, italics, links, and more.
+
+### Typewriter description <Badge text="Premium feature" />
+
+Instead of a static description, you can have your card type out several texts one after another. Click **Manage Typewriter settings** above the description field to open the settings.
+
+- **Texts:** up to 10 texts, cycled through in order.
+- **Speed:** how long each character takes to appear, from 10 to 300 ms.
+- **Delete speed:** how fast a text is erased before the next one, from 10 to 300 ms.
+
+<Aside type="info">
+  While the typewriter is enabled, the normal description field is disabled - the typewriter texts replace it.
+</Aside>
+
+## Appearance
+
+### Profile opacity
+
+How opaque the card is, from 0 to 100%. Lower values let more of your background show through.
+
+### Profile blur
+
+How much the area behind the card is blurred, from 0 to 100px. This gives the frosted-glass look.
+
+### Font
+
+The font used across your page.
+
+<LinkCard
+  href="/customize/fonts/" title="Fonts" icon={CaseSensitive}
+  description="Browse the available fonts, or upload your own with Premium."
+/>
+
+### Layout
+
+The overall structure of your page.
+
+<LinkCard
+  href="/customize/layout/" title="Layout" icon={LayoutTemplate}
+  description="Compare the Default and Modern layouts."
+/>
+
+### Page enter text <Badge text="Premium feature" />
+
+A custom message shown on the screen visitors click to enter your page.
+
+<Aside type="info">
+  This screen, and therefore this text, only appears if you have an audio or a background video set.
+</Aside>
+
+## Profile details
+
+### Location
+
+A free-text location shown on your card, up to 50 characters. It's just text, so you can write anything you like.
+
+### Pronouns
+
+Your pronouns, up to 30 characters. They appear beneath your username.
+
+### Join date format <Badge text="Premium feature" />
+
+How the date you joined Miwa.lol is displayed:
+
+- **Relative:** for example, *2 months ago*.
+- **Full date:** for example, *January 14, 2026*.
+- **Month & year:** for example, *January 2026*.
+- **Year only:** for example, *2026*.
+
+<Aside type="tip">
+  Prefer not to show it at all? You can hide your join date entirely in the [Privacy](/customize/privacy/#hide-join-date) tab.
+</Aside>
+
+### Remove branding <Badge text="Premium feature" />
+
+Removes the *Claim profile* banner, which is only shown to visitors who aren't logged in.
+
+## Animations
+
+### Tilt card <Badge text="Premium feature" />
+
+Makes your profile card tilt when a visitor hovers over it.
+
+### Beat shake <Badge text="Premium feature" />
+
+Makes your profile card pulse to the beat of your audio.
+
+- **Intensity:** how far the card moves on each beat.
+- **Sensitivity:** how easily a beat sets it off. Raise it for quieter music.
+
+<Aside type="info">
+  Only visitors to your page see the effect. The preview in the dashboard stays still, and so does the card for anyone whose device is set to reduce motion.
+</Aside>
+
+## Border <Badge text="Premium feature" />
+
+Draws a border around your profile card.
+
+### Border roundness
+
+How rounded the card's corners are: **None**, **Small**, **Medium**, or **Large**. This applies whether or not the border itself is shown.
+
+### Show border
+
+Turns the border on. Once enabled, you can set:
+
+- **Border style:**
+  - **Static** - a plain, solid border.
+  - **Dashed** - a dashed border.
+  - **Shimmer** - a highlight that sweeps around the border.
+  - **Pulse** - the border fades in and out.
+- **Border color**
+- **Border width**, from 1 to 8px.
+- **Border opacity**, from 0 to 100%.
+
+<Aside type="info">
+  The animated styles (*Shimmer* and *Pulse*) stay still for visitors whose device is set to reduce motion.
+</Aside>

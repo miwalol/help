@@ -3,8 +3,10 @@ title: Leaderboard
 description: Miwa.lol has a leaderboard that ranks users based on their views and likes.
 ---
 
+import Aside from '@/components/mdx/Aside';
+
 **Miwa.lol has a leaderboard, accessible at https://miwa.lol/leaderboard, that ranks users based on their views and likes.**
-By default, the leaderboard is sorted by likes (most likes first), but you can also sort it by views.
+By default, the leaderboard is sorted by likes (most likes first), but you can also sort it by views. Clicking a column again flips the order, so you can look at it from either end.
 
 ## Finding your position
 
@@ -12,10 +14,21 @@ Currently, the only way to find your position is to open the leaderboard page an
 
 ## I'm not in the leaderboard, why?
 
-**If you are not in the leaderboard, it means that you have not received any likes or views yet.** The leaderboard is updated every 15 minutes, so if you have just started using Miwa.lol, it may take some time for your profile to appear in the leaderboard.
+Ranking is computed live from your current likes and views, so a new like or view is reflected the next time the page is loaded.
 
-If you have Premium, you probably chose to [hide your views or likes](/customize/privacy/).
+There are two reasons you might not appear:
+
+- **You have no likes or views yet.** Share your profile and they'll come.
+- **You hid your views or your likes.** See below.
 
 ## I don't want to be in the leaderboard <Badge text="Requires Premium" />
 
-**If you don't want to be in the leaderboard, you can hide your views and likes in <u>Customize > Privacy</u>.** This will hide your views and likes from other users and the leaderboard, but you will still be able to see your own views and likes.
+**Hiding your views or your likes in [Dashboard > Customize](https://miwa.lol/dashboard/customize), under the *Privacy* tab, removes you from the leaderboard.** You'll still see your own views and likes on your dashboard and profile.
+
+<Aside type="info">
+  Hiding **either** one is enough: since the leaderboard ranks on both, a profile that hides one of them is left out entirely.
+</Aside>
+
+<Aside type="tip">
+  If you've hidden one of them, a notice appears at the top of the leaderboard page reminding you why you aren't listed, with a link back to your customization settings.
+</Aside>

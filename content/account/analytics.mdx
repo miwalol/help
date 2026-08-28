@@ -1,0 +1,87 @@
+---
+title: Analytics
+description: Understand your Miwa.lol analytics - views, unique views, link clicks, likes, referrers, countries, and devices.
+---
+
+import Aside from '@/components/mdx/Aside';
+
+**The analytics page shows how your profile is doing:** how many people visited it, where they came from, and which of your links they clicked.
+
+To find it, go to your [Dashboard > Analytics](https://miwa.lol/dashboard/analytics).
+
+## Choosing a period
+
+Everything on the page is scoped to the period you pick in the selector at the top right.
+
+| Period    | Available to        |
+|-----------|---------------------|
+| 1 day     | Everyone            |
+| 3 days    | Everyone            |
+| 7 days    | Everyone            |
+| 14 days   | Premium             |
+| 30 days   | Premium             |
+| 90 days   | Premium             |
+| 1 year    | Premium             |
+
+<Aside type="info">
+  Free accounts can look back **7 days**, Premium accounts up to **1 year**. Your data isn't deleted when you're on a free account, so upgrading later reveals the longer periods.
+</Aside>
+
+## Statistics
+
+Four counters sit at the top of the page. Each one shows a badge comparing it to the **previous period of the same length**, so on a 7-day view you're comparing this week to the week before.
+
+### Link clicks
+
+How many times your links were clicked.
+
+### Views
+
+How many times your profile page was loaded.
+
+### Unique views
+
+How many distinct visitors you had, counted by IP address. This is always lower than *Views*, since one person refreshing your page counts once here but several times there.
+
+### Likes
+
+How many likes you received during the period.
+
+## Views statistics
+
+A graph of your views across the period. The grouping adapts to the range you picked:
+
+- **1 day** - by hour.
+- **3 to 30 days** - by day.
+- **90 days** - by week.
+- **1 year** - by month.
+
+## Top referrers
+
+Where your visitors came from: the site that linked them to you. Visits with no referrer - someone typing your URL, opening a bookmark, or following a link from an app that strips it - are grouped under **Direct/None**.
+
+Well-known platforms are grouped under a single friendly name, so a visit through X's `t.co` shortener or the Twitter app is simply counted as *X*.
+
+## Most clicked links
+
+Your links, ranked by how many clicks they got in the period.
+
+## Top countries
+
+The countries your visitors came from, based on their IP address. Visitors using the Tor network are listed separately, since their real country can't be determined.
+
+<Aside type="info">
+  Country data is approximate: a visitor on a VPN or a proxy is counted in whatever country it exits from.
+</Aside>
+
+## Devices
+
+A breakdown of visits by device type: **Desktop**, **Mobile**, and **Tablet**.
+
+## Liked by <Badge text="Premium feature" />
+
+The list of users who liked your profile during the period, most recent first. Free accounts see the total count but not who's behind it.
+
+<Aside type="tip">
+  Seeing *"No data available yet"*? That just means nobody visited during the period you selected. Try a longer period, or share your profile to get things moving.
+</Aside>

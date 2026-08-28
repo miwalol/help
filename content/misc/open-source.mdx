@@ -7,9 +7,9 @@ Miwa.lol is built using a variety of open source software and projects. We wante
 
 ## Developers & Contributors
 
-**Miwa.lol is mainly developed and maintained by [@CuteTenshii](https://github.com/CuteTenshii).** However, some features and improvements have been made by other contributors:
-- [@oriionn](https://github.com/oriionn): Custom domains support, fixed typos, various improvements
-- [@storcale](https://github.com/storcale): Various improvements and bug fixes
+**Miwa.lol is mainly developed and maintained by [@Tenshii](https://miwa.lol/tenshii).** However, some features and improvements have been made by other contributors:
+- [@Orion](https://miwa.lol/orion): Custom domains support, fixed typos, various improvements
+- [@Storcale](https://miwa.lol/storcale): Various improvements and bug fixes
 
 ## What's Used
 
@@ -20,31 +20,62 @@ Miwa.lol is built using a variety of open source software and projects. We wante
 - [React](https://react.dev/)
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [Drizzle ORM](https://orm.drizzle.team/) - Type-safe ORM for TypeScript
-- [@tippyjs/react](https://tippyjs.com/) - Tooltips library
+- [next-intl](https://next-intl.dev/) - Internationalization
+- [@dnd-kit](https://dndkit.com/) - Drag and drop, used to reorder links, cards and badges
+- [@nivo](https://nivo.rocks/) - Charts used on the analytics page
+- [@tippyjs/react](https://github.com/atomiks/tippyjs-react) - Tooltips library
 - [lucide-react](https://lucide.dev/) - Icons library
+- [react-easy-crop](https://github.com/ValentinH/react-easy-crop) - Avatar cropping
+- [react-markdown](https://github.com/remarkjs/react-markdown) - Renders Markdown in descriptions and text cards
+- [music-metadata](https://github.com/Borewit/music-metadata) - Reads title, artist, album and album art from uploaded audios
+- [ani-cursor](https://github.com/captbaritone/webamp/tree/master/packages/ani-cursor) - Renders animated `.ani` cursors
+- [cursor-effects](https://github.com/tholman/cursor-effects) - Cursor effects
+- [shiki](https://shiki.style/) - Syntax highlighting
 - [ua-parser-js](https://uaparser.dev/) - User-Agent parsing library
 - [react-modal](https://reactcommunity.org/react-modal/) - Accessible modal dialog component
-- [react-color](https://casesandberg.github.io/react-color/) - Color picker components
-- [chart.js](https://www.chartjs.org/), [react-chartjs-2](https://react-chartjs-2.js.org/) - Charting libraries
 - [sonner](https://github.com/emilkowalski/sonner) - Toast notifications library
-- [@sentry/nextjs](https://docs.sentry.io/platforms/javascript/guides/nextjs/) - Sentry SDK for Next.js
-- [stripe](https://github.com/stripe/stripe-node) - Stripe SDK for Node.js
+- [jose](https://github.com/panva/jose) - JSON Web Token signing and verification
+- [ioredis](https://github.com/redis/ioredis) - Redis client for Node.js
+- [node-postgres](https://node-postgres.com/) - PostgreSQL client for Node.js
+- [@sentry/nextjs](https://github.com/getsentry/sentry-javascript) - Sentry SDK for Next.js
+- [Vitest](https://vitest.dev/) - Test runner
 
 ### API
 
 - [Go](https://golang.org/)
 - [Gin](https://gin-gonic.com/)
 - [gorm.io/gorm](https://gorm.io/) - ORM library for Go
-- [github.com/discord/lilliput](https://github.com/discord/lilliput) - Image processing library, used for resizing and converting images to PNG/WebP format
+- [github.com/davidbyttow/govips](https://github.com/davidbyttow/govips) - Image processing, used for resizing and converting images
+- [github.com/disintegration/imaging](https://github.com/disintegration/imaging) - Additional image manipulation
+- [github.com/sergeymakinen/go-ico](https://github.com/sergeymakinen/go-ico) - Decodes `.ico` files, used for custom cursors
 - [github.com/fogleman/gg](https://github.com/fogleman/gg) - Used for generating Open Graph images
+- [github.com/gabriel-vasile/mimetype](https://github.com/gabriel-vasile/mimetype) - File type detection for uploads
 - [github.com/mileusna/useragent](https://github.com/mileusna/useragent) - User-Agent parsing library
 - [github.com/redis/go-redis/v9](https://github.com/redis/go-redis) - Redis client for Go
 - [github.com/golang-jwt/jwt/v5](https://github.com/golang-jwt/jwt) - JWT library for Go
-- [github.com/u2takey/ffmpeg-go](https://github.com/u2takey/ffmpeg-go) - FFmpeg bindings for Go
+- [github.com/go-webauthn/webauthn](https://github.com/go-webauthn/webauthn) - Passkeys support
 - [github.com/pquerna/otp](https://github.com/pquerna/otp) - Generates and validates TOTP codes
+- [github.com/coreos/go-oidc](https://github.com/coreos/go-oidc) - OpenID Connect, used for Google and Apple sign-in
+- [github.com/u2takey/ffmpeg-go](https://github.com/u2takey/ffmpeg-go) - FFmpeg bindings for Go
+- [github.com/PuerkitoBio/goquery](https://github.com/PuerkitoBio/goquery) - HTML parsing, used by some cards
+- [github.com/skip2/go-qrcode](https://github.com/skip2/go-qrcode) - Generates the QR code for your profile
+- [github.com/robfig/cron](https://github.com/robfig/cron) - Scheduled jobs
+- [github.com/cloudflare/cloudflare-go](https://github.com/cloudflare/cloudflare-go) - Custom domains management
+- [aws-sdk-go-v2](https://github.com/aws/aws-sdk-go-v2) - Storage (S3-compatible) and transactional emails
+- [github.com/prometheus/client_golang](https://github.com/prometheus/client_golang) - Metrics
 - [github.com/google/uuid](https://github.com/google/uuid) - UUID generation
 - [github.com/getsentry/sentry-go](https://github.com/getsentry/sentry-go) - Sentry SDK for Go
 - [github.com/stripe/stripe-go/v82](https://github.com/stripe/stripe-go) - Stripe SDK for Go
+- [github.com/stretchr/testify](https://github.com/stretchr/testify), [miniredis](https://github.com/alicebob/miniredis) - Testing
+
+### Mobile App
+
+- [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) - Shared Android and iOS codebase
+- [Compose Multiplatform](https://kotlinlang.org/compose-multiplatform/) - UI toolkit
+- [Ktor](https://ktor.io/) - HTTP client
+- [Koin](https://insert-koin.io/) - Dependency injection
+- [Decompose](https://arkivanov.github.io/Decompose/) - Navigation
+- [Coil](https://coil-kt.github.io/coil/) - Image loading
 
 ### Discord Bot
 
@@ -57,6 +88,9 @@ Miwa.lol is built using a variety of open source software and projects. We wante
 The source code of this site is available on [GitHub](https://github.com/miwalol/help).
 
 - [Next.js](https://nextjs.org/)
+- [MDX](https://mdxjs.com/) - Markdown with components, used for every page here
+- [Pagefind](https://pagefind.app/) - Static search
+- [Tailwind CSS](https://tailwindcss.com/)
 - [GitHub Pages](https://pages.github.com/) - Static site hosting
 
 ### Software
