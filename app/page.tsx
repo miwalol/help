@@ -7,7 +7,7 @@ import { Code, HandHelping, Mail, Paintbrush } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="container mx-auto px-4 py-8 lg:px-32">
+    <main id="content" tabIndex={-1} className="container mx-auto px-4 py-8 lg:px-32">
       <section className="my-12">
         <h1 className="text-5xl font-semibold">Miwa.lol Help</h1>
 
