@@ -7,7 +7,7 @@ import Footer from '@/components/ui/Footer';
 import PlausibleProvider from 'next-plausible';
 import SkipToContent from '@/components/SkipToContent';
 
-const outfit = Outfit({ style: ['normal'] });
+const outfit = Outfit({ style: ['normal'], subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
