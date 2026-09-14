@@ -39,5 +39,12 @@ export default defineConfig([
       '@stylistic/indent': ['error', 2, { SwitchCase: 0 }],
     },
   },
+  {
+    files: ['**/*.ts', '**/*.mjs', '**/*.astro/*.js'],
+    plugins: { '@stylistic': stylistic },
+    rules: {
+      '@stylistic/max-len': ['error', { code: 120 }],
+    },
+  },
 ]);
 

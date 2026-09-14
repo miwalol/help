@@ -5,7 +5,8 @@ import { getCollection } from 'astro:content';
 
 function getLastModificationDate(filePath: string): Date {
   try {
-    const dateStr = execFileSync('git', ['log', '-1', '--pretty=format:%ci', '--', filePath], { encoding: 'utf8' }).trim();
+    const gitArgs = ['log', '-1', '--pretty=format:%ci', '--', filePath];
+    const dateStr = execFileSync('git', gitArgs, { encoding: 'utf8' }).trim();
     const date = new Date(dateStr);
     if (dateStr && !Number.isNaN(date.getTime())) return date;
   } catch {
@@ -22,10 +23,22 @@ export const GET: APIRoute = async ({ site }) => {
     const loc = new URL(`${entry.id}/`, site).toString();
     const lastmod = getLastModificationDate(entry.filePath!).toISOString();
 
-    return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>weekly</changefreq>\n  </url>`;
+    return [
+      '  <url>',
+      `    <loc>${loc}</loc>`,
+      `    <lastmod>${lastmod}</lastmod>`,
+      '    <changefreq>weekly</changefreq>',
+      '  </url>',
+    ].join('\n');
   });
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
+  const xml = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    urls.join('\n'),
+    '</urlset>',
+    '',
+  ].join('\n');
 
   return new Response(xml, {
     headers: { 'Content-Type': 'application/xml' },
