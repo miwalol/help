@@ -67,13 +67,28 @@ import { Loader2, Search as SearchIcon, X } from 'lucide-astro';
 
   let pagefindReady: Promise<void> | null = null;
 
-  // Only exists post-build; @vite-ignore on a variable defers resolution to
-  // runtime without eval/Function, which CSP blocks.
-  const pagefindSpecifier = '/pagefind/pagefind.js';
+  // A plain `import()` ships an unresolved `__VITE_PRELOAD__` marker here (Astro inlines this script per page,
+  // skipping Vite's cleanup), so inject a real <script type="module"> instead: browser-native, no eval/Function.
+  function importPagefind(): Promise<PagefindApi> {
+    return new Promise((resolve, reject) => {
+      const callback = `__pagefindImport${Math.random().toString(36).slice(2)}`;
+      (window as unknown as Record<string, (mod: PagefindApi) => void>)[callback] = (mod) => {
+        delete (window as unknown as Record<string, unknown>)[callback];
+        script.remove();
+        resolve(mod);
+      };
+
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.textContent = `import * as pagefind from '/pagefind/pagefind.js'; window.${callback}(pagefind);`;
+      script.onerror = () => reject(new Error('Failed to load pagefind'));
+      document.head.append(script);
+    });
+  }
 
   function loadPagefind(): Promise<void> {
     if (!pagefindReady) {
-      pagefindReady = (import(/* @vite-ignore */ pagefindSpecifier) as Promise<PagefindApi>).then((m) => {
+      pagefindReady = importPagefind().then((m) => {
         window.pagefind = m;
         window.pagefind!.init();
       });
