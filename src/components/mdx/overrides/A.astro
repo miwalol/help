@@ -1,0 +1,17 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+const isExternal = href.startsWith('http');
+---
+
+{isExternal ? (
+  <a
+    href={href} target="_blank" rel={href.startsWith('https://miwa.lol/') ? undefined : 'noreferrer'}
+    class="text-blue-500 transition-colors hover:text-blue-600"
+  ><slot /></a>
+) : (
+  <a href={href} class="text-blue-500 transition-colors hover:text-blue-600"><slot /></a>
+)}

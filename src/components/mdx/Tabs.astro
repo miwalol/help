@@ -1,0 +1,44 @@
+---
+const slotHtml = await Astro.slots.render('default');
+const labels = [...slotHtml.matchAll(/<div class="tab-panel" data-label="([^"]*)"/g)].map(m => m[1]);
+
+let index = -1;
+const panelsHtml = slotHtml.replace(/<div class="tab-panel"/g, () => {
+  index++;
+  return index === 0 ? '<div class="tab-panel"' : '<div class="tab-panel" hidden';
+});
+---
+
+<div class="tabs my-3 overflow-hidden rounded-xl border border-border">
+  <div class="flex border-b border-border">
+    {labels.map((label, i) => (
+      <button
+        type="button"
+        class:list={[
+          'tabs-trigger px-4 py-2 text-sm font-medium transition-colors text-gray-400 hover:bg-gray-700/50 hover:text-white',
+          i === 0 && 'is-active-tab bg-gray-700 text-white',
+        ]}
+      >{label}</button>
+    ))}
+  </div>
+
+  <div class="[&_pre]:m-0 [&_pre]:rounded-none [&_pre]:border-none" set:html={panelsHtml} />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.tabs').forEach((tabs) => {
+    const triggers = [...tabs.querySelectorAll<HTMLButtonElement>('.tabs-trigger')];
+    const panels = [...tabs.querySelectorAll<HTMLElement>('.tab-panel')];
+
+    triggers.forEach((trigger, i) => {
+      trigger.addEventListener('click', () => {
+        triggers.forEach((t, j) => {
+          t.classList.toggle('is-active-tab', j === i);
+          t.classList.toggle('bg-gray-700', j === i);
+          t.classList.toggle('text-white', j === i);
+        });
+        panels.forEach((panel, j) => { panel.hidden = j !== i; });
+      });
+    });
+  });
+</script>

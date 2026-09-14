@@ -1,0 +1,239 @@
+---
+title: Get User
+description: Retrieve information about a specific user by their username.
+---
+
+import Aside from '@/components/mdx/Aside.astro';
+import Tabs from '@/components/mdx/Tabs.astro';
+import Tab from '@/components/mdx/Tab.astro';
+import ParamTable from '@/components/mdx/ParamTable.astro';
+import Param from '@/components/mdx/Param.astro';
+
+Retrieve public profile information about a specific user by their username.
+
+## Endpoint
+
+```http
+GET /api/users/{username}
+```
+
+### Path Parameters
+
+<ParamTable>
+  <Param name="username" type="string" required description="The username of the user." />
+</ParamTable>
+
+### Request Headers
+
+| Header          | Value                    | Description                                  |
+|-----------------|--------------------------|----------------------------------------------|
+| Authorization   | `Bearer YOUR_API_KEY`    | Your API key. Required for all requests.     |
+
+<Aside type="info">
+  Don't have an API key yet? See [Creating an API Key](/developers/usage/creating-api-key/) to get started.
+</Aside>
+
+### Example Request
+
+<Tabs>
+  <Tab label="curl">
+    ```bash
+    curl https://miwa.lol/api/users/username \
+      -H "Authorization: Bearer YOUR_API_KEY"
+    ```
+  </Tab>
+  <Tab label="JavaScript">
+    ```js
+    const res = await fetch('https://miwa.lol/api/users/username', {
+      headers: { Authorization: 'Bearer YOUR_API_KEY' },
+    });
+    const user = await res.json();
+    ```
+  </Tab>
+  <Tab label="Python">
+    ```python
+    import requests
+
+    r = requests.get(
+        'https://miwa.lol/api/users/username',
+        headers={'Authorization': 'Bearer YOUR_API_KEY'},
+    )
+    user = r.json()
+    ```
+  </Tab>
+</Tabs>
+
+## Response
+
+Returns a JSON object with the user's profile data.
+
+### Example Response
+
+```json
+{
+  "uid": 12345,
+  "username": "username",
+  "alias": "abc",
+  "display_name": "My Display Name",
+  "discord_id": "123456789012345678",
+  "assets": {
+    "audios": [
+      {
+        "id": "0f18b939-1d63-402e-8b7c-f022abf3a18a",
+        "title": "My cool audio",
+        "artist": "Some Artist",
+        "album": null,
+        "duration": 253,
+        "cover_id": null
+      }
+    ],
+    "avatar_url": "https://cdn.miwa.lol/avatars/ea199cc3-77c3-4f41-9215-d3689da55d63.webp",
+    "background_url": "https://cdn.miwa.lol/backgrounds/f9457e67-e89a-4645-85d7-cb1beba04f5e.webp",
+    "cursor_url": null
+  },
+  "colors": {
+    "accent": "#000000",
+    "background": "#000000",
+    "badges": "#FFFFFF",
+    "links": "#000000",
+    "text": "#ffffff"
+  },
+  "config": {
+    "avatar_shape": "circle",
+    "bio": null,
+    "font": "Roboto",
+    "join_date": "2025-07-11",
+    "layout": "default",
+    "likes": 2,
+    "location": "Earth",
+    "monochrome_links": false,
+    "page_enter_text": null,
+    "page_views": 56,
+    "profile_blur": 25,
+    "profile_opacity": 30,
+    "shuffle_audios": true,
+    "use_discord_avatar": false
+  },
+  "effects": {
+    "background": "snowflakes",
+    "badges_glow": true,
+    "cursor": null,
+    "links_glow": true,
+    "username": "rainbow",
+    "username_glow": false
+  },
+  "tab": {
+    "animated_title": "typewriter",
+    "use_avatar": false
+  },
+  "typewriter": {
+    "enabled": false,
+    "texts": [],
+    "speed": 100,
+    "delete_speed": 50
+  }
+}
+```
+
+### Response Fields
+
+#### Top-level
+
+<ParamTable>
+  <Param name="uid" type="number" description="Unique numeric identifier for the user." />
+  <Param name="username" type="string" description="The user's username." />
+  <Param name="alias" type="string|null" description="The user's secondary username, or null if none is set." />
+  <Param name="display_name" type="string|null" description="The user's display name, or null if they haven't set one." />
+  <Param name="discord_id" type="string|null" description="The ID of the linked Discord account, or null if none is linked." />
+</ParamTable>
+
+<Aside type="info">
+  The `username` path parameter accepts either the user's username or their alias. Either way, the `username` field in the response is always the real username.
+</Aside>
+
+#### `assets`
+
+<ParamTable>
+  <Param name="audios" type="array" description="List of audio tracks on the profile." />
+  <Param name="audios[].id" type="string" description="UUID of the audio track." />
+  <Param name="audios[].title" type="string" description="Title of the audio track." />
+  <Param name="audios[].artist" type="string|null" description="Artist of the audio track, or null if not set." />
+  <Param name="audios[].album" type="string|null" description="Album of the audio track, or null if not set." />
+  <Param name="audios[].duration" type="number" description="Duration of the audio track in seconds." />
+  <Param name="audios[].cover_id" type="string|null" description="UUID of the cover image, or null if none." />
+  <Param name="avatar_url" type="string|null" description="CDN URL of the user's avatar image." />
+  <Param name="background_url" type="string|null" description="CDN URL of the profile background image." />
+  <Param name="cursor_url" type="string|null" description="CDN URL of the custom cursor, or null if none." />
+</ParamTable>
+
+#### `colors`
+
+<ParamTable>
+  <Param name="accent" type="string" description="Accent color as a hex value." />
+  <Param name="background" type="string" description="Background color as a hex value." />
+  <Param name="badges" type="string" description="Badge color as a hex value." />
+  <Param name="links" type="string" description="Link button color as a hex value." />
+  <Param name="text" type="string" description="Primary text color as a hex value." />
+</ParamTable>
+
+#### `config`
+
+<ParamTable>
+  <Param name="avatar_shape" type="string" description="Shape of the avatar (circle, square, etc.)." />
+  <Param name="bio" type="string|null" description="Profile bio text, or null if not set." />
+  <Param name="font" type="string" description="Font family used on the profile." />
+  <Param name="join_date" type="string" description="Date the user joined, in YYYY-MM-DD format." />
+  <Param name="layout" type="string" description="Profile layout style (e.g. default)." />
+  <Param name="likes" type="number|null" description="Total number of likes received, or null if hidden by the user." />
+  <Param name="location" type="string|null" description="User's location, or null if not set." />
+  <Param name="monochrome_links" type="boolean" description="Whether link icons are drawn in a single color instead of their brand colors." />
+  <Param name="page_enter_text" type="string|null" description="Custom text shown on the page enter screen, or null if none." />
+  <Param name="page_views" type="number|null" description="Total profile page view count, or null if hidden by the user." />
+  <Param name="profile_blur" type="number" description="Background blur level (0–100)." />
+  <Param name="profile_opacity" type="number" description="Background opacity level (0–100)." />
+  <Param name="shuffle_audios" type="boolean" description="Whether audio tracks are shuffled." />
+  <Param name="use_discord_avatar" type="boolean" description="Whether the Discord avatar is used instead of the custom one." />
+</ParamTable>
+
+<Aside type="info">
+  `join_date`, `likes` and `page_views` are `null` when the user hid them in their [privacy settings](/customize/privacy/).
+</Aside>
+
+#### `effects`
+
+<ParamTable>
+  <Param name="background" type="string|null" description="Background particle effect (e.g. snowflakes), or null." />
+  <Param name="badges_glow" type="boolean" description="Whether badges have a glow effect." />
+  <Param name="cursor" type="string|null" description="Custom cursor effect name, or null if none." />
+  <Param name="links_glow" type="boolean" description="Whether link buttons have a glow effect." />
+  <Param name="username" type="string|null" description="Username text effect (e.g. rainbow), or null." />
+  <Param name="username_glow" type="boolean" description="Whether the username has a glow effect." />
+</ParamTable>
+
+#### `tab`
+
+<ParamTable>
+  <Param name="animated_title" type="string|null" description="Browser tab title animation style, or null." />
+  <Param name="use_avatar" type="boolean" description="Whether the avatar is shown as the browser tab icon." />
+</ParamTable>
+
+#### `typewriter`
+
+<ParamTable>
+  <Param name="enabled" type="boolean" description="Whether the typewriter effect is enabled." />
+  <Param name="texts" type="array" description="List of strings cycled through by the effect. Empty when the effect is disabled." />
+  <Param name="speed" type="number" description="Milliseconds per character while typing." />
+  <Param name="delete_speed" type="number" description="Milliseconds per character while erasing." />
+</ParamTable>
+
+<Aside type="info">
+  All asset URLs are served via the Miwa CDN. See [CDN URLs](/developers/usage/cdn-urls/) for details on the URL structure.
+</Aside>
+
+## Error Responses
+
+| Status | Description                                                         |
+|--------|---------------------------------------------------------------------|
+| `401`  | Missing or invalid API key.                                         |
+| `404`  | No user found with the given username.                              |
+| `429`  | Rate limit exceeded. Wait before retrying.                          |

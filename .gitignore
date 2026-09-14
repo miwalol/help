@@ -1,15 +1,14 @@
 .idea
-.next
 .env
 node_modules
-out
+dist
+.astro
 
 .DS_Store
 
 package-lock.json
 yarn.lock
 
-next-env.d.ts
 *.tsbuildinfo
 
 # Written by scripts/generate-llms.ts

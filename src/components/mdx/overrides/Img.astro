@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string | ImageMetadata;
+  alt?: string;
+}
+
+const { src, alt = '', ...rest } = Astro.props;
+---
+
+{typeof src === 'string' ? (
+  <img src={src} alt={alt} class="size-full md:w-auto" {...rest} />
+) : (
+  <Image src={src} alt={alt} class="size-full md:w-auto" {...rest} />
+)}

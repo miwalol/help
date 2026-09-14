@@ -1,0 +1,97 @@
+---
+import { execFileSync } from 'node:child_process';
+import { getCollection, render } from 'astro:content';
+import { Pencil, TriangleAlert } from 'lucide-astro';
+import Base from '@/layouts/Base.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import Sidebar from '@/components/sidebar/Sidebar.astro';
+import TableOfContents from '@/components/ui/TableOfContents.astro';
+import UsefulFeedback from '@/components/ui/UsefulFeedback.astro';
+import { mdxComponents } from '@/components/mdx/overrides';
+import { buildTableOfContents } from '@/lib/toc';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('docs');
+  return entries.map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const toc = buildTableOfContents(entry.body ?? '');
+const segments = entry.id.split('/');
+const isDeveloperSection = segments[0] === 'developers';
+
+function getLastUpdated(filePath: string): { display: string; iso: string } | null {
+  try {
+    const iso = execFileSync('git', ['log', '--follow', '-1', '--format=%aI', '--', filePath], { encoding: 'utf8' }).trim();
+    if (!iso) return null;
+    const display = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(iso));
+    return { display, iso };
+  } catch {
+    return null;
+  }
+}
+
+const lastUpdated = getLastUpdated(entry.filePath!);
+---
+
+<Base
+  title={entry.data.title}
+  description={entry.data.description}
+  canonical={`/${entry.id}/`}
+  markdownAlternate={`/${entry.id}.md`}
+  type="article"
+>
+  <div class="flex gap-4">
+    <Sidebar sidebar={isDeveloperSection ? 'dev' : 'main'} />
+
+    <div class="container mx-auto flex max-w-screen-sm justify-between px-4 py-8 xl:max-w-screen-xl">
+      <div></div>
+
+      <main>
+        <Breadcrumb sidebar={isDeveloperSection ? 'dev' : 'main'} />
+
+        <div class="mb-4">
+          <h1 class="text-3xl font-bold">{entry.data.title}</h1>
+          {!!entry.data.description && <p class="mt-1 text-gray-400">{entry.data.description}</p>}
+
+          <div class="mt-4 h-px w-full border border-border"></div>
+        </div>
+
+        <article data-pagefind-body id="content" tabindex={-1}>
+          <Content components={mdxComponents} />
+        </article>
+
+        <div class="mb-6 mt-8 h-px w-full border border-border"></div>
+
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          {lastUpdated && (
+            <span>Last updated: <time datetime={lastUpdated.iso}>{lastUpdated.display}</time></span>
+          )}
+
+          <div class="flex flex-wrap items-center justify-end gap-4">
+            <a
+              href={`https://github.com/miwalol/help/edit/master/src/content/docs/${segments.join('/')}${entry.filePath?.endsWith('/index.mdx') ? '/index' : ''}.mdx`}
+              target="_blank" class="flex items-center gap-2" rel="nofollow noopener noreferrer"
+            >
+              <Pencil />Edit this page<span class="sr-only"> (opens in new tab)</span>
+            </a>
+
+            <a
+              href={`https://github.com/miwalol/help/issues/new?title=Issue in \`${entry.id}\``}
+              target="_blank" class="flex items-center gap-2" rel="nofollow noopener noreferrer"
+            >
+              <TriangleAlert />Raise an issue<span class="sr-only"> (opens in new tab)</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-center">
+          <UsefulFeedback />
+        </div>
+      </main>
+
+      <TableOfContents contents={toc} />
+    </div>
+  </div>
+</Base>

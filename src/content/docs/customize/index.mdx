@@ -1,0 +1,62 @@
+---
+title: Customization Overview
+description: Learn how to customize your Miwa.lol profile with layouts, colors, fonts, effects, and more.
+---
+
+import CardGrid from '@/components/mdx/CardGrid.astro';
+import LinkCard from '@/components/mdx/LinkCard.astro';
+import { LayoutTemplate, Palette, CaseSensitive, Image as ImageIcon, AppWindow, KeyRound, SquareDashed, Sparkle, SquareDashedBottomCode } from 'lucide-astro';
+
+**Welcome to the customization overview!** This section provides a comprehensive guide on how to personalize your Miwa.lol profile to make it uniquely yours.
+
+All customization options live under your [Dashboard > Customize](https://miwa.lol/dashboard/customize), organized across five tabs:
+
+| Tab                 | What you'll find there                                                              |
+|---------------------|-------------------------------------------------------------------------------------|
+| **General**         | Your description, the profile card (opacity, blur, font, layout, border…), and more |
+| **Assets**          | Avatar, background, custom cursor, and audios                                        |
+| **Colors & Effects**| Colors, glow, cursor and background effects, opening animation                       |
+| **SEO & Metadata**  | Browser tab appearance, and how your page looks when shared                          |
+| **Privacy**         | Hide your views, likes, join date, and search engine indexing                        |
+
+## Customization Options
+
+Miwa.lol offers a variety of customization options to enhance the appearance and functionality of your profile. Here are some of the key areas you can customize:
+<CardGrid>
+  <LinkCard
+    href="/customize/profile-card/" title="Profile Card" icon={SquareDashed}
+    description="Adjust the opacity, blur, border, and animations of your profile card."
+  />
+  <LinkCard
+    href="/customize/layout/" title="Layout" icon={LayoutTemplate}
+    description="Discover different layout options to structure your profile."
+  />
+  <LinkCard
+    href="/customize/colors/" title="Colors" icon={Palette}
+    description="Learn how to customize the colors of your profile."
+  />
+  <LinkCard
+    href="/customize/effects/" title="Effects" icon={Sparkle}
+    description="Add glow, cursor effects, background effects, and an opening animation."
+  />
+  <LinkCard
+    href="/customize/fonts/" title="Fonts" icon={CaseSensitive}
+    description="Choose from a variety of fonts to match your style."
+  />
+  <LinkCard
+    href="/customize/assets/" title="Assets" icon={ImageIcon}
+    description="Add an avatar, background, audios, and a custom cursor to your profile."
+  />
+  <LinkCard
+    href="/customize/tab/" title="Browser Tab" icon={AppWindow}
+    description="Customize the browser tab title and icon for your profile."
+  />
+  <LinkCard
+    href="/customize/embed/" title="Embed" icon={SquareDashedBottomCode}
+    description="Control how your page looks when its link is shared on Discord, X, and other platforms."
+  />
+  <LinkCard
+    href="/customize/privacy/" title="Privacy Settings" icon={KeyRound}
+    description="Manage privacy settings for your profile, such as hiding views and likes."
+  />
+</CardGrid>

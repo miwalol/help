@@ -1,0 +1,311 @@
+import {
+  Archive,
+  ArrowBigUpDash,
+  BadgeCheck,
+  Bug, CaseSensitive, CircleUser,
+  Code, Eye,
+  Hammer,
+  HandCoins, Heart, IdCardLanyard, Link as LinkIcon,
+  Mail, Map,
+  MessageCircleQuestionMark, Palette, CirclePlus,
+  ScrollText, Settings,
+  UserRoundPlus, Waypoints, Book, LayoutTemplate, AppWindow, Image, ListPlus, Paintbrush, Award, DollarSign, Hand,
+  Shield, FileBraces, User, Webhook, Info, LayoutGrid,
+  HandHelping, MonitorSmartphone, Component, ChartLine, Flame, SquareDashed, Sparkle, SquareDashedBottomCode,
+  KeyRound, Library,
+} from 'lucide-astro';
+import type { ISidebarItem } from '@/lib/types';
+import { SiDiscord } from '@icons-pack/react-simple-icons';
+
+export const mainSidebar: ISidebarItem[] = [
+  {
+    label: 'Welcome to Miwa.lol!',
+    slug: '/welcome/',
+    icon: Hand,
+  },
+  {
+    label: 'Getting Started',
+    slug: '/getting-started/',
+    icon: UserRoundPlus,
+    items: [
+      {
+        label: 'Navigating the Dashboard',
+        slug: '/getting-started/navigating-the-dashboard/',
+        icon: Map,
+      },
+      {
+        label: 'Leaderboard',
+        slug: '/getting-started/leaderboard/',
+        icon: ArrowBigUpDash,
+      },
+      {
+        label: 'Pricing',
+        slug: '/getting-started/pricing/',
+        icon: DollarSign,
+      },
+    ],
+  },
+  {
+    label: 'Account',
+    icon: CircleUser,
+    items: [
+      {
+        label: 'Username',
+        slug: '/account/username/',
+        icon: IdCardLanyard,
+      },
+      {
+        label: 'Security',
+        slug: '/account/security/',
+        icon: Shield,
+      },
+      {
+        label: 'Sessions',
+        slug: '/account/sessions/',
+        icon: MonitorSmartphone,
+      },
+      {
+        label: 'Connections',
+        slug: '/account/connections/',
+        icon: Component,
+      },
+      {
+        label: 'Analytics',
+        slug: '/account/analytics/',
+        icon: ChartLine,
+      },
+      {
+        label: 'Badges',
+        slug: '/account/badges/',
+        icon: Award,
+      },
+      {
+        label: 'Custom Domain',
+        slug: '/account/custom-domain/',
+        icon: LinkIcon,
+      },
+      {
+        label: 'Beta Features',
+        slug: '/account/beta-features/',
+        icon: Flame,
+      },
+    ],
+  },
+  {
+    label: 'Customize',
+    slug: '/customize/',
+    icon: Paintbrush,
+    items: [
+      {
+        label: 'Profile Card',
+        slug: '/customize/profile-card/',
+        icon: SquareDashed,
+      },
+      {
+        label: 'Assets',
+        slug: '/customize/assets/',
+        icon: Image,
+      },
+      {
+        label: 'Colors',
+        slug: '/customize/colors/',
+        icon: Palette,
+      },
+      {
+        label: 'Effects',
+        slug: '/customize/effects/',
+        icon: Sparkle,
+      },
+      {
+        label: 'Fonts',
+        slug: '/customize/fonts/',
+        icon: CaseSensitive,
+      },
+      {
+        label: 'Layout',
+        slug: '/customize/layout/',
+        icon: LayoutTemplate,
+      },
+      {
+        label: 'Privacy',
+        slug: '/customize/privacy/',
+        icon: KeyRound,
+      },
+      {
+        label: 'Tab',
+        slug: '/customize/tab/',
+        icon: AppWindow,
+      },
+      {
+        label: 'Embed',
+        slug: '/customize/embed/',
+        icon: SquareDashedBottomCode,
+      },
+      {
+        label: 'Links',
+        slug: '/links/',
+        icon: LinkIcon,
+        items: [
+          {
+            label: 'Supported Platforms',
+            slug: '/links/supported-platforms/',
+            icon: Waypoints,
+          },
+          {
+            label: 'Adding a Link',
+            slug: '/links/adding-a-link/',
+            icon: CirclePlus,
+          },
+          {
+            label: 'Adding a Custom Link',
+            slug: '/links/adding-a-custom-link/',
+            icon: CirclePlus,
+          },
+        ],
+      },
+      {
+        label: 'Cards',
+        slug: '/cards/',
+        icon: ListPlus,
+        items: [
+          {
+            label: 'Creating a Card',
+            slug: '/cards/creating-a-card/',
+            icon: ListPlus,
+          },
+          {
+            label: 'Examples',
+            slug: '/cards/examples/',
+            icon: Book,
+          },
+          {
+            label: 'Settings',
+            slug: '/cards/settings/',
+            icon: Settings,
+          },
+        ],
+      },
+      {
+        label: 'Templates',
+        slug: '/templates/',
+        icon: Library,
+        items: [
+          {
+            label: 'Creating a Template',
+            slug: '/templates/creating-a-template/',
+            icon: CirclePlus,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'How To\'s',
+    icon: MessageCircleQuestionMark,
+    items: [
+      {
+        label: 'Link your Discord account',
+        slug: '/how-to/link-your-discord/',
+        icon: SiDiscord,
+      },
+      {
+        label: 'Profile Views',
+        slug: '/how-to/profile-views/',
+        icon: Eye,
+      },
+      {
+        label: 'Likes',
+        slug: '/how-to/likes/',
+        icon: Heart,
+      },
+      {
+        label: 'Verified Badge',
+        slug: '/how-to/verified-badge/',
+        icon: BadgeCheck,
+      },
+      {
+        label: 'Bug Hunter Badge',
+        slug: '/how-to/bug-hunter-badge/',
+        icon: Bug,
+      },
+    ],
+  },
+  {
+    label: 'Miscellaneous',
+    icon: Archive,
+    items: [
+      {
+        label: 'Contact Us',
+        slug: '/misc/contact/',
+        icon: Mail,
+      },
+      {
+        label: 'Changelog',
+        slug: '/misc/changelog/',
+        icon: ScrollText,
+      },
+      {
+        label: 'Open Source',
+        slug: '/misc/open-source/',
+        icon: Code,
+      },
+      {
+        label: 'Troubleshooting',
+        slug: '/misc/troubleshooting/',
+        icon: HandHelping,
+      },
+      {
+        label: 'Donating',
+        slug: '/misc/donating/',
+        icon: HandCoins,
+      },
+      {
+        label: 'Bans',
+        slug: '/misc/bans/',
+        icon: Hammer,
+      },
+    ],
+  },
+];
+
+export const developersSidebar: ISidebarItem[] = [
+  {
+    label: 'Overview',
+    slug: '/developers/',
+    icon: Code,
+  },
+  {
+    label: 'Usage',
+    slug: '/developers/usage/',
+    icon: Info,
+    items: [
+      {
+        label: 'Creating an API Key',
+        slug: '/developers/usage/creating-api-key/',
+        icon: Webhook,
+      },
+      {
+        label: 'CDN URLs',
+        slug: '/developers/usage/cdn-urls/',
+        icon: LinkIcon,
+      },
+    ],
+  },
+  {
+    label: 'Endpoints',
+    slug: '/developers/endpoints/',
+    icon: FileBraces,
+    items: [
+      {
+        label: 'Get User',
+        slug: '/developers/endpoints/get-user/',
+        icon: User,
+      },
+      {
+        label: 'Get Cards',
+        slug: '/developers/endpoints/get-cards/',
+        icon: LayoutGrid,
+      },
+    ],
+  }
+];

@@ -1,0 +1,26 @@
+---
+import { ArrowRight } from 'lucide-astro';
+import type { IconComponent } from '@/lib/types';
+
+interface Props {
+  href: string;
+  title: string;
+  description?: string;
+  icon?: IconComponent;
+}
+
+const { href, title, description, icon: Icon = null } = Astro.props;
+---
+
+<a href={href} class="relative mt-4 block rounded-xl border border-border bg-secondary px-4 py-3 backdrop-blur">
+  <div class="flex items-center gap-1.5">
+    {Icon && <Icon />}
+    <span class="truncate font-bold" title={title}>{title}</span>
+
+    <div class="grow"></div>
+
+    <ArrowRight />
+  </div>
+
+  {description && <p>{description}</p>}
+</a>

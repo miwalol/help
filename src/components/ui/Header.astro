@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import { Menu, Search as SearchIcon, X } from 'lucide-astro';
+import { SiBluesky, SiDiscord, SiGithub, SiReddit, SiX } from '@icons-pack/react-simple-icons';
+import Search from '@/components/ui/Search.astro';
+import miwaWhite from '@/assets/app/miwa-white-48.png';
+
+const isHome = Astro.url.pathname === '/';
+---
+
+<header class="sticky top-0 z-40 flex h-16 w-full items-center justify-between border-b border-border px-4 py-2 shadow backdrop-blur">
+  {isHome ? (
+    <div class="size-6 md:hidden"></div>
+  ) : (
+    <button
+      id="sidebar-toggle" class="md:hidden" aria-label="Open navigation menu"
+      aria-expanded="false" aria-controls="sidebar"
+    >
+      <Menu id="sidebar-toggle-open-icon" />
+      <X id="sidebar-toggle-close-icon" hidden />
+    </button>
+  )}
+
+  <a href="/" class="flex items-center gap-2 py-1">
+    <Image src={miwaWhite} alt="Miwa.lol Logo" width={40} height={40} class="size-10" priority />
+    <div>
+      <span class="text-3xl font-bold">Miwa<span class="text-indigo-700">.</span>lol</span>
+      <span class="inline-block pl-2 text-lg md:text-2xl">Help</span>
+    </div>
+  </a>
+
+  <div class="flex items-center gap-4">
+    <div class="relative max-md:hidden">
+      <SearchIcon class="pointer-events-none absolute left-3 top-0 flex h-full items-center" />
+      <input
+        data-search-trigger readonly placeholder="Search..." type="search"
+        aria-label="Search documentation" aria-haspopup="dialog"
+        class="w-48 rounded-xl border border-indigo-800 bg-indigo-950/80 py-2 pl-10 pr-4 outline-none ring-indigo-500/50 transition duration-200 focus:ring-2 md:w-72"
+      />
+      <div class="absolute right-3 top-0 flex h-full select-none items-center" aria-hidden="true">
+        <kbd id="search-kbd" class="rounded bg-gray-600 px-1 py-0.5 text-xs">Ctrl+K</kbd>
+      </div>
+    </div>
+    <button data-search-trigger aria-label="Search documentation" aria-haspopup="dialog" class="md:hidden"><SearchIcon /></button>
+
+    <div class="flex items-center gap-4 max-md:hidden">
+      <a href="https://github.com/miwalol" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><SiGithub aria-hidden="true" /></a>
+      <a href="https://discord.gg/miwa" target="_blank" rel="noopener noreferrer" aria-label="Discord"><SiDiscord aria-hidden="true" /></a>
+      <a href="https://x.com/MiwaTeam" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><SiX aria-hidden="true" /></a>
+      <a href="https://bsky.app/profile/miwa.lol" target="_blank" rel="noopener noreferrer" aria-label="Bluesky"><SiBluesky aria-hidden="true" /></a>
+      <a href="https://www.reddit.com/r/Miwadotlol/" target="_blank" rel="noopener noreferrer" aria-label="Reddit"><SiReddit aria-hidden="true" /></a>
+    </div>
+  </div>
+</header>
+
+<Search />
+
+<script>
+  const kbd = document.getElementById('search-kbd');
+  if (kbd && /Mac|iPod|iPhone|iPad/.test(navigator.platform)) kbd.textContent = '⌘K';
+
+  const toggle = document.getElementById('sidebar-toggle');
+  const sidebar = document.getElementById('sidebar');
+  if (toggle && sidebar) {
+    const openIcon = document.getElementById('sidebar-toggle-open-icon')!;
+    const closeIcon = document.getElementById('sidebar-toggle-close-icon')!;
+
+    toggle.addEventListener('click', () => {
+      const open = sidebar.dataset.open !== 'true';
+      sidebar.dataset.open = String(open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      openIcon.hidden = open;
+      closeIcon.hidden = !open;
+    });
+  }
+</script>

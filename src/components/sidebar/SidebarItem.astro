@@ -1,0 +1,44 @@
+---
+import { twMerge } from 'tailwind-merge';
+import type { ISidebarItem } from '@/lib/types';
+
+interface Props {
+  item: ISidebarItem;
+}
+
+const { item } = Astro.props;
+const Icon = item.icon;
+const pathname = Astro.url.pathname;
+const linkClasses = twMerge(
+  'px-3 py-1.5 transition-colors hover:bg-gray-500/30 rounded-lg w-full flex items-center gap-1.5 text-nowrap truncate mb-1',
+  'aria-[current=page]:bg-gray-500',
+);
+const isCurrent = pathname === item.slug || pathname === `${item.slug}/`;
+---
+
+{Array.isArray(item.items) ? (
+  <div>
+    {item.slug ? (
+      <a href={item.slug} class={linkClasses} aria-current={isCurrent ? 'page' : undefined} title={item.label}>
+        <div>{Icon && <Icon />}</div>
+        <span class="truncate">{item.label}</span>
+      </a>
+    ) : (
+      <div class={linkClasses}>
+        <div>{Icon && <Icon />}</div>
+        <span class="truncate">{item.label}</span>
+      </div>
+    )}
+
+    <div class="pl-4">
+      {item.items.map(child => (
+        <Astro.self item={child} />
+      ))}
+    </div>
+  </div>
+) : (
+  <a href={item.slug} class={linkClasses} aria-current={isCurrent ? 'page' : undefined} title={item.label}>
+    <div>{Icon && <Icon />}</div>
+    <span class="truncate">{item.label}</span>
+  </a>
+)}

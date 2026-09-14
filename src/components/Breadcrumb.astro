@@ -1,0 +1,69 @@
+---
+import { ChevronRight, Code, Home } from 'lucide-astro';
+import { findPathBySlug } from '@/lib/sidebar';
+import { developersSidebar, mainSidebar } from '@/components/sidebar/sidebars';
+
+interface Props {
+  sidebar: 'main' | 'dev';
+}
+
+const { sidebar } = Astro.props;
+const pathname = Astro.url.pathname;
+const path = findPathBySlug(sidebar === 'main' ? mainSidebar : developersSidebar, pathname.slice(0, -1));
+const links = path ?? [];
+if (sidebar === 'dev') {
+  links.unshift({
+    label: 'Developers',
+    icon: Code,
+    slug: '/developers/',
+  });
+}
+
+const ldJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: links.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.label,
+    item: !item.slug ? undefined : new URL(item.slug.endsWith('/') ? item.slug : `${item.slug}/`, Astro.site).toString(),
+  })),
+});
+---
+
+{!!links.length && (
+  <>
+    <nav aria-label="Breadcrumb" class="mb-4">
+      <ol class="flex items-center gap-1 text-sm">
+        <li class="flex items-center gap-1">
+          <Home size={20} />
+          <ChevronRight size={20} />
+        </li>
+
+        {links.map((item, i) => {
+          const isLast = i === links.length - 1;
+
+          if (isLast) {
+            return <li aria-current="page">{item.label}</li>;
+          } else if (!item.slug) {
+            return (
+              <li class="flex items-center gap-1">
+                <span>{item.label}</span>
+                <ChevronRight size={20} />
+              </li>
+            );
+          }
+
+          return (
+            <li class="flex items-center gap-1">
+              <a href={item.slug}>{item.label}</a>
+              <ChevronRight size={20} />
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+
+    <script type="application/ld+json" is:inline set:html={ldJson} />
+  </>
+)}

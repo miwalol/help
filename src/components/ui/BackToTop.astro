@@ -1,0 +1,26 @@
+---
+import { ArrowUp } from 'lucide-astro';
+---
+
+<div id="back-to-top" class="mt-3 border-t border-border pt-3 opacity-0 transition-opacity duration-300">
+  <button
+    type="button"
+    class="flex items-center gap-1.5 text-sm text-gray-400 transition-colors hover:text-gray-200"
+  >
+    <ArrowUp size={14} />Back to top
+  </button>
+</div>
+
+<script>
+  const container = document.getElementById('back-to-top')!;
+  const button = container.querySelector('button')!;
+
+  window.addEventListener('scroll', () => {
+    container.classList.toggle('opacity-100', window.scrollY > 300);
+    container.classList.toggle('opacity-0', window.scrollY <= 300);
+  }, { passive: true });
+
+  button.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

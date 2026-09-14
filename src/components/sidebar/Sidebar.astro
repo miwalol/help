@@ -1,0 +1,30 @@
+---
+import SidebarItem from '@/components/sidebar/SidebarItem.astro';
+import { developersSidebar, mainSidebar } from '@/components/sidebar/sidebars';
+
+interface Props {
+  sidebar: 'main' | 'dev';
+}
+
+const { sidebar } = Astro.props;
+const items = sidebar === 'main' ? mainSidebar : developersSidebar;
+---
+
+<nav
+  class="absolute inset-0 top-16 max-h-screen w-full overflow-auto border-r border-border p-4 shadow backdrop-blur max-md:z-40 max-md:hidden max-md:data-[open=true]:block md:sticky md:top-0 md:w-72"
+  id="sidebar"
+  data-open="false"
+  aria-label="Documentation navigation"
+>
+  {items.map(item => <SidebarItem item={item} />)}
+</nav>
+
+<script>
+  const nav = document.getElementById('sidebar')!;
+  const savedScroll = Number(sessionStorage.getItem('sidebar-scroll') ?? 0);
+  nav.scrollTop = savedScroll;
+
+  nav.addEventListener('scroll', () => {
+    sessionStorage.setItem('sidebar-scroll', String(nav.scrollTop));
+  }, { passive: true });
+</script>

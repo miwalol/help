@@ -1,0 +1,36 @@
+---
+import { twMerge } from 'tailwind-merge';
+import { Info, Rocket, TriangleAlert } from 'lucide-astro';
+
+type AsideType = 'info' | 'tip' | 'warning' | 'danger';
+
+interface Props {
+  type: AsideType;
+  title?: string;
+}
+
+const { type, title } = Astro.props;
+
+const classes: Record<AsideType, string> = {
+  info: 'bg-blue-500/30',
+  tip: 'bg-purple-500/30',
+  warning: 'bg-yellow-500/30',
+  danger: 'bg-red-500/30',
+};
+const icons: Record<AsideType, typeof Info> = {
+  info: Info,
+  tip: Rocket,
+  warning: TriangleAlert,
+  danger: TriangleAlert,
+};
+const Icon = icons[type];
+---
+
+<aside class={twMerge('rounded-xl border border-border p-4 my-3', classes[type])}>
+  <div class="mb-2 flex items-center gap-2">
+    <Icon />
+    <span class="font-semibold uppercase">{title || type}</span>
+  </div>
+
+  <slot />
+</aside>

@@ -11,7 +11,8 @@ import { mkdir, readdir, readFile, rm, rmdir, writeFile } from 'node:fs/promises
 import path from 'node:path';
 import matter from 'gray-matter';
 import { developersSidebar, mainSidebar } from '@/components/sidebar/sidebars';
-import { findContentPages, flattenSidebar } from '@/lib/content';
+import { findContentPages } from '@/lib/content';
+import { flattenSidebar } from '@/lib/sidebar';
 import { mdxToMarkdown, type MdxToMarkdownOptions } from './mdx-to-markdown';
 
 const SITE_TITLE = 'Miwa.lol Help';
@@ -61,8 +62,8 @@ async function main(): Promise<void> {
 }
 
 function readBaseUrl(): string {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  if (!baseUrl) throw new Error('NEXT_PUBLIC_BASE_URL is not set.');
+  const baseUrl = process.env.SITE_URL;
+  if (!baseUrl) throw new Error('SITE_URL is not set.');
   return baseUrl.replace(/\/+$/, '');
 }
 

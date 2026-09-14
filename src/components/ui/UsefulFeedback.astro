@@ -1,0 +1,39 @@
+---
+import { ThumbsDown, ThumbsUp } from 'lucide-astro';
+---
+
+<div id="useful-feedback" class="flex items-center gap-4" data-voted="false">
+  <span>Was this page useful?</span>
+  <button type="button" data-vote="yes" class="flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-50">
+    <ThumbsUp />Yes
+  </button>
+  <button type="button" data-vote="no" class="flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-50">
+    <ThumbsDown />No
+  </button>
+  <span data-vote-status aria-live="polite" aria-atomic="true"></span>
+</div>
+
+<script>
+  declare global {
+    interface Window {
+      plausible?: (event: string, options?: { props?: Record<string, string> }) => void;
+    }
+  }
+
+  const root = document.getElementById('useful-feedback')!;
+  const status = root.querySelector('[data-vote-status]')!;
+  const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-vote]')];
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (root.dataset.voted === 'true') return;
+      root.dataset.voted = 'true';
+
+      const useful = button.dataset.vote === 'yes';
+      window.plausible?.(useful ? 'Page Useful' : 'Page Not Useful', { props: { url: location.pathname } });
+
+      buttons.forEach(b => { b.disabled = true; });
+      status.textContent = 'Thanks for feedback!';
+    });
+  });
+</script>

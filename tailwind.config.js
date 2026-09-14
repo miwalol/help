@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './mdx-components.tsx',
-    './app/**/*.tsx',
-    './components/**/*.tsx',
-    './content/**/*.mdx',
+    './src/**/*.{astro,tsx,mdx}',
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['\'Outfit Variable\'', 'sans-serif'],
+      },
       colors: {
         primary: '#504ACF',
         border: '#28282c',

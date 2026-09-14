@@ -1,0 +1,20 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  href: string;
+  variant?: ButtonVariant;
+}
+
+export type ButtonVariant = 'primary';
+
+const { href, variant = 'primary', class: className, ...rest } = Astro.props;
+
+const variantClasses: Record<ButtonVariant, string> = {
+  primary: 'bg-primary',
+};
+---
+
+<a href={href} class={twMerge('block py-2 px-4 rounded-xl text-white my-2', variantClasses[variant], className ?? undefined)} {...rest}>
+  <slot />
+</a>

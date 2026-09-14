@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        color: theme(colors.gray.50);
+        background-color: #030305;
+        scrollbar-color: theme(colors.indigo.900) transparent;
+        scroll-behavior: smooth;
+    }
+
+    html:has(#sidebar[aria-expanded="true"]) {
+        overflow: hidden;
+    }
+
+    #content {
+        @apply w-full xl:w-[theme(screens.lg)];
+    }
+}
+
+article svg {
+    display: inline-block;
+    width: 1.25em;
+    height: 1.25em;
+    vertical-align: -0.125em;
+}
+
+code {
+    counter-reset: step;
+    counter-increment: step 0;
+}
+
+code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1rem;
+    margin-left: .5rem;
+    margin-right: 1.5rem;
+    display: inline-block;
+    text-align: right;
+    color: theme(colors.gray.500);
+}
+
+.mdx-steps > ol {
+    counter-reset: step;
+    list-style: none;
+    margin-top: 0.75rem;
+    padding-left: 0;
+}
+
+.mdx-steps > ol > li {
+    counter-increment: step;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.mdx-steps > ol > li + li {
+    margin-top: 0.5rem;
+}
+
+.mdx-steps > ol > li::before {
+    content: counter(step) ".";
+    display: block;
+    width: 0.75rem;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.mdx-steps > ol > li > p {
+    margin-top: 0;
+}

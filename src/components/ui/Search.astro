@@ -1,0 +1,173 @@
+---
+import { Loader2, Search as SearchIcon, X } from 'lucide-astro';
+---
+
+<div id="search-overlay" hidden class="fixed inset-0 z-50 size-full h-screen overflow-auto bg-gray-500/10 backdrop-blur">
+  <button id="search-close" aria-label="Close search" class="absolute right-6 top-6 z-50"><X /></button>
+
+  <div
+    id="search-dialog" role="dialog" aria-modal="true" aria-label="Search documentation"
+    class="z-50 flex size-full flex-col justify-start bg-gray-800 p-4 md:mx-auto md:my-8 md:h-auto md:w-72 md:justify-center md:rounded-xl lg:w-96"
+  >
+    <div class="relative w-full">
+      <SearchIcon class="pointer-events-none absolute left-3 top-0 flex h-full items-center" />
+      <input
+        id="search-input" placeholder="Search..." type="search" autocomplete="off"
+        aria-label="Search documentation"
+        class="w-full rounded-xl border border-indigo-800 bg-indigo-950/80 py-2 pl-10 pr-4 outline-none ring-indigo-500/50 transition duration-200 focus:ring-2"
+      />
+    </div>
+
+    <p id="search-status" class="mb-2 mt-3 hidden text-sm text-gray-400" aria-live="polite" aria-atomic="true"></p>
+
+    <div id="search-loading" class="hidden justify-center py-6">
+      <Loader2 class="animate-spin text-gray-400" />
+    </div>
+
+    <p id="search-empty" class="hidden py-6 text-center text-gray-400"></p>
+
+    <div id="search-results" class="space-y-2"></div>
+  </div>
+</div>
+
+<script>
+  interface PagefindSubResult {
+    excerpt: string;
+    title: string;
+  }
+
+  interface PagefindResultData {
+    url: string;
+    sub_results: PagefindSubResult[];
+  }
+
+  interface PagefindResult {
+    id: string;
+    data(): Promise<PagefindResultData>;
+  }
+
+  interface PagefindApi {
+    init(): void;
+    search(query: string): Promise<{ results: PagefindResult[] }>;
+  }
+
+  declare global {
+    interface Window {
+      pagefind?: PagefindApi;
+    }
+  }
+
+  const overlay = document.getElementById('search-overlay')!;
+  const closeButton = document.getElementById('search-close')!;
+  const input = document.getElementById('search-input') as HTMLInputElement;
+  const status = document.getElementById('search-status')!;
+  const loading = document.getElementById('search-loading')!;
+  const empty = document.getElementById('search-empty')!;
+  const results = document.getElementById('search-results')!;
+
+  let pagefindReady: Promise<void> | null = null;
+
+  // A plain dynamic `import()` gets eagerly resolved by Vite/esbuild's dependency
+  // scanner even with `@vite-ignore`, and `/pagefind/pagefind.js` only exists in the
+  // built output. Routing it through `Function` hides it from static analysis.
+  const importPagefind = new Function('specifier', 'return import(specifier)') as (specifier: string) => Promise<PagefindApi>;
+
+  function loadPagefind(): Promise<void> {
+    if (!pagefindReady) {
+      pagefindReady = importPagefind('/pagefind/pagefind.js').then((m) => {
+        window.pagefind = m;
+        window.pagefind!.init();
+      });
+    }
+    return pagefindReady;
+  }
+
+  function openSearch() {
+    overlay.hidden = false;
+    loadPagefind();
+    input.focus();
+  }
+
+  function closeSearch() {
+    overlay.hidden = true;
+  }
+
+  function resetResults() {
+    results.innerHTML = '';
+    status.classList.add('hidden');
+    empty.classList.add('hidden');
+    loading.classList.add('hidden');
+  }
+
+  async function handleSearch(query: string) {
+    if (!query.trim()) {
+      resetResults();
+      return;
+    }
+
+    status.classList.remove('hidden');
+    loading.classList.remove('hidden');
+    empty.classList.add('hidden');
+    results.innerHTML = '';
+    status.textContent = 'Searching...';
+
+    await loadPagefind();
+    const search = await window.pagefind!.search(query);
+
+    loading.classList.add('hidden');
+    status.textContent = `${search.results.length} result${search.results.length !== 1 ? 's' : ''} for "${query}"`;
+
+    if (search.results.length === 0) {
+      empty.textContent = `No results for “${query}”`;
+      empty.classList.remove('hidden');
+      return;
+    }
+
+    for (const result of search.results) {
+      const data = await result.data();
+      const subResult = data.sub_results[0];
+      if (!subResult) continue;
+
+      const link = document.createElement('a');
+      link.href = data.url;
+      link.className = 'block rounded-xl bg-gray-900 p-2';
+
+      const title = document.createElement('span');
+      title.className = 'font-bold';
+      title.textContent = subResult.title;
+
+      const excerpt = document.createElement('p');
+      excerpt.className = 'max-h-12 overflow-hidden';
+      excerpt.innerHTML = subResult.excerpt;
+
+      link.append(title, excerpt);
+      link.addEventListener('click', closeSearch);
+      results.append(link);
+    }
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-search-trigger]').forEach((trigger) => {
+    trigger.addEventListener('click', openSearch);
+  });
+
+  closeButton.addEventListener('click', closeSearch);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeSearch();
+  });
+  input.addEventListener('input', () => handleSearch(input.value));
+
+  document.addEventListener('keydown', (e) => {
+    if (!overlay.hidden && e.key === 'Escape' && !e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
+      e.preventDefault();
+      closeSearch();
+      return;
+    }
+
+    const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+    const keyModifier = isMac ? e.metaKey : e.ctrlKey;
+    if (keyModifier && e.key?.toLowerCase() === 'k') {
+      e.preventDefault();
+      openSearch();
+    }
+  });
+</script>

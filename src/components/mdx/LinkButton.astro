@@ -1,0 +1,14 @@
+---
+import Button, { type ButtonVariant } from '@/components/ui/Button.astro';
+
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  href: string;
+  variant?: ButtonVariant;
+}
+
+const { href, variant, ...rest } = Astro.props;
+---
+
+<Button href={href} variant={variant} class="inline-block" {...rest}>
+  <slot />
+</Button>

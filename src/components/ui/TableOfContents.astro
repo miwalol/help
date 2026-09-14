@@ -1,0 +1,69 @@
+---
+import BackToTop from './BackToTop.astro';
+import type { TocElement } from '@/lib/toc';
+
+interface Props {
+  contents: TocElement[];
+}
+
+const { contents } = Astro.props;
+---
+
+{contents.length === 0 ? (
+  <aside aria-label="On this page" class="sticky top-20 hidden max-h-[calc(100vh-6rem)] min-w-64 max-w-64 overflow-x-hidden md:block"></aside>
+) : (
+  <aside aria-label="On this page" id="toc" class="sticky top-20 ml-8 hidden max-h-[calc(100vh-6rem)] min-w-64 max-w-64 overflow-y-auto overflow-x-hidden md:block">
+    <span class="mb-1 block font-bold">On this page</span>
+
+    <ul class="space-y-1">
+      {contents.map(c => (
+        <li class="truncate">
+          <a
+            href={`#${c.id}`} title={c.title} data-toc-id={c.id}
+            class="block truncate text-gray-400 transition-colors duration-100 hover:text-gray-200"
+            style={{ paddingLeft: `${c.level - 2}rem` }}
+          >{c.title}</a>
+        </li>
+      ))}
+    </ul>
+
+    <BackToTop />
+  </aside>
+)}
+
+<script>
+  const toc = document.getElementById('toc');
+  if (toc) {
+    const links = [...toc.querySelectorAll<HTMLAnchorElement>('[data-toc-id]')];
+    const elements = links
+      .map(link => document.getElementById(link.dataset.tocId!))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const setActive = (id: string) => {
+      links.forEach((link) => {
+        const isActive = link.dataset.tocId === id;
+        link.classList.toggle('text-white', isActive);
+        link.classList.toggle('text-gray-400', !isActive);
+        link.classList.toggle('hover:text-gray-200', !isActive);
+        if (isActive) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    if (elements.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries.filter(e => e.isIntersecting);
+          if (!visible.length) return;
+
+          const topmost = visible.reduce((a, b) =>
+            (a.boundingClientRect.top < b.boundingClientRect.top ? a : b));
+          setActive(topmost.target.id);
+        },
+        { rootMargin: '0px 0px -70% 0px', threshold: 0 },
+      );
+
+      elements.forEach(el => observer.observe(el));
+    }
+  }
+</script>

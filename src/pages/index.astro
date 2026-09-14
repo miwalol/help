@@ -1,0 +1,55 @@
+---
+import { Code, HandHelping, Mail, Paintbrush } from 'lucide-astro';
+import Base from '@/layouts/Base.astro';
+import Button from '@/components/ui/Button.astro';
+import CardGrid from '@/components/mdx/CardGrid.astro';
+import LinkCard from '@/components/mdx/LinkCard.astro';
+---
+
+<Base
+  description="Need help with Miwa.lol? This website should help you!"
+  canonical="/"
+>
+  <main id="content" tabindex={-1} class="container mx-auto px-4 py-8 lg:px-32">
+    <section class="my-12">
+      <h1 class="text-5xl font-semibold">Miwa.lol Help</h1>
+
+      <p class="my-6 text-lg">
+        <strong>Need help with Miwa.lol?</strong> This website should help you!
+      </p>
+
+      <Button href="/welcome/" class="inline-block">Get Started</Button>
+    </section>
+
+    <section>
+      <div>
+        <h2 class="mb-1 text-3xl font-bold">Helpful Resources</h2>
+        <p class="text-gray-300">
+          Here are some helpful resources to get you started with Miwa.lol.
+        </p>
+      </div>
+
+      <CardGrid>
+        <LinkCard
+          href="/customize/" title="Customization" icon={Paintbrush}
+          description="Learn how to customize your Miwa.lol profile with fonts, colors, layouts, and more."
+        />
+
+        <LinkCard
+          href="/developers/" title="API Docs" icon={Code}
+          description="Explore the Miwa.lol API documentation for developers to integrate and build with our platform."
+        />
+
+        <LinkCard
+          href="/misc/troubleshooting/" title="Troubleshooting" icon={HandHelping}
+          description="Having issues with Miwa.lol? This page provides troubleshooting steps and solutions."
+        />
+
+        <LinkCard
+          href="/misc/contact/" title="Contact Support" icon={Mail}
+          description="Need further assistance? Contact our support team for help with any issues you may have."
+        />
+      </CardGrid>
+    </section>
+  </main>
+</Base>

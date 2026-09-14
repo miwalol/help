@@ -1,0 +1,29 @@
+---
+import { Link } from 'lucide-astro';
+import { slugify } from '@/lib/toc';
+
+interface Props {
+  level: 2 | 3 | 4;
+}
+
+const { level } = Astro.props;
+const html = await Astro.slots.render('default');
+const slug = slugify(html);
+
+const sizeMap: Record<2 | 3 | 4, string> = {
+  2: 'text-2xl',
+  3: 'text-xl',
+  4: 'text-lg',
+};
+const headingClass = `${sizeMap[level]} font-bold`;
+---
+
+<div class="group mb-3 mt-6 flex items-center gap-2" id={slug}>
+  {level === 2 && <h2 class={headingClass} set:html={html} />}
+  {level === 3 && <h3 class={headingClass} set:html={html} />}
+  {level === 4 && <h4 class={headingClass} set:html={html} />}
+
+  <a href={`#${slug}`} aria-hidden="true" tabindex="-1" class="size-5 duration-100 md:opacity-0 md:group-hover:opacity-100">
+    <Link />
+  </a>
+</div>
