@@ -67,14 +67,13 @@ import { Loader2, Search as SearchIcon, X } from 'lucide-astro';
 
   let pagefindReady: Promise<void> | null = null;
 
-  // A plain dynamic `import()` gets eagerly resolved by Vite/esbuild's dependency
-  // scanner even with `@vite-ignore`, and `/pagefind/pagefind.js` only exists in the
-  // built output. Routing it through `Function` hides it from static analysis.
-  const importPagefind = new Function('specifier', 'return import(specifier)') as (specifier: string) => Promise<PagefindApi>;
+  // Only exists post-build; @vite-ignore on a variable defers resolution to
+  // runtime without eval/Function, which CSP blocks.
+  const pagefindSpecifier = '/pagefind/pagefind.js';
 
   function loadPagefind(): Promise<void> {
     if (!pagefindReady) {
-      pagefindReady = importPagefind('/pagefind/pagefind.js').then((m) => {
+      pagefindReady = (import(/* @vite-ignore */ pagefindSpecifier) as Promise<PagefindApi>).then((m) => {
         window.pagefind = m;
         window.pagefind!.init();
       });
