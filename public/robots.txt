@@ -1,1 +1,1 @@
-Sitemap: https://help.miwa.lol/sitemap.xml
+Sitemap: https://help.miwa.lol/sitemap-index.xml
