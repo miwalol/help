@@ -2,11 +2,10 @@
   "private": true,
   "scripts": {
     "dev": "bun run generate:llms && astro dev",
-    "build": "bun run generate:llms && astro build && bun run pagefind",
+    "build": "bun run generate:llms && astro build",
     "preview": "astro preview",
     "lint": "eslint .",
-    "generate:llms": "bun scripts/generate-llms.ts",
-    "pagefind": "pagefind --site dist"
+    "generate:llms": "bun scripts/generate-llms.ts"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.1",
@@ -17,6 +16,7 @@
     "@fontsource-variable/outfit": "^5.3.0",
     "@icons-pack/react-simple-icons": "^13.13.0",
     "astro": "^7.3.2",
+    "astro-pagefind": "^2.0.1",
     "gray-matter": "^4.0.3",
     "lucide-astro": "^0.556.0",
     "react": "^19.3.0",
@@ -36,7 +36,6 @@
     "eslint-plugin-tailwindcss": "^3.18.3",
     "globals": "^17.12.0",
     "jiti": "^2.6.1",
-    "pagefind": "^1.5.2",
     "postcss": "^8.5.12",
     "tailwindcss": "3.4.19",
     "typescript": "^5.7.2",

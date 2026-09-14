@@ -3,6 +3,7 @@ import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import pagefind from 'astro-pagefind';
 import { unified } from '@astrojs/markdown-remark';
 import { loadEnv } from 'vite';
 import { execFileSync } from 'node:child_process';
@@ -53,6 +54,7 @@ export default defineConfig({
         changefreq: 'weekly',
       }),
     }),
+    pagefind(),
   ],
   markdown: {
     // The default `satteri` processor mis-parses JSX tags whose first
