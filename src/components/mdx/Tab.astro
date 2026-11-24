@@ -6,6 +6,6 @@ interface Props {
 const { label } = Astro.props;
 ---
 
-<div class="tab-panel" data-label={label}>
+<div role="tabpanel" data-label={label} tabindex="0">
   <slot />
 </div>

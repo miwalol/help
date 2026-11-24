@@ -1,22 +1,35 @@
 ---
 const slotHtml = await Astro.slots.render('default');
-const labels = [...slotHtml.matchAll(/<div class="tab-panel" data-label="([^"]*)"/g)].map(m => m[1]);
+const entities: Record<string, string> = { '&amp;': '&', '&quot;': '"', '&#39;': '\'', '&lt;': '<', '&gt;': '>' };
+// Captured from rendered attributes, so labels are decoded here before Astro escapes them again as text.
+const labels = [...slotHtml.matchAll(/<div role="tabpanel" data-label="([^"]*)"/g)]
+  .map(m => m[1].replace(/&(?:amp|quot|#39|lt|gt);/g, e => entities[e]));
+// Counted per page so ids stay unique when a page has several groups, and stable across builds.
+Astro.locals.tabGroups = (Astro.locals.tabGroups ?? 0) + 1;
+const prefix = `tabs-${Astro.locals.tabGroups}`;
 
 let index = -1;
-const panelsHtml = slotHtml.replace(/<div class="tab-panel"/g, () => {
+const panelsHtml = slotHtml.replace(/<div role="tabpanel" data-label="[^"]*"/g, () => {
   index++;
-  return index === 0 ? '<div class="tab-panel"' : '<div class="tab-panel" hidden';
+  const attrs = `id="${prefix}-panel-${index}" aria-labelledby="${prefix}-tab-${index}"`;
+  return `<div role="tabpanel" ${attrs}${index === 0 ? '' : ' hidden'}`;
 });
 ---
 
-<div class="tabs my-3 overflow-hidden rounded-xl border border-border">
-  <div class="flex border-b border-border">
+<div class="my-3 overflow-hidden rounded-xl border border-border">
+  <div role="tablist" class="flex border-b border-border">
     {labels.map((label, i) => (
       <button
         type="button"
+        role="tab"
+        id={`${prefix}-tab-${i}`}
+        aria-controls={`${prefix}-panel-${i}`}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        tabindex={i === 0 ? 0 : -1}
         class:list={[
-          'tabs-trigger px-4 py-2 text-sm font-medium transition-colors text-gray-400 hover:bg-gray-700/50 hover:text-white',
-          i === 0 && 'is-active-tab bg-gray-700 text-white',
+          'px-4 py-2 text-sm font-medium transition-colors text-gray-400 hover:bg-gray-700/50 hover:text-white',
+          'aria-selected:bg-gray-700 aria-selected:text-white aria-selected:hover:bg-gray-700',
+          'outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-500',
         ]}
       >{label}</button>
     ))}
@@ -26,18 +39,28 @@ const panelsHtml = slotHtml.replace(/<div class="tab-panel"/g, () => {
 </div>
 
 <script>
-  document.querySelectorAll<HTMLElement>('.tabs').forEach((tabs) => {
-    const triggers = [...tabs.querySelectorAll<HTMLButtonElement>('.tabs-trigger')];
-    const panels = [...tabs.querySelectorAll<HTMLElement>('.tab-panel')];
+  document.querySelectorAll<HTMLElement>('[role="tablist"]').forEach((tablist) => {
+    const tabs = [...tablist.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
 
-    triggers.forEach((trigger, i) => {
-      trigger.addEventListener('click', () => {
-        triggers.forEach((t, j) => {
-          t.classList.toggle('is-active-tab', j === i);
-          t.classList.toggle('bg-gray-700', j === i);
-          t.classList.toggle('text-white', j === i);
-        });
-        panels.forEach((panel, j) => { panel.hidden = j !== i; });
+    const select = (i: number) => {
+      tabs.forEach((tab, j) => {
+        const selected = j === i;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        const panel = document.getElementById(tab.getAttribute('aria-controls') ?? '');
+        if (panel) panel.hidden = !selected;
+      });
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(i));
+      tab.addEventListener('keydown', (e) => {
+        const last = tabs.length - 1;
+        const next = { ArrowRight: i === last ? 0 : i + 1, ArrowLeft: i === 0 ? last : i - 1, Home: 0, End: last }[e.key];
+        if (next === undefined) return;
+        e.preventDefault();
+        select(next);
+        tabs[next].focus();
       });
     });
   });
