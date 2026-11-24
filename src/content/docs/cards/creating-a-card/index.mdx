@@ -8,7 +8,7 @@ import LinkCard from '@/components/mdx/LinkCard.astro';
 import { Settings, Pickaxe, Gamepad2, Music, Cloud, Clock, MapPin, AlignLeft, Pencil } from 'lucide-astro';
 import {
   SiDiscord, SiX, SiTelegram, SiYoutube, SiTiktok, SiInstagram, SiAnilist, SiMyanimelist, SiSpotify, SiApplemusic,
-  SiLastdotfm, SiOsu, SiSteam, SiRoblox, SiModrinth, SiGithub, SiJellyfin
+  SiLastdotfm, SiOsu, SiSteam, SiRoblox, SiPlaystation, SiModrinth, SiGithub, SiJellyfin
 } from '@icons-pack/react-simple-icons';
 
 Adding a card to your profile allows you to add live content to your profile, such as showing your Discord presence
@@ -20,7 +20,7 @@ You can add up to **2 cards** to your profile, or up to **6** with a [Premium ac
 
 ## Choosing the card platform
 
-We support a lot of services. Pick the platform you want, then provide the details described below.
+We support a lot of services. The picker groups them into **Social**, **Music**, **Games**, **Dev** and **Other**, in the same order as below. Pick the platform you want, then provide the details described below.
 
 ### <SiDiscord color="default" /> Discord
 
@@ -35,7 +35,7 @@ Paste your profile URL (e.g. `https://x.com/yourusername`).
 
 ### <SiTelegram color="default" /> Telegram
 
-Paste your channel or group link (e.g. `https://t.me/yourchannel`).
+Paste your channel or group link (e.g. `https://t.me/yourchannel`). Invite links such as `https://t.me/+AbCdEf123` work too.
 
 ### <SiYoutube color="default" /> YouTube
 
@@ -43,7 +43,9 @@ Paste your channel URL (e.g. `https://youtube.com/@yourhandle`).
 
 ### <SiTiktok color="white" /> TikTok
 
-Paste your profile URL (e.g. `https://tiktok.com/@yourusername`).
+Paste your profile URL (e.g. `https://tiktok.com/@yourusername`). A link to one of your videos or photos works too.
+
+With 2 or more rows, or with the profile hidden in the [card settings](/cards/settings/), the card also shows your recent videos.
 
 ### <SiInstagram color="default" /> Instagram
 
@@ -76,11 +78,11 @@ Paste the **share link** of the album, artist, or playlist you want to embed.
 
 ### <SiLastdotfm color="default" /> Last.fm
 
-Paste your profile URL (e.g. `https://www.last.fm/user/yourusername`).
+Paste your profile URL (e.g. `https://www.last.fm/user/yourusername`). Links with a language prefix, such as `last.fm/fr/user/...`, are accepted.
 
 ### <SiOsu color="default" /> osu!
 
-Paste your profile URL (e.g. `https://osu.ppy.sh/users/yourusername`).
+Paste your profile URL, which ends with your numeric user ID (e.g. `https://osu.ppy.sh/users/1234567`). Profile links by username aren't accepted.
 
 ### <Pickaxe /> Minecraft
 
@@ -102,11 +104,19 @@ Enter your **UID**. Like Genshin Impact, it's shown in the bottom-right corner o
 
 ### <SiRoblox color="white" /> Roblox
 
-Paste your profile URL (e.g. `https://roblox.com/users/123456/profile`).
+Paste your profile URL (e.g. `https://roblox.com/users/123456/profile`). Links with a language prefix, such as `roblox.com/fr/users/...`, are accepted.
 
 ### <Gamepad2 /> Xbox
 
 Enter your **gamertag** (e.g. `Major Nelson`). It's shown on your Xbox profile and in the Xbox app.
+
+### <SiPlaystation color="default" /> PlayStation
+
+Enter your **Online ID**, the name shown on your PlayStation Network profile. It's 3 to 16 characters long and starts with a letter.
+
+<Aside type="info">
+  Your trophies, online status and recent games each follow your PlayStation Network privacy settings. If one of them is private, the card leaves that part out and shows the rest. To change who can see them, see [How to change privacy settings on PlayStation](https://www.playstation.com/en-us/support/account/privacy-settings-psn/).
+</Aside>
 
 ### <SiModrinth color="default" /> Modrinth
 
@@ -115,7 +125,7 @@ Paste the URL of any Modrinth page: a mod, server, texture pack, datapack, and m
 
 ### <SiGithub color="white" /> GitHub
 
-For a **profile** card, paste your profile URL. For a **repository** card, paste the repository's URL.
+For a **profile** card, paste your profile URL. For a **repository** card, paste the repository's URL; the repository must be public.
 
 ### <SiJellyfin color="default" /> Jellyfin
 
@@ -130,7 +140,13 @@ Jellyfin is self-hosted, so it needs a bit more setup than the other cards:
 
 ### <Cloud /> Weather
 
-Set the location you want to show the weather for.
+Enter the name of the city you want to show the weather for. The card shows the current conditions, and adds more with each row:
+
+* **1 row**: temperature, feels-like, today's high and low, humidity and wind.
+* **2 rows**: adds an hourly forecast.
+* **3 rows**: adds a forecast for the coming days.
+
+Temperatures and wind speed use the units that go with each visitor's language, so English shows °F and mph while French shows °C and km/h.
 
 ### <Clock /> Time
 
@@ -142,14 +158,14 @@ Show a spot on a map. Enter an address, a place name, or GPS coordinates (latitu
 
 ### <AlignLeft /> Text
 
-Enter any custom text you'd like to show. The text supports **Markdown**, so you can add formatting like bold, italics,
-links, and lists.
+Enter any custom text you'd like to show, up to 1000 characters. The editor's toolbar adds bold, italics, underline,
+strikethrough, code, headings and quotes, and you can also type **Markdown** directly.
 
 ## Card rows <Badge text="Premium feature" />
 
 Changing the number of rows on your card allows it to show more content than default. You can choose **1, 2, or 3 rows**; free accounts are fixed at 1.
 
-For example, the AniList card shows your recent activity if you choose to show more than 2 rows.
+For example, the weather card adds an hourly forecast at 2 rows and a forecast for the coming days at 3 rows.
 
 ## Show below profile
 
